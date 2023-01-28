@@ -1,0 +1,61 @@
+@charset "UTF-8";
+
+.search_head {
+	font: bold 1.3rem TmonMonsori;
+	/* 	color : #234884; */
+	color: black;
+}
+
+.search_sub {
+	font: bold 1.3rem TmonMonsori;
+	padding-left: 10px;
+	padding-right: 10px
+}
+
+.search_form {
+	padding: 20px;
+	border: 2px solid #96C9B7;
+}
+
+div progress {
+	-webkit-appearance: none;
+}
+
+::-webkit-progress-bar {
+	border-radius: 9px;
+	background-color: #BDDAC9;
+}
+
+::-webkit-progress-value {
+	border-radius: 9px;
+	background-color: #2EA26B;
+}
+
+div #dest_img {
+	margin-right: 20px;
+}
+
+h2 .rgyBadge {
+
+    display: inline-block;
+
+    padding: 2px 5px;
+
+    border-radius:13px;
+
+    color: #000;
+
+    vertical-align: middle;
+
+    font-weight: bold;
+
+    font-size: 12px; /* 배지 폰트 크기 */
+
+    background-color: #F2CB61; /* 배지 색상 */
+
+}
+
+/* 글자 그림자 효과 */
+div .heading{
+	text-shadow: 2px 3px 0 #96C9B7;
+}
