@@ -36,26 +36,67 @@ div #dest_img {
 }
 
 h2 .rgyBadge {
-
-    display: inline-block;
-
-    padding: 2px 5px;
-
-    border-radius:13px;
-
-    color: #000;
-
-    vertical-align: middle;
-
-    font-weight: bold;
-
-    font-size: 12px; /* 배지 폰트 크기 */
-
-    background-color: #F2CB61; /* 배지 색상 */
-
+	display: inline-block;
+	padding: 2px 5px;
+	border-radius: 13px;
+	color: #000;
+	vertical-align: middle;
+	font-weight: bold;
+	font-size: 12px; /* 배지 폰트 크기 */
+	background-color: #F2CB61; /* 배지 색상 */
 }
 
 /* 글자 그림자 효과 */
-div .heading{
+div .heading {
 	text-shadow: 2px 3px 0 #96C9B7;
 }
+
+/* view페이지 label */
+div .view_lable {
+	font-weight: 800;
+	font-size: 30px;
+	margin-bottom: 30px;
+	color: #000000;
+}
+
+.deep_hr {
+	opacity: 1;
+}
+
+.tooltip_custom {
+	font-size:1.2rem;
+	position: relative;
+	display: inline-block;
+	background-color: gray;
+	border-radius: 15px;
+	padding-right: 10px;
+	padding-left: 10px;
+	color:white;
+}
+
+.tooltip_custom  .tooltip-content_custom {
+	font-size:0.9rem;
+	visibility: hidden;
+	width: 450px;
+	background-color: #237BFB;
+	padding:0;
+	color: white;
+	text-align: center;
+	position: absolute;
+	z-index: 1;
+	border-radius: 9px;
+	margin-left:20px;
+/* 	margin-top: 10px; */
+}
+
+.tooltip_custom:hover .tooltip-content_custom {
+	visibility: visible;
+}
+/* .img-thumbnail { */
+/*     padding: 0.25rem; */
+/*     background-color: #fff; */
+/*     border: 1px solid #dee2e6; */
+/*     border-radius: 0.25rem; */
+/*     max-width: 100%; */
+/*     height: auto; */
+/* } */

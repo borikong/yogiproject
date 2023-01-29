@@ -2,12 +2,14 @@
     pageEncoding="UTF-8"%>
     
 <!-- 헤더라인 -->
-<link rel="stylesheet" href="navbar/css/Header.css" />
+<link rel="stylesheet" href="css/Header.css" />
+<script src="js/Header.js" defer></script>
+<link rel="stylesheet" href="../css/Header.css" />
+<script src="../js/Header.js" defer></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 <link href="https://fonts.googleapis.com/css2?family=Jua&family=Kiwi+Maru&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru&display=swap" rel="stylesheet">
 <script src="https://kit.fontawesome.com/3e7bdacc74.js" crossorigin="anonymous"></script>
-<script src="navbar/js/Header.js" defer></script> <!-- defer을 넣지 않으면 밑에 있는 자료들이 다 실행될 때까지 html이 브라우저에 표시되지 않음 -->
 
 <!-- 헤더 -->
 <!-- nav_menu로 이름 수정하고 a태그에 nav_a 클래스 추가, css파일변경 -->

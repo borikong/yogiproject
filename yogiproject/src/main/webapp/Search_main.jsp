@@ -10,6 +10,8 @@
 	integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
 	crossorigin="anonymous">
 <link href="css/search_main.css" rel="stylesheet">
+<link rel="stylesheet" href="css/style2.css">
+<link rel="stylesheet" href="css/animate.css">
 
 <title>여행지 조회</title>
 </head>

@@ -2,8 +2,8 @@
 	pageEncoding="UTF-8"%>
 
 <!-- include 하는 페이지 기준으로 경로를 설정해 주어야 함!! -->
-<link rel="stylesheet" href="search/css/style2.css">
-<link rel="stylesheet" href="search/css/animate.css">
+<!-- <link rel="stylesheet" href="search/css/style2.css"> -->
+<!-- <link rel="stylesheet" href="search/css/animate.css"> -->
 <link
 	href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900"
 	rel="stylesheet">
@@ -39,16 +39,16 @@ for (int i = 0; i < 5; i++) {
 }
 %>
 
-<script src="search/js/jquery.min.js"></script>
-<script src="search/js/jquery-migrate-3.0.1.min.js"></script>
-<script src="search/js/popper.min.js"></script>
-<script src="search/js/bootstrap.min.js"></script>
-<script src="search/js/jquery.easing.1.3.js"></script>
-<script src="search/js/jquery.waypoints.min.js"></script>
-<script src="search/js/jquery.stellar.min.js"></script>
-<script src="search/js/owl.carousel.min.js"></script>
-<script src="search/js/jquery.magnific-popup.min.js"></script>
-<script src="search/js/aos.js"></script>
-<script src="search/js/jquery.animateNumber.min.js"></script>
-<script src="search/js/scrollax.min.js"></script>
-<script src="search/js/main.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery-migrate-3.0.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.easing.1.3.js"></script>
+<script src="js/jquery.waypoints.min.js"></script>
+<script src="js/jquery.stellar.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/jquery.magnific-popup.min.js"></script>
+<script src="js/aos.js"></script>
+<script src="js/jquery.animateNumber.min.js"></script>
+<script src="js/scrollax.min.js"></script>
+<script src="js/main.js"></script>
