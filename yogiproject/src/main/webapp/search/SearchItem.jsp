@@ -19,12 +19,26 @@ for (int i = 0; i < 5; i++) {
 			alt="fugi" id="dest_img">
 		<h2 onclick="location.href='search/TravelView.jsp'"
 			onMouseover="this.style.color='#3e64ff';"
-			onMouseout="this.style.color='black';" style="cursor: pointer"
+			onMouseout="this.style.color='black';" style="cursor: pointer;"
 			id="dest_name">
-			<span class="rgyBadge"
-				style="font-size: 1.1rem">일본</span>&nbsp;후지산&nbsp;&nbsp;<span
+			<span class="rgyBadge" style="font-size: 1.1rem">일본</span>&nbsp;후지산&nbsp;&nbsp;<span
 				class="date" id="name_eng">Mountain Fuji</span>
 		</h2>
+
+
+		<div>
+			<span class="position" id="country">찜</span> 
+			
+			
+			<a href="javascript:;"
+				class="icon2 heart" style="background-color: rgba(255, 255, 255, 0.8);   position: absolute; top: 15px; left : 32px; border-radius : 15px;">&nbsp;&nbsp;<img
+				src="https://cdn-icons-png.flaticon.com/512/812/812327.png"
+				alt="찜하기">&nbsp;&nbsp;</a>
+	
+	
+	
+	
+		</div>
 
 		<jsp:include page="/search/pgbar.jsp"></jsp:include>
 		<p id="content_preview">Using a series of utilities, you can
@@ -52,3 +66,34 @@ for (int i = 0; i < 5; i++) {
 <script src="js/jquery.animateNumber.min.js"></script>
 <script src="js/scrollax.min.js"></script>
 <script src="js/main.js"></script>
+<script>
+	$(function() {
+		var $likeBtn = $('.icon2.heart');
+
+		$likeBtn
+				.click(function() {
+					$likeBtn.toggleClass('active');
+
+					if ($likeBtn.hasClass('active')) {
+						$(this)
+								.find('img')
+								.attr(
+										{
+											'src' : 'https://cdn-icons-png.flaticon.com/512/803/803087.png',
+											alt : '찜하기 완료'
+										});
+
+					} else {
+						$(this).find('i').removeClass('fas').addClass('far')
+						$(this)
+								.find('img')
+								.attr(
+										{
+											'src' : 'https://cdn-icons-png.flaticon.com/512/812/812327.png',
+											alt : "찜하기"
+										})
+					}
+				})
+	})
+</script>
+

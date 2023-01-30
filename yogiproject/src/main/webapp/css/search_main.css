@@ -33,9 +33,10 @@ div progress {
 
 div #dest_img {
 	margin-right: 20px;
+	position:relative;
 }
 
-h2 .rgyBadge {
+h2 .rgyBadge, h3 .rgyBadge{
 	display: inline-block;
 	padding: 2px 5px;
 	border-radius: 13px;
@@ -92,6 +93,51 @@ div .view_lable {
 .tooltip_custom:hover .tooltip-content_custom {
 	visibility: visible;
 }
+
+
+
+
+a {
+  text-decoration:none; color:inherit; cursor: pointer;
+
+}
+ .right_area .icon2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(100vw * (45 / 1920));
+    height: calc(100vw * (45 / 1920));
+
+    border-radius: 50%;
+    border: solid 2px #eaeaea;
+    background-color: #fff;
+    
+    
+}
+
+.icon2.heart img{
+    width: calc(100vw * (24 / 1920));
+    height: calc(100vw * (24 / 1920));
+}
+
+.icon2.heart.fas{
+  color:red
+}
+.heart{
+    transform-origin: center;
+}
+.heart.active img{
+    animation: animateHeart .3s linear forwards;
+}
+
+@keyframes animateHeart{
+    0%{transform:scale(.2);}
+    40%{transform:scale(1.2);}
+    100%{transform:scale(1);}
+  }
+
+
+
 /* .img-thumbnail { */
 /*     padding: 0.25rem; */
 /*     background-color: #fff; */
