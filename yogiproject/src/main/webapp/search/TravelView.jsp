@@ -42,7 +42,7 @@
 			<br>
 			<h3 class="view_lable">여행지 태그&nbsp;<span class="tooltip_custom">?<span class="tooltip-content_custom">사용자 리뷰에서 자동으로 추출한 태그입니다.
 				</span></span></h3>
-			<p class="col-md-8 fs-4">#고요 #경치 #대표 #겨울</p>
+			<p class="col-md-8 fs-4">#가족 #깔끔하다 #신비하다 #녹지 #소나무</p>
 		</div>
 
 

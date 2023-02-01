@@ -25,19 +25,13 @@ for (int i = 0; i < 5; i++) {
 				class="date" id="name_eng">Mountain Fuji</span>
 		</h2>
 
-
 		<div>
-			<span class="position" id="country">찜</span> 
-			
 			
 			<a href="javascript:;"
 				class="icon2 heart" style="background-color: rgba(255, 255, 255, 0.8);   position: absolute; top: 15px; left : 32px; border-radius : 15px;">&nbsp;&nbsp;<img
 				src="https://cdn-icons-png.flaticon.com/512/812/812327.png"
 				alt="찜하기">&nbsp;&nbsp;</a>
-	
-	
-	
-	
+
 		</div>
 
 		<jsp:include page="/search/pgbar.jsp"></jsp:include>
