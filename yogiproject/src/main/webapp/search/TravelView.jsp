@@ -29,26 +29,72 @@
 					id="dest_name">후지산</span>
 			</h3>
 			<img src="img/mountfuji.jpg" class="img-thumbnail" alt="...">
+			<div>
+
+
+				<div>
+
+					<a href="javascript:;" class="icon2 heart"
+						style="background-color: rgba(255, 255, 255, 0.8); position: absolute; top: 220px; left: 150px; border-radius: 15px;">&nbsp;&nbsp;<img
+						src="https://cdn-icons-png.flaticon.com/512/812/812327.png"
+						alt="찜하기">&nbsp;&nbsp;
+					</a>
+
+				</div>
+
+			</div>
 			<p class="col-md-8 fs-4" id="dest_intro">Using a series of
 				utilities, you can create this jumbotron, just like the one in
 				previous versions of Bootstrap. Check out the examples below for how
 				you can remix and restyle it to your liking.</p>
 			<h3 class="view_lable">
-				여행지 평점&nbsp;<span class="tooltip_custom">?<span class="tooltip-content_custom">사용자 리뷰를 분석하여 예측한 평점입니다.
-				</span></span>
+				여행지 평점&nbsp;<span class="tooltip_custom">?<span
+					class="tooltip-content_custom">사용자 리뷰를 분석하여 예측한 평점입니다. </span></span>
 			</h3>
 			<jsp:include page="/search/pgbar.jsp"></jsp:include>
 
 			<br>
-			<h3 class="view_lable">여행지 태그&nbsp;<span class="tooltip_custom">?<span class="tooltip-content_custom">사용자 리뷰에서 자동으로 추출한 태그입니다.
-				</span></span></h3>
+			<h3 class="view_lable">
+				여행지 태그&nbsp;<span class="tooltip_custom">?<span
+					class="tooltip-content_custom">사용자 리뷰에서 자동으로 추출한 태그입니다. </span></span>
+			</h3>
 			<p class="col-md-8 fs-4">#가족 #깔끔하다 #신비하다 #녹지 #소나무</p>
 		</div>
 
 
 	</div>
-	
-	
-	
+
+
+
 </body>
 </html>
+<script>
+	$(function() {
+		var $likeBtn = $('.icon2.heart');
+
+		$likeBtn
+				.click(function() {
+					$likeBtn.toggleClass('active');
+
+					if ($likeBtn.hasClass('active')) {
+						$(this)
+								.find('img')
+								.attr(
+										{
+											'src' : 'https://cdn-icons-png.flaticon.com/512/803/803087.png',
+											alt : '찜하기 완료'
+										});
+
+					} else {
+						$(this).find('i').removeClass('fas').addClass('far')
+						$(this)
+								.find('img')
+								.attr(
+										{
+											'src' : 'https://cdn-icons-png.flaticon.com/512/812/812327.png',
+											alt : "찜하기"
+										})
+					}
+				})
+	})
+</script>
