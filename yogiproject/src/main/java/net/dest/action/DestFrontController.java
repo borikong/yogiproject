@@ -20,12 +20,27 @@ public class DestFrontController extends HttpServlet {
 		ActionForward forward=null;
 		Action action=null;
 		
-		if(command.equals("/GetDestinationList.de")) { //여행지 리스트 불러오기
-			request.setCharacterEncoding("utf-8");
-			System.out.println(request.getParameter("keyword"));
+		if(command.equals("/GetDestinationList.de")) { //Search_main 키워드로 조회
+			action=new GetDestListAction();
+			try {
+				action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			forward=new ActionForward();
-			forward.setRedirect(false);
+			forward.setPath(contextPath+"/Search_main.jsp");
+			forward.setRedirect(true);
 			
+		}else if(command.equals("/GetPriorityList.de")) {//Search_main 우선순위로 조회
+			action=new GetPriorityListAction();
+			try {
+				action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			forward=new ActionForward();
+			forward.setPath(contextPath+"/Search_main.jsp");
+			forward.setRedirect(true);		
 		}else if(command.equals("/GetDestDetailView.de")) { //여행지 상세 조회 페이지
 			request.setCharacterEncoding("utf-8");
 			System.out.println(request.getParameter("test"));

@@ -16,8 +16,7 @@
 <title>여행지 조회</title>
 </head>
 
-<body data-spy="scroll" data-target=".site-navbar-target"
-	data-offset="300">
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 	<jsp:include page="/navbar/navbar.jsp"></jsp:include>
 	<div class="container">
 		<br>
@@ -26,31 +25,34 @@
 	<section>
 		<div class="container">
 			<span class="search_head">키워드로 검색</span>&nbsp; 
-			<form action="GetDestinationList.de" method="GET" class=search_form>
+			
+			<form action="GetDestinationList.de" method="GET" class="search_form">
 				<input class="form-control" type="text" name="keyword" placeholder="검색어 입력"
 					aria-label="default input example"
 					style="width: 75%; display: inline;"> &nbsp;
-				<button class="btn btn-outline-dark" type="submit"
-					id="button-addon2" style="font-size: 1.0rem">검색</button>
+				<input class="btn btn-outline-dark" type="submit"
+					id="button-addon2" style="font-size: 1.0rem" value="검색">
 			</form>
+			
+			
 			<br> <span class="search_head">우선순위로 검색&nbsp;<span
 				class="tooltip_custom">?<span class="tooltip-content_custom">각
 						속성의 우선순위에 따라 가중치를 반영하여 검색합니다. </span></span></span> <br>
-			<form class="search_form">
-				<span class="search_sub">비용</span> <select class="form-select"
-					style="width: auto; display: inline;">
+			<form action="GetPriorityList.de" method="get" class="search_form">
+				<span class="search_sub">비용</span> 
+				<select class="form-select" name="money" style="width: auto; display: inline;">
 					<option selected>-</option>
 					<option value="1">1순위</option>
 					<option value="2">2순위</option>
 					<option value="3">3순위</option>
-				</select> <span class="search_sub">경치</span> <select class="form-select"
-					style="width: auto; display: inline;">
+				</select> <span class="search_sub">경치</span> 
+				<select class="form-select" name="landscape" style="width: auto; display: inline;">
 					<option selected>-</option>
 					<option value="1">1순위</option>
 					<option value="2">2순위</option>
 					<option value="3">3순위</option>
-				</select> <span class="search_sub">재미</span> <select class="form-select"
-					style="width: auto; display: inline;">
+				</select> <span class="search_sub">재미</span> 
+				<select class="form-select" name="fun" style="width: auto; display: inline;">
 					<option selected>-</option>
 					<option value="1">1순위</option>
 					<option value="2">2순위</option>
