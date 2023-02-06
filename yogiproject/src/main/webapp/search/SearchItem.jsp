@@ -22,7 +22,9 @@ for (int i = 0; i < destList.size(); i++) {
 
 <div class="resume-wrap d-flex ftco-animate">
 	<div class="text pl-3">
+<!-- 		여행지 이미지 -->
 		<img src="<%=vo.getDEST_IMG()%>" class="rounded float-start" alt="destimg" id="dest_img" width="400px">
+<!-- 		여행지 상세페이지 -->
 		<h2 onclick="location.href='search/TravelView.jsp'"
 			onMouseover="this.style.color='#3e64ff';"
 			onMouseout="this.style.color='black';" style="cursor: pointer;"
