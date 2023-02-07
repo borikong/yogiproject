@@ -66,12 +66,12 @@
 
 		<section class="ftco-section ftco-no-pb goto-here" id="post-section">
 			<div class="container">
-				<div class="row">
+
 					<div class="col-md-9">
 						<div id="page-1" class="page one">
 							<h2 class="heading">Tourist Attractions</h2>
 							<jsp:include page="/search/SearchItem.jsp"></jsp:include>
-						</div>
+
 					</div>
 				</div>
 			</div>

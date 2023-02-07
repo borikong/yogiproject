@@ -18,18 +18,29 @@
 <body>
 	<jsp:include page="/navbar/navbar.jsp"></jsp:include>
 	<div class="container">
-	<h2><Strong>홍길동 님을 위한 여행지 추천 리스트!</Strong></h2>
-		
-		
-	<div class="card" style="width: 18rem;">
-		<img src="search/img/mountfuji.jpg" class="card-img-top" alt="...">
-		<div class="card-body">
-			<h5 class="card-title">Card title</h5>
-			<p class="card-text">Some quick example text to build on the card
-				title and make up the bulk of the card's content.</p>
-			<a href="#" class="btn btn-primary">Go somewhere</a>
+		<h2>
+			<Strong>홍길동 님을 위한 여행지 추천 리스트!</Strong>
+		</h2>
+		<p class="fs-5">[사용자명]님과 비슷한 사용자 데이터를 토대로 추천해 드려요</p>
+
+			<%
+			for (int j = 0; j < 25; j++) {
+			%>
+		<div>
+		<div class="card float-start" style="width: 18rem;">
+			<img src="search/img/mountfuji.jpg" class="card-img-top" alt="...">
+			<div class="card-body">
+				<h5 class="card-title">후지산</h5>
+				<p class="card-text">Some quick example text to build on the
+					card title and make up the bulk of the card's content.</p>
+				<a href="#" class="btn btn-primary">Show Detail</a>
+			</div>
 		</div>
-	</div>
+		</div>
+		<%
+		}
+		%>
+
 	</div>
 
 </body>
