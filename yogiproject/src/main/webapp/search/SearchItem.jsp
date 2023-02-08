@@ -13,8 +13,12 @@
 	rel="stylesheet">
 
 <%
-
-Vector<DestVO> destList=dao.getDestList();
+request.setCharacterEncoding("utf-8");
+String keyword=request.getParameter("keyword");
+if(keyword==null){
+	keyword="";
+}
+Vector<DestVO> destList=dao.getDestList(keyword);
 for (int i = 0; i < destList.size(); i++) {
 	DestVO vo=destList.elementAt(i);
 %>

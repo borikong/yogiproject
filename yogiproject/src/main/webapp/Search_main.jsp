@@ -26,7 +26,7 @@
 		<div class="container">
 			<span class="search_head">키워드로 검색</span>&nbsp; 
 			
-			<form action="GetDestinationList.de" method="GET" class="search_form">
+			<form action="Search_main.jsp" method="post" class="search_form">
 				<input class="form-control" type="text" name="keyword" placeholder="검색어 입력"
 					aria-label="default input example"
 					style="width: 75%; display: inline;"> &nbsp;

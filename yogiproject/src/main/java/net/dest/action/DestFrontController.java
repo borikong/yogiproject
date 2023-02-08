@@ -23,13 +23,12 @@ public class DestFrontController extends HttpServlet {
 		if(command.equals("/GetDestinationList.de")) { //Search_main 키워드로 조회
 			action=new GetDestListAction();
 			try {
-				action.execute(request, response);
+				forward=action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			forward=new ActionForward();
-			forward.setPath(contextPath+"/Search_main.jsp");
-			forward.setRedirect(true);
+			
+			
 			
 		}else if(command.equals("/GetPriorityList.de")) {//Search_main 우선순위로 조회
 			action=new GetPriorityListAction();
