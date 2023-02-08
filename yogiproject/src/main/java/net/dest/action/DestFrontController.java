@@ -2,6 +2,7 @@ package net.dest.action;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -27,9 +28,7 @@ public class DestFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			
-			
-			
+
 		}else if(command.equals("/GetPriorityList.de")) {//Search_main 우선순위로 조회
 			action=new GetPriorityListAction();
 			try {
@@ -39,18 +38,25 @@ public class DestFrontController extends HttpServlet {
 			}
 			forward=new ActionForward();
 			forward.setPath(contextPath+"/Search_main.jsp");
-			forward.setRedirect(true);		
+			forward.setRedirect(true);	
+			
 		}else if(command.equals("/GetDestDetailView.de")) { //여행지 상세 조회 페이지
 			request.setCharacterEncoding("utf-8");
 			System.out.println(request.getParameter("test"));
 			forward=new ActionForward();
 			forward.setRedirect(true); //나중에는 false로
 			forward.setPath("./search/TravelView.jsp");
+		}else if(command.equals("/RecommandList.de")) { //여행지 추천 리스트 페이지
+			forward=new ActionForward();
+			forward.setRedirect(true); //나중에는 false로
+			forward.setPath("./Recommend_main.jsp");
 		}
+		
 		
 		if(forward!=null) {
 			if(forward.isRedirect()) {
-				response.sendRedirect(forward.getPath());
+				RequestDispatcher dispatcher = request.getRequestDispatcher(forward.getPath());
+		        dispatcher.forward(request,response);
 			}
 		}
 	}

@@ -26,18 +26,14 @@
 		<div class="container">
 			<span class="search_head">키워드로 검색</span>&nbsp; 
 			
-			<form action="Search_main.jsp" method="post" class="search_form">
-				<input class="form-control" type="text" name="keyword" placeholder="검색어 입력"
-					aria-label="default input example"
-					style="width: 75%; display: inline;"> &nbsp;
-				<input class="btn btn-outline-dark" type="submit"
-					id="button-addon2" style="font-size: 1.0rem" value="검색">
+			<form action="GetDestinationList.de" method="post" class="search_form">
+				<input class="form-control" type="text" name="keyword" placeholder="검색어 입력" aria-label="default input example" style="width: 75%; display: inline;"> &nbsp;
+				<input class="btn btn-outline-dark" type="submit" id="button-addon2" style="font-size: 1.0rem" value="검색">
 			</form>
 			
 			
-			<br> <span class="search_head">우선순위로 검색&nbsp;<span
-				class="tooltip_custom">?<span class="tooltip-content_custom">각
-						속성의 우선순위에 따라 가중치를 반영하여 검색합니다. </span></span></span> <br>
+			<br> <span class="search_head">우선순위로 검색&nbsp;<span class="tooltip_custom">?<span class="tooltip-content_custom">각 속성의 우선순위에 따라 가중치를 반영하여 검색합니다. </span></span></span> <br>
+						
 			<form action="GetPriorityList.de" method="get" class="search_form">
 				<span class="search_sub">비용</span> 
 				<select class="form-select" name="money" style="width: auto; display: inline;">
@@ -61,8 +57,16 @@
 				<button class="btn btn-outline-dark" type="submit"
 					style="font-size: 1.0rem">검색</button>
 			</form>
+			<br> <span class="search_head">나만의 추천 여행지 리스트!&nbsp;<span
+			class="tooltip_custom">?<span class="tooltip-content_custom">각
+					속성의 우선순위에 따라 가중치를 반영하여 검색합니다. </span></span></span> <br>
+		<form action="RecommandList.de" method="get" class="search_form">
+			<button class="btn btn-outline-dark" type="submit"
+				style="font-size: 1.0rem">추천 리스트 보기</button>
+		</form>
 		</div>
 
+		
 
 		<section class="ftco-section ftco-no-pb goto-here" id="post-section">
 			<div class="container">
@@ -88,6 +92,9 @@
 				stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" />
 		</svg>
 	</div>
+
+
+
 
 </body>
 </html>
