@@ -10,7 +10,7 @@ public class GetDestListAction implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("utf-8");
-		System.out.println("키워드 :"+request.getParameter("keyword"));
+		System.out.println("GetDestListAction : "+request.getParameter("keyword"));
 		ActionForward forward=new ActionForward();
 		
 		//String contextPath=request.getContextPath();
@@ -21,6 +21,7 @@ public class GetDestListAction implements Action{
 			keyword="";
 		}
 		Vector<DestVO> list=dao.getDestList(keyword);
+		
 		//불러온 여행지 리스트를 request 객체로 넘겨주기 위해 setAttribute
 		request.setAttribute("destList", list);
 

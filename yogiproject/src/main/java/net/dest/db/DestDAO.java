@@ -32,15 +32,6 @@ public class DestDAO {
 			Context envContext = (Context) initContext.lookup("java:/comp/env");
 			DataSource ds = (DataSource) envContext.lookup("jdbc/myoracle");
 			conn = ds.getConnection();
-
-//			Class.forName("oracle.jdbc.driver.OracleDriver");
-//
-//			// 3단계
-//			String url = "jdbc:oracle:thin:@211.205.43.192:1521:xe";
-//			String id = "C##scott";
-//			String password = "tiger";
-//			conn = DriverManager.getConnection(url, id, password);
-
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("Connection 객체 생성 실패");
@@ -75,12 +66,13 @@ public class DestDAO {
 					vo.setDEST_COUNTRY(rs.getString("dest_country"));
 					vo.setDEST_NAME_ENG(rs.getString("dest_name_eng"));
 					vo.setDEST_CONTENT(rs.getString("dest_content"));
-					vo.setDEST_MONEY(rs.getInt("dest_money"));
-					vo.setDEST_LANDSCAPE(rs.getInt("dest_landscape"));
-					vo.setDEST_FUN(rs.getInt("dest_fun"));
+					vo.setDEST_MONEY(rs.getFloat("dest_money"));
+					vo.setDEST_LANDSCAPE(rs.getFloat("dest_landscape"));
+					vo.setDEST_FUN(rs.getFloat("dest_fun"));
 					vo.setDEST_TAG(rs.getString("dest_tag"));
 					vo.setDEST_IMG(rs.getString("dest_img"));
-
+					vo.setDEST_MAP(rs.getString("dest_map"));
+					
 					destList.add(vo);
 				}
 			}

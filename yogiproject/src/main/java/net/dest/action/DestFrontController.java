@@ -23,29 +23,15 @@ public class DestFrontController extends HttpServlet {
 		
 		if(command.equals("/GetDestinationList.de")) { //Search_main 키워드로 조회
 			action=new GetDestListAction();
-			try {
-				forward=action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-
+			forward=execute(request, response, action);
 		}else if(command.equals("/GetPriorityList.de")) {//Search_main 우선순위로 조회
 			action=new GetPriorityListAction();
-			try {
-				action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			forward=new ActionForward();
-			forward.setPath(contextPath+"/Search_main.jsp");
-			forward.setRedirect(true);	
+			forward=execute(request, response, action);
 			
 		}else if(command.equals("/GetDestDetailView.de")) { //여행지 상세 조회 페이지
-			request.setCharacterEncoding("utf-8");
-			System.out.println(request.getParameter("test"));
-			forward=new ActionForward();
-			forward.setRedirect(true); //나중에는 false로
-			forward.setPath("./search/TravelView.jsp");
+			action=new DetailViewAction();
+			forward=execute(request, response, action);
+
 		}else if(command.equals("/RecommandList.de")) { //여행지 추천 리스트 페이지
 			forward=new ActionForward();
 			forward.setRedirect(true); //나중에는 false로
@@ -59,6 +45,17 @@ public class DestFrontController extends HttpServlet {
 		        dispatcher.forward(request,response);
 			}
 		}
+	}
+	
+	private ActionForward execute(HttpServletRequest request, HttpServletResponse response,Action action) {
+		ActionForward forward=null;
+		try {
+			forward=action.execute(request, response);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return forward;
 	}
 	
 	

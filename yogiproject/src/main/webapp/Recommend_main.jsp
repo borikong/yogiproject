@@ -12,35 +12,55 @@
 <link href="css/search_main.css" rel="stylesheet">
 <link rel="stylesheet" href="css/style2.css">
 <link rel="stylesheet" href="css/animate.css">
+<link
+	href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900"
+	rel="stylesheet">
 <title>여행지 추천</title>
 </head>
 
-<body>
+<body data-spy="scroll" data-target=".site-navbar-target"
+	data-offset="300">
 	<jsp:include page="/navbar/navbar.jsp"></jsp:include>
+
 	<div class="container">
 		<h2>
 			<Strong>홍길동 님을 위한 여행지 추천 리스트!</Strong>
 		</h2>
 		<p class="fs-5">[사용자명]님과 비슷한 사용자 데이터를 토대로 추천해 드려요</p>
 
-			<%
-			for (int j = 0; j < 25; j++) {
-			%>
-		<div>
-		<div class="card float-start" style="width: 18rem;">
-			<img src="search/img/mountfuji.jpg" class="card-img-top" alt="...">
+		<%
+		for (int j = 0; j < 25; j++) {
+		%>
+
+		<div class="card">
 			<div class="card-body">
-				<h5 class="card-title">후지산</h5>
-				<p class="card-text">Some quick example text to build on the
-					card title and make up the bulk of the card's content.</p>
-				<a href="#" class="btn btn-primary">Show Detail</a>
+				<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/080103_hakkai_fuji.jpg/272px-080103_hakkai_fuji.jpg" class="card-img-top float-start" id="detail_img" alt="...">
+				<h5 class="card-title">
+					<span class="rgyBadge" >일본</span>&nbsp;&nbsp;<strong>후지산</strong>
+				</h5>
+				<p class="card-text">With supporting text below as a natural
+					lead-in to additional content.</p>
+				<div>
+					<span class="position">비용</span>
+					<progress value="30" max="100" id="pg"></progress>
+				</div>
+				<div>
+					<span class="position">경치</span>
+					<progress value="60" max="100"
+						id="pg"></progress>
+				</div>
+				<div>
+					<span class="position">재미</span>
+					<progress value="90" max="100" id="pg"></progress>
+				</div>
+<!-- 				<a href="#" class="btn btn-primary">Show Details</a> -->
 			</div>
 		</div>
-		</div>
+
+		<br>
 		<%
 		}
 		%>
-
 	</div>
 
 </body>

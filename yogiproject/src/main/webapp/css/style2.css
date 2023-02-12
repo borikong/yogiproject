@@ -450,8 +450,10 @@ pre {
 
 .container {
   width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
+/*   padding-right: 15px; */
+/*   padding-left: 15px; */
+	padding-left: 200px;
+	padding-right: 200px;
   margin-right: auto;
   margin-left: auto; }
   @media (min-width: 576px) {
@@ -8140,7 +8142,7 @@ body {
   font-size: 16px;
   line-height: 1.8;
   font-weight: 400;
-  color: #999999;
+/*   color: #999999; */
 }
   body.menu-show {
     overflow: hidden;
@@ -8561,7 +8563,6 @@ h1, h2, h3, h4, h5,
   -webkit-box-shadow: 0px 24px 36px -11px rgba(0, 0, 0, 0.09);
   -moz-box-shadow: 0px 24px 36px -11px rgba(0, 0, 0, 0.09);
   box-shadow: 0px 24px 36px -11px rgba(0, 0, 0, 0.09);
-  font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 2px;
   font-weight: 600; }

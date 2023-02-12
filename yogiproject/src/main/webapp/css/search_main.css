@@ -12,12 +12,14 @@
 	padding-right: 10px
 }
 
+/* 검색창 테두리 */
 .search_form {
 	padding: 20px;
 	border: 2px solid #96C9B7;
 }
 
-div progress {
+/* 프로그래스 바  */
+progress {
 	-webkit-appearance: none;
 }
 
@@ -31,29 +33,40 @@ div progress {
 	background-color: #2EA26B;
 }
 
-div #dest_img {
+/* 여행지 이름에 마우스 over */
+h2#dest_select:hover{
+	color:#3e64ff;
+	cursor: pointer;
+}
+
+#dest_img {
 	margin-right: 20px;
 	position:relative;
 }
 
-h2 .rgyBadge, h3 .rgyBadge{
+/* 여행지 국가 배지 */
+.rgyBadge{
 	display: inline-block;
 	padding: 2px 5px;
 	border-radius: 13px;
 	color: #000;
 	vertical-align: middle;
 	font-weight: bold;
-	font-size: 12px; /* 배지 폰트 크기 */
+	font-size: 1.1rem; /* 배지 폰트 크기 */
 	background-color: #F2CB61; /* 배지 색상 */
 }
 
 /* 글자 그림자 효과 */
-div .heading {
+.heading {
 	text-shadow: 2px 3px 0 #96C9B7;
+	font-weight: 800;
+    font-size: 30px;
+    margin-bottom: 30px;
+    color: #000000;
 }
 
 /* view페이지 label */
-div .view_lable {
+.view_lable {
 	font-weight: 800;
 	font-size: 30px;
 	margin-bottom: 30px;
@@ -64,6 +77,7 @@ div .view_lable {
 	opacity: 1;
 }
 
+/* 툴팁:임시 */
 .tooltip_custom {
 	font-size:1.2rem;
 	position: relative;
@@ -94,20 +108,23 @@ div .view_lable {
 	visibility: visible;
 }
 
-
-
-
 a {
   text-decoration:none; color:inherit; cursor: pointer;
-
 }
- .right_area .icon2{
+
+/* DetailView의 좋아요 버튼의 레이아웃을 inline-block으로 */
+#likebtn{
+	display: inline-block;	
+}
+
+
+/* 하트찜 이미지 */
+.icon2{
     display: flex;
     align-items: center;
     justify-content: center;
     width: calc(100vw * (45 / 1920));
     height: calc(100vw * (45 / 1920));
-
     border-radius: 50%;
     border: solid 2px #eaeaea;
     background-color: #fff;
@@ -115,18 +132,23 @@ a {
     
 }
 
-.icon2.heart img{
+.icon2.heart img, .icon2.heart2 img{
     width: calc(100vw * (24 / 1920));
     height: calc(100vw * (24 / 1920));
 }
 
-.icon2.heart.fas{
-  color:red
-}
-.heart{
+.heart {
     transform-origin: center;
+    background-color: rgba(255, 255, 255, 0.8); 
+	position: absolute; top: 15px; left: 32px; border-radius: 15px;
 }
-.heart.active img{
+.heart2{
+	transform-origin: center;
+    background-color: rgba(255, 255, 255, 0.8); 
+}
+
+/* 하트찜 애니메이션 */
+.heart.active img,.heart2.active img{
     animation: animateHeart .3s linear forwards;
 }
 
@@ -135,10 +157,42 @@ a {
     40%{transform:scale(1.2);}
     100%{transform:scale(1);}
   }
+ 
+.icon2.heart.fas,.icon2.heart2.fas{
+  color:red
+}
 
-/* div .content_preview{ */
-/* 	color: #999999; */
-/* } */
+/* 컨텐츠 미리보기 글자 회색 */
+#content_preview, #dest_content{
+	color: #999999;
+}
+
+/* 비용 경치 재미 글자 */
+.position{
+	font-size: 18px;
+    font-weight: 700;
+    color: #000000;
+}
+
+/* 상세페이지 여행지 이미지 */
+#detail_img{
+	width: 18rem; 
+	margin-right: 1rem;
+}
+
+button, input{
+	font-size: 1.0rem;
+	font-weight: 600;
+}
+
+.content-container{
+	margin: 10px;
+}
+
+.detail-label{
+	font-weight: 800;
+    font-size: 20px;
+}
 
 /* .img-thumbnail { */
 /*     padding: 0.25rem; */

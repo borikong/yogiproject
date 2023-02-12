@@ -13,71 +13,71 @@ Vector<DestVO> list = (Vector<DestVO>) request.getAttribute("destList");
 if (list != null) {
 	for (int i = 0; i < list.size(); i++) {
 		DestVO vo = list.elementAt(i);
+		String summary=vo.getDEST_CONTENT();
+		if(summary.length()>190){
+			summary=summary.substring(0,190);}
 %>
 
 
 <div class="resume-wrap d-flex ftco-animate">
 	<div class="text pl-3">
+	
 		<!-- 		여행지 이미지 -->
 		<img src="<%=vo.getDEST_IMG()%>" class="rounded float-start"
 			alt="destimg" id="dest_img" width="400px">
-		<!-- 		여행지 상세페이지 -->
-		<h2 onclick="location.href='search/TravelView.jsp'"
-			onMouseover="this.style.color='#3e64ff';"
-			onMouseout="this.style.color='black';" style="cursor: pointer;"
-			id="dest_name">
-			<span class="rgyBadge" style="font-size: 1.1rem"><%=vo.getDEST_COUNTRY()%></span>&nbsp;<%=vo.getDEST_NAME()%>&nbsp;&nbsp;<span
-				class="date" id="name_eng"><%=vo.getDEST_NAME_ENG()%></span>
-		</h2>
+			
+		<!-- 클릭시 여행지 상세페이지 -->
+		<form action="GetDestDetailView.de" method="post" id="viewForm<%=vo.getDEST_NAME()%>">
+			<input type="hidden" name="dest_name" value="<%=vo.getDEST_NAME()%>">
+			<h2 onclick="document.getElementById('viewForm<%=vo.getDEST_NAME()%>').submit()" id="dest_select">
+				<span class="rgyBadge"><%=vo.getDEST_COUNTRY()%></span>&nbsp;<span id="dest_name"><%=vo.getDEST_NAME()%></span>&nbsp;&nbsp;<span
+					class="date" id="name_eng"><%=vo.getDEST_NAME_ENG()%></span>
+			</h2>
+		</form>
+		
 
 		<div>
+			<span class="position">비용</span>
+			<progress value="<%=vo.getDEST_MONEY() * 100%>" max="100" id="pg"></progress>
+		</div>
+		<div>
+			<span class="position">경치</span>
+			<progress value="<%=vo.getDEST_LANDSCAPE() * 100%>" max="100" id="pg"></progress>
+		</div>
+		<div>
+			<span class="position">재미</span>
+			<progress value="<%=vo.getDEST_FUN() * 100%>" max="100" id="pg"></progress>
+		</div>
 
-			<a href="javascript:;" class="icon2 heart"
-				style="background-color: rgba(255, 255, 255, 0.8); position: absolute; top: 15px; left: 32px; border-radius: 15px;">&nbsp;&nbsp;
-				<img src="https://cdn-icons-png.flaticon.com/512/812/812327.png"
-				alt="찜하기">&nbsp;&nbsp;
+		<%-- 				<jsp:include page="pgbar.jsp"></jsp:include> --%>
+		<p id="content_preview"><%=summary%>...</p>
+		
+<!-- 		하트찜 -->
+		<div>
+			<a href="javascript:;" class="icon2 heart">&nbsp;&nbsp;
+				<img src="https://cdn-icons-png.flaticon.com/512/812/812327.png" alt="찜하기">&nbsp;&nbsp;&nbsp;
 			</a>
-
 		</div>
-
-		<div>
-			<span class="position" id="country">비용</span>
-			<progress value="<%=vo.getDEST_MONEY() * 10%>" max="100" id="pg"></progress>
-		</div>
-		<div>
-			<span class="position" id="country">경치</span>
-			<progress value="<%=vo.getDEST_LANDSCAPE() * 10%>" max="100" id="pg"></progress>
-		</div>
-		<div>
-			<span class="position" id="country">재미</span>
-			<progress value="<%=vo.getDEST_FUN() * 10%>" max="100" id="pg"></progress>
-		</div>
-
-
-		<%-- 		<jsp:include page="/search/pgbar.jsp"></jsp:include> --%>
-		<p id="content_preview"><%=vo.getDEST_CONTENT()%></p>
 	</div>
 </div>
 
 
 <%
-}
-}
+}//end for
+}//end if
 %>
 
-<script src="js/jquery.min.js"></script>
-<script src="js/jquery-migrate-3.0.1.min.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.easing.1.3.js"></script>
-<script src="js/jquery.waypoints.min.js"></script>
-<script src="js/jquery.stellar.min.js"></script>
-<script src="js/owl.carousel.min.js"></script>
-<script src="js/jquery.magnific-popup.min.js"></script>
-<script src="js/aos.js"></script>
-<script src="js/jquery.animateNumber.min.js"></script>
-<script src="js/scrollax.min.js"></script>
-<script src="js/main.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery-migrate-3.0.1.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery.easing.1.3.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery.waypoints.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery.stellar.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/owl.carousel.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery.magnific-popup.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/aos.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery.animateNumber.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/scrollax.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/main.js"></script>
 <script>
 	$(function() {
 		var $likeBtn = $('.icon2.heart');
