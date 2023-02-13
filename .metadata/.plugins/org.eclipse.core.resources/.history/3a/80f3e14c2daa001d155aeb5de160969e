@@ -1,0 +1,32 @@
+package net.dest.action;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import net.dest.db.DestDAO;
+
+public class DetailViewAction implements Action{
+
+	@Override
+	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		request.setCharacterEncoding("utf-8");
+		ActionForward forward=new ActionForward();
+		String dest_name=request.getParameter("dest_name");
+		System.out.println(dest_name);
+		
+		if(dest_name==null||dest_name.equals("")) {
+			forward.setPath("index.jsp");
+			forward.setRequest(request);
+			forward.setRedirect(true);
+		}
+		
+		
+		DestDAO dao=DestDAO.getInstance();
+		
+		
+		
+		
+		return null;
+	}
+
+}

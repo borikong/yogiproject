@@ -1,0 +1,16 @@
+1674841762060	Move 'Search.jsp' to 'webapp'
+1674878540030	Rename resource 'Search.jsp'
+1674881442923	Move 'css' to 'search'
+1674882645432	Move 'js' to 'search'
+1674883504811	Move 'css' to 'webapp'
+1674883508425	Move 'js' to 'webapp'
+1674883828037	Move 2 resources to 'search'
+1674883870617	Rename resource 'header'
+1674907961346	Rename resource 'Search_item.jsp'
+1674919489248	Move 'search_main.css' to 'css'
+1674919728093	Move 'Header.css' to 'css'
+1674919738035	Move 'Header.js' to 'js'
+1674919807077	Move 'css' to 'webapp'
+1674919813007	Delete element
+1674919814733	Delete element
+1674919817948	Move 'js' to 'webapp'

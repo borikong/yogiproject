@@ -1,0 +1,7 @@
+0:0:0:0:0:0:0:1 - - [02/Feb/2023:01:10:31 +0900] "GET /yogi/yogiproject/Search_main.jsp HTTP/1.1" 200 14429
+0:0:0:0:0:0:0:1 - - [02/Feb/2023:01:10:32 +0900] "GET /yogi/css/Header.css HTTP/1.1" 404 834
+0:0:0:0:0:0:0:1 - - [02/Feb/2023:01:10:32 +0900] "GET /yogi/js/Header.js HTTP/1.1" 404 832
+127.0.0.1 - - [02/Feb/2023:01:14:28 +0900] "GET / HTTP/1.1" 404 807
+0:0:0:0:0:0:0:1 - - [02/Feb/2023:01:14:29 +0900] "GET /yogi/yogiproject/Search_main.jsp HTTP/1.1" 200 14359
+0:0:0:0:0:0:0:1 - - [02/Feb/2023:01:14:29 +0900] "GET /yogi/css/Header.css HTTP/1.1" 404 834
+0:0:0:0:0:0:0:1 - - [02/Feb/2023:01:14:30 +0900] "GET /yogi/js/Header.js HTTP/1.1" 404 832

@@ -1,0 +1,7 @@
+127.0.0.1 - - [13/Feb/2023:00:57:17 +0900] "GET / HTTP/1.1" 404 807
+0:0:0:0:0:0:0:1 - - [13/Feb/2023:00:57:17 +0900] "GET /yogi/yogiproject/Search_main.jsp HTTP/1.1" 200 7876
+0:0:0:0:0:0:0:1 - - [13/Feb/2023:00:57:17 +0900] "GET /yogi/yogiproject/css/search_main.css HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [13/Feb/2023:00:57:27 +0900] "GET /yogi/yogiproject/index.jsp HTTP/1.1" 200 376
+0:0:0:0:0:0:0:1 - - [13/Feb/2023:00:57:30 +0900] "POST /yogi/yogiproject/GetDestinationList.de HTTP/1.1" 200 53411
+0:0:0:0:0:0:0:1 - - [13/Feb/2023:00:57:33 +0900] "POST /yogi/yogiproject/GetDestDetailView.de HTTP/1.1" 200 6738
+0:0:0:0:0:0:0:1 - - [13/Feb/2023:00:57:38 +0900] "GET /favicon.ico HTTP/1.1" 404 818

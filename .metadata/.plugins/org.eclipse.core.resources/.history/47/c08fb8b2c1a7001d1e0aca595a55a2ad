@@ -1,0 +1,9 @@
+/**
+ * 
+ */
+  function submit()
+    {
+		alert("test");
+		document.zipForm.submit();
+        document.submitForm.submit(); // Submits the form without the button
+    }

@@ -1,0 +1,43 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+<div>
+<img src="<%=request.getAttribute("dest_img")%>" class="rounded float-start"
+			alt="destimg" id="dest_img" width="400px">
+		<a href="javascript:;" class="icon2 heart2">&nbsp;&nbsp;
+				<img src="https://cdn-icons-png.flaticon.com/512/812/812327.png" alt="찜하기">&nbsp;&nbsp;&nbsp;
+		</a>
+	</div>
+
+<script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
+
+<script>
+	$(function() {
+		var $likeBtn = $('.icon2.heart2');
+
+		$likeBtn
+				.click(function() {
+					$likeBtn.toggleClass('active');
+
+					if ($likeBtn.hasClass('active')) {
+						$(this)
+								.find('img')
+								.attr(
+										{
+											'src' : 'https://cdn-icons-png.flaticon.com/512/803/803087.png',
+											alt : '찜하기 완료'
+										});
+
+					} else {
+						$(this).find('i').removeClass('fas').addClass('far')
+						$(this)
+								.find('img')
+								.attr(
+										{
+											'src' : 'https://cdn-icons-png.flaticon.com/512/812/812327.png',
+											alt : "찜하기"
+										})
+					}
+				})
+	})
+</script>

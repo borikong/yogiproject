@@ -1,0 +1,40 @@
+package net.dest.action;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import net.dest.db.DestDAO;
+
+public class GetPriorityListAction implements Action{
+
+	@Override
+	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		request.setCharacterEncoding("utf-8");
+		//우선순위가 null로 넘어오는 경우도 구현해야 함
+		
+		int attribute_num=3; // 속성 개수
+		
+		//가중치 계산
+		float money_weight=calWeight(Integer.parseInt(request.getParameter("money")), attribute_num);
+		float land_weight=calWeight(Integer.parseInt(request.getParameter("landscape")), attribute_num);
+		float fun_weight=calWeight(Integer.parseInt(request.getParameter("fun")), attribute_num);
+		
+		System.out.println("money weight:"+money_weight);
+		System.out.println("land weight:"+land_weight);
+		System.out.println("fun weight:"+fun_weight);
+		
+		DestDAO dao=DestDAO.getInstance();
+		
+		return null;
+	}
+
+	//우선순위 가중치 계산
+	private float calWeight(int priority, int attnum) {
+		float weight=0;
+		for(int k=priority; k<=attnum;k++) {
+			weight+=1/(float)k;
+			System.out.println("k는"+k);
+		}
+		return weight*(1/(float)attnum);
+	}
+}

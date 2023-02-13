@@ -1,0 +1,30 @@
+package net.dest.action;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class GetPriorityListAction implements Action{
+
+	@Override
+	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		request.setCharacterEncoding("utf-8");
+		int attribute_num=3;
+		
+		float money_weight=calWeight(Integer.parseInt(request.getParameter("money")), attribute_num);
+		float land_weight=calWeight(Integer.parseInt(request.getParameter("landscape")), attribute_num);
+		float fun_weight=calWeight(Integer.parseInt(request.getParameter("fun")), attribute_num);
+		
+		System.out.println("money weight:"+calWeight(money_pri, 3));
+		
+		return null;
+	}
+
+	//우선순위 가중치 계산
+	private float calWeight(int priority, int attnum) {
+		float weight=0;
+		for(int k=priority; k<=attnum;k++) {
+			weight+=1/(float)k;
+		}
+		return weight*(1/(float)attnum);
+	}
+}

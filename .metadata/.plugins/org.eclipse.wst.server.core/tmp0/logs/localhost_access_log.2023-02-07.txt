@@ -1,0 +1,17 @@
+127.0.0.1 - - [07/Feb/2023:23:43:40 +0900] "GET / HTTP/1.1" 404 807
+0:0:0:0:0:0:0:1 - - [07/Feb/2023:23:43:41 +0900] "GET /yogi/yogiproject/Search_main.jsp HTTP/1.1" 500 4314
+0:0:0:0:0:0:0:1 - - [07/Feb/2023:23:43:42 +0900] "GET /favicon.ico HTTP/1.1" 404 818
+0:0:0:0:0:0:0:1 - - [07/Feb/2023:23:44:37 +0900] "GET /yogi/yogiproject/Recommend_main.jsp HTTP/1.1" 200 13774
+0:0:0:0:0:0:0:1 - - [07/Feb/2023:23:44:37 +0900] "GET /yogi/css/Header.css HTTP/1.1" 404 834
+0:0:0:0:0:0:0:1 - - [07/Feb/2023:23:44:37 +0900] "GET /yogi/js/Header.js HTTP/1.1" 404 832
+0:0:0:0:0:0:0:1 - - [07/Feb/2023:23:44:37 +0900] "GET /yogi/yogiproject/css/animate.css HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [07/Feb/2023:23:44:37 +0900] "GET /yogi/yogiproject/css/search_main.css HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [07/Feb/2023:23:44:37 +0900] "GET /yogi/yogiproject/css/style2.css HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [07/Feb/2023:23:44:37 +0900] "GET /yogi/yogiproject/css/Header.css HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [07/Feb/2023:23:44:37 +0900] "GET /yogi/yogiproject/js/Header.js HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [07/Feb/2023:23:44:38 +0900] "GET /yogi/yogiproject/search/img/mountfuji.jpg HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [07/Feb/2023:23:44:44 +0900] "GET /yogi/yogiproject/Search_main.jsp HTTP/1.1" 500 4528
+127.0.0.1 - - [07/Feb/2023:23:47:09 +0900] "GET / HTTP/1.1" 404 807
+0:0:0:0:0:0:0:1 - - [07/Feb/2023:23:47:10 +0900] "GET /yogi/yogiproject/Search_main.jsp HTTP/1.1" 500 4314
+127.0.0.1 - - [07/Feb/2023:23:48:06 +0900] "GET / HTTP/1.1" 404 807
+0:0:0:0:0:0:0:1 - - [07/Feb/2023:23:48:07 +0900] "GET /yogi/yogiproject/Search_main.jsp HTTP/1.1" 500 4314

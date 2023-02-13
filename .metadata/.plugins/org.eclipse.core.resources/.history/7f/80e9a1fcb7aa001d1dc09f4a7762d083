@@ -1,0 +1,35 @@
+package net.dest.action;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class GetPriorityListAction implements Action{
+
+	@Override
+	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		request.setCharacterEncoding("utf-8");
+		System.out.println(request.getParameter("money"));
+		System.out.println(request.getParameter("landscape"));
+		System.out.println(request.getParameter("fun"));
+		
+		int money_pri=Integer.parseInt(request.getParameter("money"));
+		int landscape_pri=Integer.parseInt(request.getParameter("landscape"));
+		int fun_pri=Integer.parseInt(request.getParameter("fun"));
+		
+		System.out.println("money weight:"+calWeight(money_pri, 3));
+		
+		return null;
+	}
+
+	private float calWeight(int priority, int attnum) {
+		float weight=0;
+
+		for(int k=priority; k<=attnum;k++) {
+			weight+=1/k;
+		}
+		
+		System.out.println(weight);
+		
+		return weight*(1/(float)attnum);
+	}
+}

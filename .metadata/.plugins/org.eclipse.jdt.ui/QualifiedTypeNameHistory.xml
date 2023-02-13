@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="net.dest.action.GetDestListAction"/>
+    <fullyQualifiedTypeName name="net.dest.action.GetPriorityList"/>
+    <fullyQualifiedTypeName name="net.dest.db.DestDAO"/>
+    <fullyQualifiedTypeName name="net.dest.db.DestListVO"/>
+    <fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
+    <fullyQualifiedTypeName name="net.dest.action.ActionForward"/>
+    <fullyQualifiedTypeName name="net.dest.action.Action"/>
+    <fullyQualifiedTypeName name="net.dest.action.DetailViewAction"/>
+    <fullyQualifiedTypeName name="java.util.Vector"/>
+    <fullyQualifiedTypeName name="net.dest.db.DestVO"/>
+</qualifiedTypeNameHistroy>
