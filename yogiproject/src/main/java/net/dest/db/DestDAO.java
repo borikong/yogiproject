@@ -52,7 +52,7 @@ public class DestDAO {
 			if (keyword.equals("")) {
 				sql = "select * from destination";
 			} else {
-				sql = "select * from destination where dest_name='" + keyword + "'";
+				sql = "select * from destination where dest_name like '%" + keyword + "%'";
 			}
 			con = getConnection();
 			pstmt = con.prepareStatement(sql);

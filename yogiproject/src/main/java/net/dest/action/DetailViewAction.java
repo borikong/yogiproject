@@ -1,5 +1,7 @@
 package net.dest.action;
 
+import java.util.Iterator;
+import java.util.List;
 import java.util.Vector;
 
 import javax.servlet.http.HttpServletRequest;
@@ -24,7 +26,19 @@ public class DetailViewAction implements Action{
 		}else {
 			DestDAO dao=DestDAO.getInstance();
 			Vector<DestVO> list=dao.getDestList(dest_name);
-			request.setAttribute("dest", list.get(0));
+			
+			DestVO vo=list.get(0);
+			String str="";
+			
+			//태그 변환(, 구분자로 분리한 후 앞에 # 붙여줌)
+			String[] taglist=vo.getDEST_TAG().split(",");
+			
+			for(int i=0;i<taglist.length;i++) {
+				str+="#"+taglist[i].replace(" ","")+" ";
+			}
+			vo.setDEST_TAG(str);
+			
+			request.setAttribute("dest", vo);
 			forward.setPath("./search/DetailView.jsp");
 			forward.setRequest(request); //request 객체 넘겨주기
 			forward.setRedirect(true);
