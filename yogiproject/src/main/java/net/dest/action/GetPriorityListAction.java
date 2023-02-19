@@ -84,7 +84,7 @@ public class GetPriorityListAction implements Action {
 	}
 
 	// 우선순위 가중치 계산
-	private float calWeight(int priority, int attnum) {
+	private float calWeight(int priority, int attnum) { 
 		float weight = 0;
 		for (int k = priority; k <= attnum; k++) {
 			weight += 1 / (float) k;

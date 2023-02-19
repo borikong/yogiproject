@@ -1,9 +1,0 @@
-/**
- * 
- */
-  function submit()
-    {
-		alert("test");
-//        document.getElementById("startrunning").click(); // Simulates button click
-        document.submitForm.submit(); // Submits the form without the button
-    }

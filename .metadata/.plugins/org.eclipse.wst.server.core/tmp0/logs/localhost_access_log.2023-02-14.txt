@@ -1,0 +1,13 @@
+127.0.0.1 - - [14/Feb/2023:00:55:01 +0900] "GET / HTTP/1.1" 404 807
+0:0:0:0:0:0:0:1 - - [14/Feb/2023:00:55:02 +0900] "GET /yogi/yogiproject/index.jsp HTTP/1.1" 200 376
+0:0:0:0:0:0:0:1 - - [14/Feb/2023:00:55:02 +0900] "GET /yogi/yogiproject/js/search.js HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [14/Feb/2023:00:55:05 +0900] "GET /yogi/yogiproject/css/style2.css HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [14/Feb/2023:00:55:05 +0900] "GET /yogi/yogiproject/css/search_main.css HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [14/Feb/2023:00:55:05 +0900] "POST /yogi/yogiproject/GetDestinationList.de HTTP/1.1" 200 53411
+0:0:0:0:0:0:0:1 - - [14/Feb/2023:00:55:05 +0900] "GET /yogi/yogiproject/css/Header.css HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [14/Feb/2023:00:55:06 +0900] "GET /favicon.ico HTTP/1.1" 404 818
+0:0:0:0:0:0:0:1 - - [14/Feb/2023:00:55:47 +0900] "GET /yogi/yogiproject/GetPriorityList.de?money=1&landscape=2&fun=3 HTTP/1.1" 200 53412
+0:0:0:0:0:0:0:1 - - [14/Feb/2023:00:55:50 +0900] "GET /yogi/yogiproject/RecommandList.de? HTTP/1.1" 200 26879
+0:0:0:0:0:0:0:1 - - [14/Feb/2023:00:55:54 +0900] "GET /yogi/yogiproject/GetPriorityList.de?money=-&landscape=2&fun=3 HTTP/1.1" 200 104
+0:0:0:0:0:0:0:1 - - [14/Feb/2023:00:55:56 +0900] "GET /yogi/yogiproject/index.jsp HTTP/1.1" 200 376
+0:0:0:0:0:0:0:1 - - [14/Feb/2023:00:55:56 +0900] "POST /yogi/yogiproject/GetDestinationList.de HTTP/1.1" 200 53411

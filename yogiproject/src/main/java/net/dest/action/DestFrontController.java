@@ -23,22 +23,17 @@ public class DestFrontController extends HttpServlet {
 		
 		if(command.equals("/GetDestinationList.de")) { //Search_main 키워드로 조회
 			action=new GetDestListAction();
-			forward=execute(request, response, action);
 		}else if(command.equals("/GetPriorityList.de")) {//Search_main 우선순위로 조회
 			action=new GetPriorityListAction();
-			forward=execute(request, response, action);
 			
 		}else if(command.equals("/GetDestDetailView.de")) { //여행지 상세 조회 페이지
 			action=new DetailViewAction();
-			forward=execute(request, response, action);
 
 		}else if(command.equals("/RecommandList.de")) { //여행지 추천 리스트 페이지
-			forward=new ActionForward();
-			forward.setRedirect(true); //나중에는 false로
-			forward.setPath("./Recommend_main.jsp");
+			action=new GetRecommendListAction();
 		}
 		
-		
+		forward=execute(request, response, action);
 		if(forward!=null) {
 			if(forward.isRedirect()) {
 				RequestDispatcher dispatcher = request.getRequestDispatcher(forward.getPath());

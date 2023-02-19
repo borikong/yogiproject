@@ -1,0 +1,20 @@
+package net.dest.action;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class GetRecommendListAction implements Action{
+
+	@Override
+	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		request.setCharacterEncoding("utf-8");
+		System.out.println("GetRecommendListAction");
+		ActionForward forward=new ActionForward();
+		
+		forward.setPath("Recommend_main.jsp");
+		forward.setRequest(request); // request 객체 넘겨주기
+		forward.setRedirect(true);
+		return forward;
+	}
+
+}
