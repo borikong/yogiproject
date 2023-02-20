@@ -60,4 +60,11 @@ select * from proprac;
 
 
 
+drop table member;
+
+insert into member (userid, userlike) values('user1','후지산,센소지');
+insert into member (userid,userlike) values('user2','후지산,남산타워');
+insert into member (userid, userlike) values('user3','후지산,남산타워,센소지');
+insert into member (userid, userlike) values('user4','센소지');
+commit;
 

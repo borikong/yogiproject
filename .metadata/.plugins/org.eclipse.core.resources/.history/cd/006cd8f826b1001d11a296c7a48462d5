@@ -1,0 +1,98 @@
+package net.member.db;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Vector;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
+
+public class MemberDAO {
+	private static MemberDAO instance = null;
+
+	private MemberDAO() {
+	}
+
+	public static MemberDAO getInstance() {
+		if (instance == null) {
+			synchronized (MemberDAO.class) {
+				instance = new MemberDAO();
+			}
+		}
+		return instance;
+	}
+
+	private Connection getConnection() {
+		Connection conn = null;
+
+		try {
+
+			Context initContext = new InitialContext();
+			Context envContext = (Context) initContext.lookup("java:/comp/env");
+			DataSource ds = (DataSource) envContext.lookup("jdbc/myoracle");
+			conn = ds.getConnection();
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("Connection 객체 생성 실패");
+		}
+
+		return conn;
+	}
+
+	public Vector<MemberVO> getLikeList() {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "";
+		Vector<MemberVO> likeList = new Vector<>();
+
+		try {
+			sql = "select * from member";
+			con = getConnection();
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+
+			if(rs!=null) {
+				while (rs.next()) {
+					MemberVO vo = new MemberVO();
+					vo.setUSER_ID(rs.getString("userid"));
+					vo.setUSER_LIKE(rs.getString("userlike"));
+
+					likeList.add(vo);
+				}
+			}
+			
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
+		return likeList;
+	}
+
+}

@@ -1,14 +1,13 @@
 package net.member.db;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.Vector;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
-import javax.sql.DataSource;
+import javax.sql.*;
+
+import net.db.ConnUtil;
 
 public class MemberDAO {
 	private static MemberDAO instance = null;
@@ -25,22 +24,6 @@ public class MemberDAO {
 		return instance;
 	}
 
-	private Connection getConnection() {
-		Connection conn = null;
-
-		try {
-
-			Context initContext = new InitialContext();
-			Context envContext = (Context) initContext.lookup("java:/comp/env");
-			DataSource ds = (DataSource) envContext.lookup("jdbc/myoracle");
-			conn = ds.getConnection();
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("Connection 객체 생성 실패");
-		}
-
-		return conn;
-	}
 
 	public Vector<MemberVO> getLikeList() {
 		Connection con = null;
@@ -51,7 +34,7 @@ public class MemberDAO {
 
 		try {
 			sql = "select * from member";
-			con = getConnection();
+			con = ConnUtil.getConnection();
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 

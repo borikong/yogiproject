@@ -7,6 +7,9 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.*;
 
+import net.db.ConnUtil;
+import net.member.db.MemberVO;
+
 public class DestDAO {
 
 	private static DestDAO instance = null;
@@ -23,23 +26,6 @@ public class DestDAO {
 		return instance;
 	}
 
-	private Connection getConnection() {
-		Connection conn = null;
-
-		try {
-
-			Context initContext = new InitialContext();
-			Context envContext = (Context) initContext.lookup("java:/comp/env");
-			DataSource ds = (DataSource) envContext.lookup("jdbc/myoracle");
-			conn = ds.getConnection();
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("Connection 객체 생성 실패");
-		}
-
-		return conn;
-	}
-
 	public Vector<DestVO> getDestList(String keyword) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -54,7 +40,7 @@ public class DestDAO {
 			} else {
 				sql = "select * from destination where dest_name like '%" + keyword + "%'";
 			}
-			con = getConnection();
+			con = ConnUtil.getConnection();
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 
@@ -105,6 +91,5 @@ public class DestDAO {
 
 		return destList;
 	}// end getDestList
-
 
 }
