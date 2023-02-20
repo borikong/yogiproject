@@ -1,23 +1,25 @@
-package net.dest.db;
+package net.member.db;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Vector;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
-import javax.sql.*;
+import javax.sql.DataSource;
 
-public class DestDAO {
+public class MemberDAO {
+	private static MemberDAO instance = null;
 
-	private static DestDAO instance = null;
-
-	private DestDAO() {
+	private MemberDAO() {
 	}
 
-	public static DestDAO getInstance() {
+	public static MemberDAO getInstance() {
 		if (instance == null) {
-			synchronized (DestDAO.class) {
-				instance = new DestDAO();
+			synchronized (MemberDAO.class) {
+				instance = new MemberDAO();
 			}
 		}
 		return instance;
@@ -40,42 +42,29 @@ public class DestDAO {
 		return conn;
 	}
 
-	public Vector<DestVO> getDestList(String keyword) {
+	public Vector<MemberVO> getLikeList() {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql = "";
-		Vector<DestVO> destList = new Vector<>();
+		Vector<MemberVO> likeList = new Vector<>();
 
 		try {
-
-			if (keyword.equals("")) {
-				sql = "select * from destination";
-			} else {
-				sql = "select * from destination where dest_name like '%" + keyword + "%'";
-			}
+			sql = "select * from member";
 			con = getConnection();
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 
-			if (rs != null) {
+			if(rs!=null) {
 				while (rs.next()) {
-					DestVO vo = new DestVO();
-					vo.setDEST_ID(rs.getString("dest_id"));
-					vo.setDEST_NAME(rs.getString("dest_name"));
-					vo.setDEST_COUNTRY(rs.getString("dest_country"));
-					vo.setDEST_NAME_ENG(rs.getString("dest_name_eng"));
-					vo.setDEST_CONTENT(rs.getString("dest_content"));
-					vo.setDEST_MONEY(rs.getFloat("dest_money"));
-					vo.setDEST_LANDSCAPE(rs.getFloat("dest_landscape"));
-					vo.setDEST_FUN(rs.getFloat("dest_fun"));
-					vo.setDEST_TAG(rs.getString("dest_tag"));
-					vo.setDEST_IMG(rs.getString("dest_img"));
-					vo.setDEST_MAP(rs.getString("dest_map"));
-					
-					destList.add(vo);
+					MemberVO vo = new MemberVO();
+					vo.setUSER_ID(rs.getString("userid"));
+					vo.setUSER_LIKE(rs.getString("userlike"));
+
+					likeList.add(vo);
 				}
 			}
+			
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -103,8 +92,7 @@ public class DestDAO {
 			}
 		}
 
-		return destList;
-	}// end getDestList
-
+		return likeList;
+	}
 
 }

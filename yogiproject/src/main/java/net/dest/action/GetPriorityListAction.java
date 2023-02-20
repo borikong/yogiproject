@@ -64,7 +64,6 @@ public class GetPriorityListAction implements Action {
 			request.setAttribute("land_pri", Integer.parseInt(landscape_pri));
 			request.setAttribute("fun_pri", Integer.parseInt(fun_pri));
 			forward.setPath("Search_main.jsp");
-			forward.setRequest(request); // request 객체 넘겨주기
 			forward.setRedirect(true);
 		} else {
 			response.setCharacterEncoding("UTF-8");

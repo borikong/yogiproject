@@ -26,7 +26,7 @@ public class GetDestListAction implements Action{
 		request.setAttribute("destList", list);
 
 		forward.setPath("Search_main.jsp");
-		forward.setRequest(request); //request 객체 넘겨주기
+		//forward.setRequest(request); //request 객체 넘겨주기
 		forward.setRedirect(true);
 
 		return forward;

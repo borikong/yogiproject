@@ -21,7 +21,6 @@ public class DetailViewAction implements Action{
 		
 		if(dest_name==null||dest_name.equals("")) {
 			forward.setPath("index.jsp");
-			forward.setRequest(request);
 			forward.setRedirect(true);
 		}else {
 			DestDAO dao=DestDAO.getInstance();
@@ -40,7 +39,6 @@ public class DetailViewAction implements Action{
 			
 			request.setAttribute("dest", vo);
 			forward.setPath("./search/DetailView.jsp");
-			forward.setRequest(request); //request 객체 넘겨주기
 			forward.setRedirect(true);
 		}
 		
