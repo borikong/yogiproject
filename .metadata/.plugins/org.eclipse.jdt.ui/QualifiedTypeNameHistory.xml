@@ -5,16 +5,12 @@
     <fullyQualifiedTypeName name="net.dest.db.DestListVO"/>
     <fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
     <fullyQualifiedTypeName name="net.dest.action.DetailViewAction"/>
-    <fullyQualifiedTypeName name="net.dest.db.DestVO"/>
     <fullyQualifiedTypeName name="net.dest.action.Action"/>
     <fullyQualifiedTypeName name="net.dest.action.ActionForward"/>
     <fullyQualifiedTypeName name="net.dest.action.GetRecommendListAction"/>
-    <fullyQualifiedTypeName name="java.util.Vector"/>
     <fullyQualifiedTypeName name="java.util.Map"/>
     <fullyQualifiedTypeName name="java.util.HashMap"/>
     <fullyQualifiedTypeName name="java.lang.Double"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
-    <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="java.awt.event.KeyListener"/>
     <fullyQualifiedTypeName name="java.util.Collections"/>
     <fullyQualifiedTypeName name="javax.sql.DataSource"/>
@@ -22,5 +18,10 @@
     <fullyQualifiedTypeName name="java.sql.Connection"/>
     <fullyQualifiedTypeName name="javax.naming.InitialContext"/>
     <fullyQualifiedTypeName name="net.db.ConnUtil"/>
+    <fullyQualifiedTypeName name="java.lang.Exception"/>
     <fullyQualifiedTypeName name="net.dest.db.DestDAO"/>
+    <fullyQualifiedTypeName name="java.util.Vector"/>
+    <fullyQualifiedTypeName name="net.dest.db.DestVO"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
 </qualifiedTypeNameHistroy>

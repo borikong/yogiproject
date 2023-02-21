@@ -4,12 +4,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import net.dest.db.DestDAO;
+import net.dest.db.DestVO;
 import net.member.db.MemberDAO;
 import net.member.db.MemberVO;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Vector;
@@ -27,11 +29,11 @@ public class GetRecommendListAction implements Action {
 		Vector<MemberVO> list = dao.getLikeList();
 
 		// target id
-		String targetid = "userid1";
+		String targetid = "user1";
 		// target rating Matrix
 		Map<String, Double> target = new HashMap<>(); //target userid, target ratingMatrix {"센소지"=1.0, "후지산=1.0...}
 		// 평가 행렬
-		Map<String, Map> ratingMatrix = new HashMap<>();// 사용자id, 평가 행렬 map
+		Map<String, Map> ratingMatrix = new HashMap<>();// 비교 사용자id, 비교 사용자 ratingMatrix
 
 		// target의 찜한 여행지를 Map으로 불러오기(찜한 여행지는 무조건 1점)
 		for (MemberVO memberVO : list) {
@@ -70,30 +72,47 @@ public class GetRecommendListAction implements Action {
 		// 뒤집기(내림차순 정렬)
 		Collections.reverse(similarUser);
 		
-		List<String> simUsers=new ArrayList<>();
-
-		for (String key : similarUser) {
-			String[] uid=key.split(" ");
-			simUsers.add(uid[1]);
-			System.out.println("key : " + key + ",  value : " + simMatrix.get(key));
-		}
-		
 		//많이 나온 여행지 개수 세기
 		Map<String, Integer> destlist=new HashMap<>();
-		for (String string : simUsers) {
-			System.out.println(string);
-			System.out.println(ratingMatrix.get(string));
-			for(String key : ratingMatrix.get(string).keySet()) {
-				try {
-					destlist.put(key, null);
-					destlist.get(key);
-				} catch (Exception e) {
-					destlist.put(key, 0);
-					e.printStackTrace();
-					}
+		for (String string : similarUser) {
+			String userid=string.split(" ")[1]; //정렬된 similarUser에서 userid맨 빼오기
+//			System.out.println(userid);
+//			System.out.println(ratingMatrix.get(userid));
+			for(Object key : ratingMatrix.get(userid).keySet()) {
+				try{
+					//키가 이미 destlist에 있을때
+					destlist.put((String)key, destlist.get(key)+1);
+				}catch(Exception e) {
+					destlist.put((String)key, 1);
+				}
 			}
 			
 		}
+		
+		List<String> sortedList=new ArrayList<>();
+		
+		for (String string : destlist.keySet()) {
+			System.out.println(string+":"+destlist.get(string));
+			sortedList.add(destlist.get(string)+","+string); //등장 frequency+destname(,로 구분)
+		}
+		
+		//후보지 정렬 코드 삽입 // sort(오름차순 정렬)
+		sortedList.sort((s1, s2) -> s1.compareTo(s2));
+		// 뒤집기(내림차순 정렬)
+		Collections.reverse(sortedList);
+		
+		ArrayList<String> keywords=new ArrayList<>();
+
+		for (String string:sortedList) {
+			keywords.add(string.split(",")[1]);
+		}
+	
+				
+		//후보지 추천 Vector 가져오기
+		DestDAO ddao=DestDAO.getInstance();
+		Vector<DestVO> volist=ddao.getRecommandList(keywords);
+		
+		request.setAttribute("volist", volist);
 
 		forward.setPath("Recommend_main.jsp");
 		forward.setRedirect(true);

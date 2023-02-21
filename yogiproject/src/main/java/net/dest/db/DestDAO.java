@@ -1,6 +1,7 @@
 package net.dest.db;
 
 import java.sql.*;
+import java.util.List;
 import java.util.Vector;
 
 import javax.naming.Context;
@@ -61,6 +62,70 @@ public class DestDAO {
 					
 					destList.add(vo);
 				}
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
+		return destList;
+	}// end getDestList
+	
+	public Vector<DestVO> getRecommandList(List<String> keywords) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "";
+		Vector<DestVO> destList = new Vector<>();
+
+		try {
+			con = ConnUtil.getConnection();
+			
+			for (int i = 0; i < keywords.size(); i++) {
+				sql = "select * from destination where dest_name like '%" + keywords.get(i) + "%'";
+				
+				pstmt = con.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+
+				if (rs.next()) {
+					DestVO vo = new DestVO();
+					vo.setDEST_ID(rs.getString("dest_id"));
+					vo.setDEST_NAME(rs.getString("dest_name"));
+					vo.setDEST_COUNTRY(rs.getString("dest_country"));
+					vo.setDEST_NAME_ENG(rs.getString("dest_name_eng"));
+					vo.setDEST_CONTENT(rs.getString("dest_content"));
+					vo.setDEST_MONEY(rs.getFloat("dest_money"));
+					vo.setDEST_LANDSCAPE(rs.getFloat("dest_landscape"));
+					vo.setDEST_FUN(rs.getFloat("dest_fun"));
+					vo.setDEST_TAG(rs.getString("dest_tag"));
+					vo.setDEST_IMG(rs.getString("dest_img"));
+					vo.setDEST_MAP(rs.getString("dest_map"));
+					
+					destList.add(vo);
+				}
+				
 			}
 
 		} catch (SQLException e) {
