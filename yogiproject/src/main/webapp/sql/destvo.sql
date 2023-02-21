@@ -32,3 +32,21 @@ insert into destination values('vietnam_01','나트랑 해변','베트남','nha trang be
 
 
 select * from destination;
+
+select * from member;
+
+select * from student;
+select * from member;
+
+desc student;
+
+alter table student modify id varchar2(100);
+alter table student modify pass varchar2(100);
+alter table student modify name varchar2(100);
+
+commit;
+
+update member set userlike='후지산,남산타워,도쿄타워,자유의 여신상'  where userid='userid1';
+update member set userlike='후지산,남산타워,황푸강,쾰른 대성당'  where userid='userid2';
+update member set userlike='남산타워,도쿄타워,남이섬,마닐라 대성당'  where userid='userid3';
+

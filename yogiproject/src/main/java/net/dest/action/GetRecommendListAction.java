@@ -27,7 +27,7 @@ public class GetRecommendListAction implements Action {
 		Vector<MemberVO> list = dao.getLikeList();
 
 		// target id
-		String targetid = "user1";
+		String targetid = "userid1";
 		// target rating Matrix
 		Map<String, Double> target = new HashMap<>(); //target userid, target ratingMatrix {"센소지"=1.0, "후지산=1.0...}
 		// 평가 행렬
@@ -69,9 +69,30 @@ public class GetRecommendListAction implements Action {
 
 		// 뒤집기(내림차순 정렬)
 		Collections.reverse(similarUser);
+		
+		List<String> simUsers=new ArrayList<>();
 
 		for (String key : similarUser) {
+			String[] uid=key.split(" ");
+			simUsers.add(uid[1]);
 			System.out.println("key : " + key + ",  value : " + simMatrix.get(key));
+		}
+		
+		//많이 나온 여행지 개수 세기
+		Map<String, Integer> destlist=new HashMap<>();
+		for (String string : simUsers) {
+			System.out.println(string);
+			System.out.println(ratingMatrix.get(string));
+			for(String key : ratingMatrix.get(string).keySet()) {
+				try {
+					destlist.put(key, null);
+					destlist.get(key);
+				} catch (Exception e) {
+					destlist.put(key, 0);
+					e.printStackTrace();
+					}
+			}
+			
 		}
 
 		forward.setPath("Recommend_main.jsp");
