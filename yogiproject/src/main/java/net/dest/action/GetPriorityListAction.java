@@ -35,31 +35,30 @@ public class GetPriorityListAction implements Action {
 //		
 
 			DestDAO dao = DestDAO.getInstance();
-			Vector<DestVO> list = dao.getDestList(""); // 모든 리스트를 가져옴
-			// Vector<DestVO> sortedlist=new Vector<>(); //정렬된 리스트를 담아줄 vector
+			Vector<DestVO> destlist = dao.getDestList(""); // 모든 리스트를 가져옴
 
 			// 가중치 점수 곱한 벡터 만들어주기
-			for (int i = 0; i < list.size(); i++) {
+			for (int i = 0; i < destlist.size(); i++) {
 				//money 속성의 경우 점수가 낮을수록 좋기 때문에 숫자를 역으로 바꿔줌
-				float origin_money = 1-list.get(i).getDEST_MONEY();
-				float origin_land = list.get(i).getDEST_LANDSCAPE();
-				float origin_fun = list.get(i).getDEST_FUN();
+				float origin_money = 1-destlist.get(i).getDEST_MONEY();
+				float origin_land = destlist.get(i).getDEST_LANDSCAPE();
+				float origin_fun = destlist.get(i).getDEST_FUN();
 				float total = origin_money * money_weight + origin_land * land_weight + origin_fun * fun_weight;
-				list.get(i).setDEST_TOTAL(total);
+				destlist.get(i).setDEST_TOTAL(total);
 			}
 
 			// 정렬
-			for (int i = 0; i < list.size(); i++) {
-				for (int j = 0; j < list.size() - i - 1; j++) {
-					if (list.get(j).getDEST_TOTAL() < list.get(j + 1).getDEST_TOTAL()) {
-						DestVO vo = list.get(j);
-						list.set(j, list.get(j + 1));
-						list.set(j + 1, vo);
+			for (int i = 0; i < destlist.size(); i++) {
+				for (int j = 0; j < destlist.size() - i - 1; j++) {
+					if (destlist.get(j).getDEST_TOTAL() < destlist.get(j + 1).getDEST_TOTAL()) {
+						DestVO vo = destlist.get(j);
+						destlist.set(j, destlist.get(j + 1));
+						destlist.set(j + 1, vo);
 					}
 				}
 			}
 
-			request.setAttribute("destList", list);
+			request.setAttribute("destlist", destlist);
 			request.setAttribute("money_pri", Integer.parseInt(money_pri));
 			request.setAttribute("land_pri", Integer.parseInt(landscape_pri));
 			request.setAttribute("fun_pri", Integer.parseInt(fun_pri));
@@ -82,7 +81,7 @@ public class GetPriorityListAction implements Action {
 		return forward;
 	}
 
-	// 우선순위 가중치 계산
+	// 우선순위 가중치 계산(Rank Order Cedtroid)
 	private float calWeight(int priority, int attnum) { 
 		float weight = 0;
 		for (int k = priority; k <= attnum; k++) {

@@ -37,7 +37,7 @@ public class DetailViewAction implements Action{
 			}
 			vo.setDEST_TAG(str);
 			
-			request.setAttribute("dest", vo);
+			request.setAttribute("vo", vo);
 			forward.setPath("./search/DetailView.jsp");
 			forward.setRedirect(true);
 		}

@@ -59,6 +59,7 @@ public class DestDAO {
 					vo.setDEST_TAG(rs.getString("dest_tag"));
 					vo.setDEST_IMG(rs.getString("dest_img"));
 					vo.setDEST_MAP(rs.getString("dest_map"));
+					vo.setDEST_SUMMARY(vo.getDEST_SUMMARY());
 					
 					destList.add(vo);
 				}

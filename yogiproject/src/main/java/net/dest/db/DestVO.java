@@ -13,6 +13,7 @@ public class DestVO {
 	private String DEST_IMG; //여행지 이미지 주소
 	private String DEST_MAP; //여행지 구글 지도 주소
 	private float DEST_TOTAL; //가중치를 곱한 여행지 점수
+	private String DEST_SUMMARY;
 	
 	
 	public String getDEST_ID() {
@@ -87,6 +88,17 @@ public class DestVO {
 	public void setDEST_TOTAL(float dEST_TOTAL) {
 		DEST_TOTAL = dEST_TOTAL;
 	}
+	
+	
+	public void setDEST_SUMMARY(String dEST_SUMMARY) {
+		DEST_SUMMARY = dEST_SUMMARY;
+	}
+	public String getDEST_SUMMARY() {
+		if(getDEST_CONTENT().length()>190){
+			return getDEST_CONTENT().substring(0,190);
+		}else return getDEST_CONTENT();
+	}
+
 	
 	
 }

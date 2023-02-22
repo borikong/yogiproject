@@ -2,12 +2,6 @@
 <%@page import="net.dest.db.DestVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%
-request.setCharacterEncoding("utf-8");
-DestVO vo = (DestVO) request.getAttribute("dest");
-String path = request.getContextPath();
-request.setAttribute("dest_img", vo.getDEST_IMG());
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,8 +28,8 @@ request.setAttribute("dest_img", vo.getDEST_IMG());
 		<div class="container">
 
 			<h3 class="view_lable">
-				<span class="rgyBadge" style="font-size: 1.1rem"><%=vo.getDEST_COUNTRY()%></span>
-				<span id="dest_name"><%=vo.getDEST_NAME()%></span>
+				<span class="rgyBadge" style="font-size: 1.1rem">${vo.getDEST_COUNTRY()}</span>
+				<span id="dest_name">${vo.getDEST_NAME()}</span>
 				<div id="likebtn">
 					<a href="javascript:;" class="icon2 heart2"> <img
 						src="https://cdn-icons-png.flaticon.com/512/812/812327.png"
@@ -43,13 +37,11 @@ request.setAttribute("dest_img", vo.getDEST_IMG());
 				</div>
 			</h3>
 			<div align="center">
-				<%-- 				<img src="<%=vo.getDEST_IMG()%>" class="rounded float-start" --%>
-				<!-- 					alt="destimg" id="dest_img" width="400px"> -->
 				<table>
 					<tr>
-						<td width="40%"><img src="<%=vo.getDEST_IMG()%>"
+						<td width="40%"><img src="${vo.getDEST_IMG()}"
 							class="img-thumbnail" id="dest_img"
-							alt="<%=vo.getDEST_NAME()%> 이미지" /></td>
+							alt="${vo.getDEST_NAME()} 이미지" /></td>
 						<td width="50%">
 							<div class="content-container">
 								<h2 class="detail-label">
@@ -60,17 +52,17 @@ request.setAttribute("dest_img", vo.getDEST_IMG());
 								<%-- 			<jsp:include page="/search/pgbar.jsp"></jsp:include> --%>
 								<div>
 									<span class="position">비용</span>
-									<progress value="<%=vo.getDEST_MONEY() * 100%>" max="100"
+									<progress value="${vo.getDEST_MONEY() * 100}" max="100"
 										id="pg"></progress>
 								</div>
 								<div>
 									<span class="position">경치</span>
-									<progress value="<%=vo.getDEST_LANDSCAPE() * 100%>" max="100"
+									<progress value="${vo.getDEST_LANDSCAPE() * 100}" max="100"
 										id="pg"></progress>
 								</div>
 								<div>
 									<span class="position">재미</span>
-									<progress value="<%=vo.getDEST_FUN() * 100%>" max="100" id="pg"></progress>
+									<progress value="${vo.getDEST_FUN() * 100}" max="100" id="pg"></progress>
 								</div>
 								<br>
 								<h2 class="detail-label">
@@ -79,7 +71,7 @@ request.setAttribute("dest_img", vo.getDEST_IMG());
 									</span></span>
 								</h2>
 								<p>
-									<%=vo.getDEST_TAG()%></p>
+									${vo.getDEST_TAG()}</p>
 								<!-- 								<iframe -->
 								<!-- 								src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13015.197494929274!2d138.7273634!3d35.360625!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6019629a42fdc899%3A0xa6a1fcc916f3a4df!2z7ZuE7KeAIOyCsA!5e0!3m2!1sko!2skr!4v1676183902901!5m2!1sko!2skr" -->
 								<!-- 								style="border: 0;" allowfullscreen="" loading="lazy" -->
@@ -91,7 +83,7 @@ request.setAttribute("dest_img", vo.getDEST_IMG());
 				</table>
 			</div>
 			<div class="content-container">
-				<p id="dest_content"><%=vo.getDEST_CONTENT()%></p>
+				<p id="dest_content">${vo.getDEST_CONTENT()}</p>
 			</div>
 		</div>
 	</div>

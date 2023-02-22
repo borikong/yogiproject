@@ -29,7 +29,7 @@ public class GetRecommendListAction implements Action {
 		Vector<MemberVO> list = dao.getLikeList();
 
 		// target id
-		String targetid = "user1";
+		String targetid = "userid1";
 		// target rating Matrix
 		Map<String, Double> target = new HashMap<>(); //target userid, target ratingMatrix {"센소지"=1.0, "후지산=1.0...}
 		// 평가 행렬
@@ -45,12 +45,12 @@ public class GetRecommendListAction implements Action {
 					target.put(targetlikelist[i], 1.0);
 				}
 			} else { //target user가 아니라면(유사한 사용자 후보)
-				Map<String, Double> element = new HashMap<>(); //각 유저별로 찜한 목록과 점수 저장 {"센소지"=1.0, "후지산=1.0...}
+				Map<String, Double> candiuser = new HashMap<>(); //각 유저별로 찜한 목록과 점수 저장 {"센소지"=1.0, "후지산=1.0...}
 				String[] targetlikelist = memberVO.getUSER_LIKE().split(","); //"센소지, 후지산..." ->["센소지", "후지산"...]
 				for (int i = 0; i < targetlikelist.length; i++) {
-					element.put(targetlikelist[i], 1.0); //{"센소지"=1.0, "후지산=1.0...}
+					candiuser.put(targetlikelist[i], 1.0); //{"센소지"=1.0, "후지산=1.0...}
 				}
-				ratingMatrix.put(memberVO.getUSER_ID(), element); //{"userid02"={"센소지"=1.0, "후지산=1.0...}, ...}
+				ratingMatrix.put(memberVO.getUSER_ID(), candiuser); //{"userid02"={"센소지"=1.0, "후지산=1.0...}, ...}
 			}
 
 		}
@@ -66,44 +66,40 @@ public class GetRecommendListAction implements Action {
 		}
 
 		// sort(오름차순 정렬)
-		List<String> similarUser = new ArrayList<>(simMatrix.keySet());
-		similarUser.sort((s1, s2) -> s1.compareTo(s2));
-
-		// 뒤집기(내림차순 정렬)
-		Collections.reverse(similarUser);
+		List<String> similarUsers = new ArrayList<>(simMatrix.keySet()); //key 기준으로 정렬
+		Collections.sort(similarUsers,Collections.reverseOrder());
+		
 		
 		//많이 나온 여행지 개수 세기
 		Map<String, Integer> destlist=new HashMap<>();
-		for (String string : similarUser) {
+		for (String string : similarUsers) {
 			String userid=string.split(" ")[1]; //정렬된 similarUser에서 userid맨 빼오기
-//			System.out.println(userid);
-//			System.out.println(ratingMatrix.get(userid));
 			for(Object key : ratingMatrix.get(userid).keySet()) {
 				try{
 					//키가 이미 destlist에 있을때
 					destlist.put((String)key, destlist.get(key)+1);
 				}catch(Exception e) {
+					//키가 destlist에 없을때 새로 넣어줌(count=1부터)
 					destlist.put((String)key, 1);
 				}
 			}
 			
 		}
 		
+		//destlist의 [frequency+여행지 이름] 문자열로 합쳐진 배열을 만들어줌(정렬을 위해서)
 		List<String> sortedList=new ArrayList<>();
 		
 		for (String string : destlist.keySet()) {
-			System.out.println(string+":"+destlist.get(string));
-			sortedList.add(destlist.get(string)+","+string); //등장 frequency+destname(,로 구분)
+			sortedList.add(destlist.get(string)+","+string); // ,로 구분
 		}
 		
-		//후보지 정렬 코드 삽입 // sort(오름차순 정렬)
-		sortedList.sort((s1, s2) -> s1.compareTo(s2));
-		// 뒤집기(내림차순 정렬)
-		Collections.reverse(sortedList);
+		//후보지 내림차순 정렬
+		Collections.sort(sortedList,Collections.reverseOrder());
 		
 		ArrayList<String> keywords=new ArrayList<>();
 
 		for (String string:sortedList) {
+			System.out.println(string.split(",")[1]+":"+string.split(",")[0]);
 			keywords.add(string.split(",")[1]);
 		}
 	

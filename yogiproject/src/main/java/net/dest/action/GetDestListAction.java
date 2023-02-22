@@ -13,20 +13,30 @@ public class GetDestListAction implements Action{
 		System.out.println("GetDestListAction : "+request.getParameter("keyword"));
 		ActionForward forward=new ActionForward();
 		
-		//String contextPath=request.getContextPath();
 		String keyword=request.getParameter("keyword");
 		DestDAO dao=DestDAO.getInstance();
 		//키워드로 여행지 리스트 불러오기, 키워드가 없으면 "" 문자열
 		if(keyword==null) {
 			keyword="";
 		}
-		Vector<DestVO> list=dao.getDestList(keyword);
 		
-		//불러온 여행지 리스트를 request 객체로 넘겨주기 위해 setAttribute
-		request.setAttribute("destList", list);
+		//여행지 리스트 불러오기
+		Vector<DestVO> destlist=dao.getDestList(keyword);
+		request.setAttribute("destlist", destlist);
+		
+		//우선순위 설정
+		int money_pri=0;
+		int land_pri=0;
+		int fun_pri=0;
+		
+		if(request.getAttribute("money_pri")!=null&&request.getAttribute("land_pri")!=null&&request.getAttribute("fun_pri")!=null){
+			request.setAttribute("money_pri", request.getAttribute("money_pri"));
+			request.setAttribute("land_pri", request.getAttribute("land_pri"));
+			request.setAttribute("fun_pri", request.getAttribute("fun_pri"));
+		}
+		
 
 		forward.setPath("Search_main.jsp");
-		//forward.setRequest(request); //request 객체 넘겨주기
 		forward.setRedirect(true);
 
 		return forward;
