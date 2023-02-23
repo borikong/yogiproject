@@ -1,4 +1,4 @@
-package net.dest.action;
+package net.dest.controller;
 
 import javax.servlet.http.*;
 

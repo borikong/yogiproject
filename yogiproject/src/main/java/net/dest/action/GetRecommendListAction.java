@@ -3,6 +3,7 @@ package net.dest.action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.dest.controller.*;
 import net.dest.db.DestDAO;
 import net.dest.db.DestVO;
 import net.member.db.MemberDAO;
@@ -21,15 +22,39 @@ public class GetRecommendListAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("utf-8");
-		System.out.println("GetRecommendListAction");
 		ActionForward forward = new ActionForward();
-
+		String loginID=(String)request.getSession().getAttribute("loginID");
+		int mode=0; //0: 추천 리스트 있음, 1: 로그인 하지 않음, 2: 찜한 리스트 없음
+		
+		System.out.println(MemberDAO.getInstance().getLikeList(loginID)+" : "+loginID);
+		if(loginID==null) {
+			//로그인하고 찜해보세요 추가
+			mode=1;
+		}else if(MemberDAO.getInstance().getLikeList(loginID)==null){
+			//찜한 목록이 없습니다 추가
+			mode=2;
+		}
+		
+		if(mode!=0) {
+			request.setAttribute("username", "익명의 사용자");
+			Vector<DestVO> volist=new Vector<>();
+			request.setAttribute("volist", volist);
+			request.setAttribute("mode", mode);
+			//나중에 바꿔줘야 함
+			forward.setPath("Recommend_main.jsp");
+			forward.setRedirect(true);
+			return forward;
+		}
+		
+		
+		System.out.println("GetRecommendListAction");
+		
 		MemberDAO dao = MemberDAO.getInstance();
 
 		Vector<MemberVO> list = dao.getLikeList();
 
 		// target id
-		String targetid = "userid1";
+		String targetid = loginID;
 		// target rating Matrix
 		Map<String, Double> target = new HashMap<>(); //target userid, target ratingMatrix {"센소지"=1.0, "후지산=1.0...}
 		// 평가 행렬
@@ -46,11 +71,14 @@ public class GetRecommendListAction implements Action {
 				}
 			} else { //target user가 아니라면(유사한 사용자 후보)
 				Map<String, Double> candiuser = new HashMap<>(); //각 유저별로 찜한 목록과 점수 저장 {"센소지"=1.0, "후지산=1.0...}
-				String[] targetlikelist = memberVO.getUSER_LIKE().split(","); //"센소지, 후지산..." ->["센소지", "후지산"...]
-				for (int i = 0; i < targetlikelist.length; i++) {
-					candiuser.put(targetlikelist[i], 1.0); //{"센소지"=1.0, "후지산=1.0...}
+				if(memberVO.getUSER_LIKE()!=null) { //좋아요 한 리스트가 있는 유저라면
+					String[] targetlikelist = memberVO.getUSER_LIKE().split(","); //"센소지, 후지산..." ->["센소지", "후지산"...]
+					for (int i = 0; i < targetlikelist.length; i++) {
+						candiuser.put(targetlikelist[i], 1.0); //{"센소지"=1.0, "후지산=1.0...}
+					}
+					ratingMatrix.put(memberVO.getUSER_ID(), candiuser); //{"userid02"={"센소지"=1.0, "후지산=1.0...}, ...}
 				}
-				ratingMatrix.put(memberVO.getUSER_ID(), candiuser); //{"userid02"={"센소지"=1.0, "후지산=1.0...}, ...}
+
 			}
 
 		}
@@ -109,12 +137,15 @@ public class GetRecommendListAction implements Action {
 		Vector<DestVO> volist=ddao.getRecommandList(keywords);
 		
 		request.setAttribute("volist", volist);
+		request.setAttribute("mode", mode);
 
 		forward.setPath("Recommend_main.jsp");
 		forward.setRedirect(true);
 		return forward;
 	}
 
+	
+	
 	// 두 벡터 간의 cosine similarity를 계산하는 메소드
 	public static double cosineSimilarity(Map<String, Double> vector1, Map<String, Double> vector2) {
 		// 벡터의 길이 계산

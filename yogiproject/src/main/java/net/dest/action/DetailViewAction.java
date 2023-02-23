@@ -7,6 +7,7 @@ import java.util.Vector;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.dest.controller.*;
 import net.dest.db.DestDAO;
 import net.dest.db.DestVO;
 
@@ -18,6 +19,11 @@ public class DetailViewAction implements Action{
 		ActionForward forward=new ActionForward();
 		String dest_name=request.getParameter("dest_name");
 		System.out.println("DetailViewAction : "+dest_name);
+		
+		String loginID=(String)request.getSession().getAttribute("loginID");
+		if(loginID==null) {
+			loginID="익명의 사용자";
+		}
 		
 		if(dest_name==null||dest_name.equals("")) {
 			forward.setPath("index.jsp");

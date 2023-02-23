@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%
+	session.invalidate();
+	
+	request.getSession().setAttribute("loginID", "test2");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +18,7 @@
 </form>
 </body>
 </html>
-<script src="js/search.js"></script>
+<script src="js/search.js" type="text/javascript"></script>
 <script type="text/javascript">
 window.attchEvent("onload",submit());
 </script>

@@ -6,6 +6,7 @@ import java.util.Vector;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.dest.controller.*;
 import net.dest.db.DestDAO;
 import net.dest.db.DestVO;
 
@@ -13,6 +14,12 @@ public class GetPriorityListAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		String loginID=(String)request.getSession().getAttribute("loginID");
+		if(loginID==null) {
+			loginID="익명의 사용자";
+		}
+		
 		request.setCharacterEncoding("utf-8");
 		System.out.println("GetPriorityListAction");
 		ActionForward forward = new ActionForward();

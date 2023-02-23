@@ -1,0 +1,1 @@
+GetDestListAction.java -> session으로 회워 아이디 설정하는것

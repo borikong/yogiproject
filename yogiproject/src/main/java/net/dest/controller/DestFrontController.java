@@ -1,4 +1,4 @@
-package net.dest.action;
+package net.dest.controller;
 
 import java.io.IOException;
 
@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import net.dest.action.*;
 
 
 @WebServlet("*.de")
@@ -21,6 +22,8 @@ public class DestFrontController extends HttpServlet {
 		ActionForward forward=null;
 		Action action=null;
 		
+		System.out.println("커멘드 : "+command);
+		
 		if(command.equals("/GetDestinationList.de")) { //Search_main 키워드로 조회
 			action=new GetDestListAction();
 		}else if(command.equals("/GetPriorityList.de")) {//Search_main 우선순위로 조회
@@ -31,6 +34,8 @@ public class DestFrontController extends HttpServlet {
 
 		}else if(command.equals("/RecommandList.de")) { //여행지 추천 리스트 페이지
 			action=new GetRecommendListAction();
+		}else if(command.equals("/Like.de")) { //좋아요, 좋아요 취소 누르기
+			action=new LikeAction();
 		}
 		
 		forward=execute(request, response, action);

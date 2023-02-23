@@ -3,12 +3,17 @@ package net.dest.action;
 import java.util.Vector;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import net.dest.controller.*;
 import net.dest.db.*;
 
 public class GetDestListAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String loginID=(String)request.getSession().getAttribute("loginID");
+
 		request.setCharacterEncoding("utf-8");
 		System.out.println("GetDestListAction : "+request.getParameter("keyword"));
 		ActionForward forward=new ActionForward();

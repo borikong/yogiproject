@@ -17,6 +17,7 @@
 	href="${pageContext.request.contextPath}/css/style2.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/animate.css">
+	
 
 <title>여행지 상세</title>
 </head>
@@ -70,8 +71,7 @@
 										class="tooltip-content_custom">사용자 리뷰에서 자동으로 추출한 태그입니다.
 									</span></span>
 								</h2>
-								<p>
-									${vo.getDEST_TAG()}</p>
+								<p>${vo.getDEST_TAG()}</p>
 								<!-- 								<iframe -->
 								<!-- 								src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13015.197494929274!2d138.7273634!3d35.360625!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6019629a42fdc899%3A0xa6a1fcc916f3a4df!2z7ZuE7KeAIOyCsA!5e0!3m2!1sko!2skr!4v1676183902901!5m2!1sko!2skr" -->
 								<!-- 								style="border: 0;" allowfullscreen="" loading="lazy" -->
@@ -95,33 +95,4 @@
 
 </html>
 <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
-<script>
-	$(function() {
-		var $likeBtn = $('.icon2.heart2');
-
-		$likeBtn
-				.click(function() {
-					$likeBtn.toggleClass('active');
-
-					if ($likeBtn.hasClass('active')) {
-						$(this)
-								.find('img')
-								.attr(
-										{
-											'src' : 'https://cdn-icons-png.flaticon.com/512/803/803087.png',
-											alt : '찜하기 완료'
-										});
-
-					} else {
-						$(this).find('i').removeClass('fas').addClass('far')
-						$(this)
-								.find('img')
-								.attr(
-										{
-											'src' : 'https://cdn-icons-png.flaticon.com/512/812/812327.png',
-											alt : "찜하기"
-										})
-					}
-				})
-	})
-</script>
+<script src="${pageContext.request.contextPath}/js/search.js" type="text/javascript"></script>

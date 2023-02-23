@@ -1,4 +1,4 @@
-package net.dest.action;
+package net.dest.controller;
 
 public class ActionFactory {
 	

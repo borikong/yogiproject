@@ -46,14 +46,20 @@
 				<p id="content_preview">${vo.getDEST_SUMMARY()}...</p>
 
 				<div>
-					<a href="javascript:;" class="icon2 heart">&nbsp;&nbsp; <img
-						src="https://cdn-icons-png.flaticon.com/512/812/812327.png"
+					<a href="javascript:;" class="icon2 heart">&nbsp;&nbsp; 
+					<img src="https://cdn-icons-png.flaticon.com/512/812/812327.png"
 						alt="찜하기">&nbsp;&nbsp;&nbsp;
 					</a>
 				</div>
+				<form method="post" id="like_frm${vo.getDEST_NAME()}">
+					<input type="hidden" name="likeDest" value="${vo.getDEST_NAME()}">
+				</form>
+				
 			</div>
 		</div>
 	</c:forEach>
+	
+	
 </c:if>
 
 <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
@@ -72,34 +78,7 @@
 	src="${pageContext.request.contextPath}/js/jquery.animateNumber.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/scrollax.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/main.js"></script>
-<script>
-	$(function() {
-		var $likeBtn = $('.icon2.heart');
 
-		$likeBtn
-				.click(function() {
-					$likeBtn.toggleClass('active');
+<script src="${pageContext.request.contextPath}/js/search.js" type="text/javascript"></script>
 
-					if ($likeBtn.hasClass('active')) {
-						$(this)
-								.find('img')
-								.attr(
-										{
-											'src' : 'https://cdn-icons-png.flaticon.com/512/803/803087.png',
-											alt : '찜하기 완료'
-										});
-
-					} else {
-						$(this).find('i').removeClass('fas').addClass('far')
-						$(this)
-								.find('img')
-								.attr(
-										{
-											'src' : 'https://cdn-icons-png.flaticon.com/512/812/812327.png',
-											alt : "찜하기"
-										})
-					}
-				})
-	})
-</script>
 
