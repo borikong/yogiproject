@@ -46,14 +46,12 @@
 				<p id="content_preview">${vo.getDEST_SUMMARY()}...</p>
 
 				<div>
-					<a href="javascript:;" class="icon2 heart">&nbsp;&nbsp; 
+					<a href="javascript:call('${vo.getDEST_NAME()}');" class="icon2 heart">&nbsp;&nbsp; 
 					<img src="https://cdn-icons-png.flaticon.com/512/812/812327.png"
 						alt="찜하기">&nbsp;&nbsp;&nbsp;
 					</a>
 				</div>
-				<form method="post" id="like_frm${vo.getDEST_NAME()}">
-					<input type="hidden" name="likeDest" value="${vo.getDEST_NAME()}">
-				</form>
+
 				
 			</div>
 		</div>
