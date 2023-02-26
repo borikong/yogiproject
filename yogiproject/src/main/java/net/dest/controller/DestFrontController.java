@@ -21,8 +21,7 @@ public class DestFrontController extends HttpServlet {
 		String command=RequestURI.substring(contextPath.length());
 		ActionForward forward=null;
 		Action action=null;
-		
-		System.out.println("커멘드 : "+command);
+
 		
 		if(command.equals("/GetDestinationList.de")) { //Search_main 키워드로 조회
 			action=new GetDestListAction();
@@ -36,6 +35,8 @@ public class DestFrontController extends HttpServlet {
 			action=new GetRecommendListAction();
 		}else if(command.equals("/Like.de")) { //좋아요, 좋아요 취소 누르기
 			action=new LikeAction();
+		}else if(command.equals("/Index.de")) { //좋아요, 좋아요 취소 누르기
+			action=new IndexAction();
 		}
 		
 		forward=execute(request, response, action);
@@ -49,12 +50,13 @@ public class DestFrontController extends HttpServlet {
 	
 	private ActionForward execute(HttpServletRequest request, HttpServletResponse response,Action action) {
 		ActionForward forward=null;
-		try {
-			forward=action.execute(request, response);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
+		if(action!=null) {
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}		
 		return forward;
 	}
 	

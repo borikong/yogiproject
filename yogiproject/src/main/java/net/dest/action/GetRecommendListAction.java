@@ -22,11 +22,12 @@ public class GetRecommendListAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("utf-8");
+		System.out.println("GetRecommendListAction");
+		
 		ActionForward forward = new ActionForward();
 		String loginID=(String)request.getSession().getAttribute("loginID");
 		int mode=0; //0: 추천 리스트 있음, 1: 로그인 하지 않음, 2: 찜한 리스트 없음
 		
-		System.out.println(MemberDAO.getInstance().getLikeList(loginID)+" : "+loginID);
 		if(loginID==null) {
 			//로그인하고 찜해보세요 추가
 			mode=1;
@@ -47,7 +48,6 @@ public class GetRecommendListAction implements Action {
 		}
 		
 		
-		System.out.println("GetRecommendListAction");
 		
 		MemberDAO dao = MemberDAO.getInstance();
 

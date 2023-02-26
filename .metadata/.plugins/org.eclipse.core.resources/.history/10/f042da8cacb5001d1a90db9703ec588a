@@ -1,0 +1,107 @@
+/**
+ * 
+ */
+function submit() {
+	document.submitForm.submit(); // Submits the form without the button
+}
+
+
+
+$(function() {
+	
+	var $likeBtn = $('.icon2.heart');
+	//var $likeBtn = $('#likebtn2도쿄타워');
+
+	$likeBtn
+		.click(function() {
+			var data = $(this).data(); //click 메서드 안에 있어야 가져올 수 있다
+			
+			console.log('calltest' + data.a);
+			
+			if(data.b=='active'){
+				$(this).data("b","nonactive");
+				console.log("active data");
+				
+				var url='Like.de?cmd=dislike&dest='+data.a;
+				$(location).attr('href',url);
+				
+			}else{
+				$(this).data("a","active");
+				console.log("remove data");
+				
+				var url='Like.de?cmd=like&dest='+data.a;
+				$(location).attr('href',url);
+			}
+
+
+
+//			$likeBtn.toggleClass('active');
+//			if ($likeBtn.hasClass('active')) {
+//				console.log("active btn");
+//				$(this)
+//					.find('img')
+//					.attr(
+//						{
+//							'src': 'https://cdn-icons-png.flaticon.com/512/803/803087.png',
+//							alt: '찜하기 완료'
+//						});
+//				//LikeAction으로 이동해서 DB 업데이트
+//				//var url='Like.de?cmd=like&dest='+data.a;
+//				//$(location).attr('href',url);
+//			} else {
+//				console.log("remove btn");
+//				$(this).find('i').removeClass('fas').addClass('far')
+//				$(this)
+//					.find('img')
+//					.attr(
+//						{
+//							'src': 'https://cdn-icons-png.flaticon.com/512/812/812327.png',
+//							alt: "찜하기"
+//						})
+//
+//				//var url='Like.de?cmd=dislike&dest='+data.a;
+//				//$(location).attr('href',url);
+//			}//end else
+
+
+		})
+
+	$.fn.call = function(text) {
+
+	}
+
+})
+
+
+$(function() {
+	var $likeBtn = $('.icon2.heart2');
+
+	$likeBtn
+		.click(function() {
+			$likeBtn.toggleClass('active');
+			if ($likeBtn.hasClass('active')) {
+
+
+				$(this)
+					.find('img')
+					.attr(
+						{
+							'src': 'https://cdn-icons-png.flaticon.com/512/803/803087.png',
+							alt: '찜하기 완료'
+						});
+			} else {
+
+				$("#like_frm").attr("action", "Like.de?cmd=dislike").submit()
+
+				$(this).find('i').removeClass('fas').addClass('far')
+				$(this)
+					.find('img')
+					.attr(
+						{
+							'src': 'https://cdn-icons-png.flaticon.com/512/812/812327.png',
+							alt: "찜하기"
+						})
+			}
+		})
+
+})

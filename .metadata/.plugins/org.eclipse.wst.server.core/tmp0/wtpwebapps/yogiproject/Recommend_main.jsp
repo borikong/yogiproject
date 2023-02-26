@@ -2,7 +2,7 @@
 <%@page import="java.util.Vector"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,47 +26,63 @@
 	<jsp:include page="/navbar/navbar.jsp"></jsp:include>
 
 	<div class="container">
+
 		<h2>
-			<Strong>홍길동 님을 위한 여행지 추천 리스트!</Strong>
+			<Strong>♥ ${loginID}님을 위한 여행지 추천 리스트! ♥</Strong>
 		</h2>
-		<p class="fs-5">[사용자명]님과 비슷한 사용자 데이터를 토대로 추천해 드려요</p>
+		<p class="fs-5">▶ ${loginID}님과 비슷한 사용자 데이터를 토대로 추천해 드려요</p>
 
-		<%
-		Vector<DestVO> volist=(Vector<DestVO>)request.getAttribute("volist");
-		for (int j = 0; j < volist.size(); j++) {
-			DestVO vo=volist.get(j);
-		%>
+		<c:if test="${mode eq 0}">
+			<c:forEach var="vo" items="${volist }">
+				<form action="GetDestDetailView.de" method="post"
+					id="viewForm${vo.getDEST_NAME()}">
+					<input type="hidden" name="dest_name" value="${vo.getDEST_NAME()}">
+					<div class="card"
+						onclick="document.getElementById('viewForm${vo.getDEST_NAME()}').submit()">
+						<div class="card-body">
+							<img src="${vo.getDEST_IMG()}" class="card-img-top float-start"
+								id="detail_img" alt="...">
+							<h5 class="card-title">
+								<span class="rgyBadge">${vo.getDEST_COUNTRY()}</span>&nbsp;&nbsp;<strong>${vo.getDEST_NAME()}</strong>
+							</h5>
+							<p class="card-text">With supporting text below as a natural
+								lead-in to additional content.</p>
+							<div>
+								<span class="position">비용</span>
+								<progress value="${vo.getDEST_MONEY() * 100}" max="100" id="pg"></progress>
+							</div>
+							<div>
+								<span class="position">경치</span>
+								<progress value="${vo.getDEST_LANDSCAPE() * 100}" max="100"
+									id="pg"></progress>
+							</div>
+							<div>
+								<span class="position">재미</span>
+								<progress value="${vo.getDEST_FUN() * 100}" max="100" id="pg"></progress>
+							</div>
+							<!-- 				<a href="#" class="btn btn-primary">Show Details</a> -->
+						</div>
+					</div>
+				</form>
 
-		<div class="card">
-			<div class="card-body">
-				<img src="<%=vo.getDEST_IMG()%>" class="card-img-top float-start" id="detail_img" alt="...">
-				<h5 class="card-title">
-					<span class="rgyBadge" ><%=vo.getDEST_COUNTRY() %></span>&nbsp;&nbsp;<strong><%=vo.getDEST_NAME() %></strong>
-				</h5>
-				<p class="card-text">With supporting text below as a natural
-					lead-in to additional content.</p>
-				<div>
-					<span class="position">비용</span>
-					<progress value="<%=vo.getDEST_MONEY() * 100%>" max="100" id="pg"></progress>
-				</div>
-				<div>
-					<span class="position">경치</span>
-					<progress value="<%=vo.getDEST_LANDSCAPE() * 100%>" max="100"
-						id="pg"></progress>
-				</div>
-				<div>
-					<span class="position">재미</span>
-					<progress value="<%=vo.getDEST_FUN() * 100%>" max="100" id="pg"></progress>
-				</div>
-<!-- 				<a href="#" class="btn btn-primary">Show Details</a> -->
-			</div>
-		</div>
+				<br>
+			</c:forEach>
 
-		<br>
-		<%
-		}
-		%>
+		</c:if>
+
+		<!-- 	로그인 필요 -->
+		<c:if test="${mode eq 1}">
+			<p>Login이 필요한 서비스입니다.</p>
+			<a href="#">로그인 페이지로 이동</a>
+		</c:if>
+
+		<!-- 	찜한 리스트 없음 -->
+		<c:if test="${mode eq 2}">
+			<p>찜한 리스트가 없습니다. 최소 5개 이상의 찜 리스트를 만들어 주세요.</p>
+		</c:if>
 	</div>
+
+
 
 </body>
 </html>

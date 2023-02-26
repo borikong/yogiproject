@@ -25,8 +25,7 @@ public class MemberDAO {
 		return instance;
 	}
 
-
-	//모든 사용자의 좋아요 표시한 리스트 가져오기
+	// 모든 사용자의 좋아요 표시한 리스트 가져오기
 	public Vector<MemberVO> getLikeList() {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -40,7 +39,7 @@ public class MemberDAO {
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 
-			if(rs!=null) {
+			if (rs != null) {
 				while (rs.next()) {
 					MemberVO vo = new MemberVO();
 					vo.setUSER_ID(rs.getString("userid"));
@@ -49,7 +48,6 @@ public class MemberDAO {
 					likeList.add(vo);
 				}
 			}
-			
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -59,26 +57,26 @@ public class MemberDAO {
 
 		return likeList;
 	}
-	
-	//특정 사용자의 좋아요 표시한 리스트 가져오기
+
+	// 특정 사용자의 좋아요 표시한 리스트 가져오기
 	public String[] getLikeList(String userid) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql = "";
-		String[] likeList=null;
+		String[] likeList = null;
 
 		try {
-			sql = "select * from member where userid='"+userid+"'";
+			sql = "select * from member where userid='" + userid + "'";
 			con = ConnUtil.getConnection();
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 
-			if(rs.next()) {
-				if(rs.getString("userlike")!=null)
-					likeList=rs.getString("userlike").split(",");
+			if (rs.next()) {
+				if (rs.getString("userlike") != null)
+					likeList = rs.getString("userlike").split(",");
 			}
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -87,63 +85,88 @@ public class MemberDAO {
 
 		return likeList;
 	}
-	
-	//하트찜 버튼 누르면 데이터베이스에 update
+
+	// 하트찜 버튼 누르면 데이터베이스에 update
 	public int addLike(String userid, String likeDest) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql = "";
-		String originLike="";
-		int result=0;
-		
+		String originLike = "";
+		int result = 0;
+
 		try {
 			con = ConnUtil.getConnection();
-			
-			//기존에 있던 userlike 가져오기
-			sql="select userlike from member where userid='"+userid+"'";
+
+			// 기존에 있던 userlike 가져오기
+			sql = "select userlike from member where userid='" + userid + "'";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
-				if(rs.getString("userlike")!=null)
-					originLike=rs.getString("userlike");
+
+			if (rs.next()) {
+				if (rs.getString("userlike") != null)
+					originLike = rs.getString("userlike");
 			}
-			
-			sql="update member set userlike='"+originLike+","+likeDest+"' where userid='"+userid+"'";
+
+			sql = "update member set userlike='" + originLike + "," + likeDest + "' where userid='" + userid + "'";
 			pstmt = con.prepareStatement(sql);
-			result= pstmt.executeUpdate();
-			
-		}catch(SQLException e) {
+			result = pstmt.executeUpdate();
+
+		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			closeAll(rs, pstmt, con);
 		}
-		
+
 		return result;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+	// 하트찜 취소
+	public int deleteLike(String userid, String dislikeDest) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "";
+		String[] originLike;
+		String updateLike = "";
+		int result = 0;
+
+		try {
+			con = ConnUtil.getConnection();
+
+			// 기존에 있던 userlike 가져오기
+			sql = "select userlike from member where userid='" + userid + "'";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				if (rs.getString("userlike") != null) {
+					originLike = rs.getString("userlike").split(",");
+
+					for (String string : originLike) {
+						if(!string.equals(dislikeDest)) {
+							updateLike+=string+",";
+						}
+					}
+					
+					updateLike=updateLike.substring(0,updateLike.length()-1); //마지막 , 제거
+
+				}
+			}
+
+			sql = "update member set userlike='" + updateLike+ "' where userid='" + userid + "'";
+			pstmt = con.prepareStatement(sql);
+			result = pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeAll(rs, pstmt, con);
+		}
+
+		return result;
+	}
+
 	private void closeAll(ResultSet rs, PreparedStatement pstmt, Connection con) {
 		if (rs != null) {
 			try {

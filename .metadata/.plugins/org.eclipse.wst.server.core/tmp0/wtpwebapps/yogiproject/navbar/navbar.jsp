@@ -33,7 +33,7 @@
 		<!-- 로고 -->
 		<i class="bi bi-globe-central-south-asia"></i>
 		<!-- 로고 아이콘 -->
-		<a href="">요기조기</a>
+		<a href="Index.de">요기조기</a>
 		<!-- 로고 눌렀을 때 사이트로 이동 -->
 	</div>
 

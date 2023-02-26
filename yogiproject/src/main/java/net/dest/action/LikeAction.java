@@ -15,23 +15,38 @@ public class LikeAction implements Action{
 		String loginID=(String)request.getSession().getAttribute("loginID");
 		int mode=0; //0: 좋아요 표시 가능, 1: 로그인 하지 않음
 		
-		System.out.println(MemberDAO.getInstance().getLikeList(loginID)+" : "+loginID);
 		if(loginID==null) {
 			//로그인하고 찜해보세요 추가
 			mode=1;
 		}
-		
-		System.out.println("LikeAction : "+request.getRequestURI().substring(request.getContextPath().length()));
-		
+			
 		MemberDAO dao=MemberDAO.getInstance();
-		int result=dao.addLike(loginID, request.getParameter("likeDest"));
+		
+		String cmd=request.getParameter("cmd");
+		int result=0;
+		if(cmd.equals("like")) {
+			result=dao.addLike(loginID, request.getParameter("dest"));
+		}else {
+			result=dao.deleteLike(loginID, request.getParameter("dest"));
+		}
+		
 		
 		if(result==0) {
 			System.out.println("업데이트 실패");
 		}else System.out.println("업데이트 성공");
 		
+		request.setAttribute("thisdest", request.getParameter("dest"));
 		
-		forward.setRedirect(false);
+		String page=request.getParameter("page");
+		if(page.equals("search")) {
+			forward.setPath("Index.de");			
+		}else {
+			forward.setPath("GetDestDetailView.de?dest_name="+request.getParameter("dest"));
+		}
+			
+		
+		
+		forward.setRedirect(true);
 		return forward;
 	}
 

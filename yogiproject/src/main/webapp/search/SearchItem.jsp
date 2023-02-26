@@ -5,16 +5,19 @@
 	href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900"
 	rel="stylesheet">
 
+
+
 <c:if test="${4>3}">
 	<c:forEach var="vo" items="${destlist }">
 		<div class="resume-wrap d-flex ftco-animate">
 			<div class="text pl-3">
+				<a name="${vo.getDEST_NAME()}"></a>
 
-<!-- 				여행지 이미지 클릭시 여행지 상세페이지 -->
+				<!-- 				여행지 이미지 클릭시 여행지 상세페이지 -->
 				<img src="${vo.getDEST_IMG()}" class="rounded float-start"
 					alt="destimg" id="dest_img" width="400px">
 
-				
+
 				<form action="GetDestDetailView.de" method="post"
 					id="viewForm${vo.getDEST_NAME()}">
 					<input type="hidden" name="dest_name" value="${vo.getDEST_NAME()}">
@@ -34,30 +37,43 @@
 				</div>
 				<div>
 					<span class="position">경치</span>
-					<progress value="${vo.getDEST_LANDSCAPE() * 100}" max="100"
-						id="pg"></progress>
+					<progress value="${vo.getDEST_LANDSCAPE() * 100}" max="100" id="pg"></progress>
 				</div>
 				<div>
 					<span class="position">재미</span>
 					<progress value="${vo.getDEST_FUN() * 100}" max="100" id="pg"></progress>
 				</div>
 
-								<jsp:include page="pgbar.jsp"></jsp:include>
+				<jsp:include page="pgbar.jsp"></jsp:include>
 				<p id="content_preview">${vo.getDEST_SUMMARY()}...</p>
 
 				<div>
-					<a href="javascript:call('${vo.getDEST_NAME()}');" class="icon2 heart">&nbsp;&nbsp; 
-					<img src="https://cdn-icons-png.flaticon.com/512/812/812327.png"
-						alt="찜하기">&nbsp;&nbsp;&nbsp;
+					<!-- 				loop 돌다가 찜한 리스트에 해당 관광지가 있으면 flag를 true로 바꿈 -->
+					<!-- 				flag가 true인 동안은 loop를 돌더라도 아무 동작도 하지 않음(break 구현 대체) -->
+					<c:set var="loop_flag" value="false" />
+					<c:forEach var="like" items="${likeList}">
+						<c:if test="${not loop_flag }">
+							<c:if test="${vo.getDEST_NAME()==like}">
+								<c:set var="loop_flag" value="true" />
+							</c:if>
+						</c:if>
+					</c:forEach>
+
+					<!-- 					해당 관광지가 찜 리스트에 있으면 하트찜 활성화 -->
+
+					<a href="javascript:;" data-a="${vo.getDEST_NAME()}" data-b="${loop_flag ? 'active':'nonactive' }"
+						${loop_flag ? "class='icon2 heart active'" :"class='icon2 heart'"  }>&nbsp;&nbsp;
+						<img
+						${loop_flag ? "src='https://cdn-icons-png.flaticon.com/512/803/803087.png'" :"src='https://cdn-icons-png.flaticon.com/512/812/812327.png'"  }
+						${loop_flag ? "alt='찜하기 완료'" :"alt='찜하기'"  }>&nbsp;&nbsp;&nbsp;
 					</a>
+
 				</div>
 
-				
 			</div>
 		</div>
 	</c:forEach>
-	
-	
+
 </c:if>
 
 <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
@@ -77,6 +93,13 @@
 <script src="${pageContext.request.contextPath}/js/scrollax.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/main.js"></script>
 
-<script src="${pageContext.request.contextPath}/js/search.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/js/search.js"
+	type="text/javascript"></script>
 
-
+<script>
+var thisdest="${thisdest}";
+	window.onload = function(){
+		var newlocation=location.href.substring(0,location.href.indexOf("#"));
+		setTimeout(() => location.href =  newlocation+"#${thisdest}", 100);
+    }
+</script>

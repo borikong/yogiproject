@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import net.dest.controller.*;
 import net.dest.db.DestDAO;
 import net.dest.db.DestVO;
+import net.member.db.MemberDAO;
 
 public class DetailViewAction implements Action{
 
@@ -28,7 +29,7 @@ public class DetailViewAction implements Action{
 		if(dest_name==null||dest_name.equals("")) {
 			forward.setPath("index.jsp");
 			forward.setRedirect(true);
-		}else {
+		}else { //받아온 dest_name이 있으면
 			DestDAO dao=DestDAO.getInstance();
 			Vector<DestVO> list=dao.getDestList(dest_name);
 			
@@ -42,6 +43,15 @@ public class DetailViewAction implements Action{
 				str+="#"+taglist[i].replace(" ","")+" ";
 			}
 			vo.setDEST_TAG(str);
+			
+			//찜한 여행지 가져오기
+			String[] likeList= {""};
+			if(loginID!=null) {
+				MemberDAO mdao=MemberDAO.getInstance();
+				likeList=mdao.getLikeList(loginID);
+			}
+			
+			request.setAttribute("likeList", likeList);
 			
 			request.setAttribute("vo", vo);
 			forward.setPath("./search/DetailView.jsp");
