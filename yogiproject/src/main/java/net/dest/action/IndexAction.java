@@ -14,7 +14,7 @@ public class IndexAction implements Action {
 		HttpSession session = request.getSession();
 		session.invalidate();
 
-		request.getSession().setAttribute("loginID", "test3");
+		request.getSession().setAttribute("loginID", "test2");
 
 		System.out.println("IndexAction : ");
 
