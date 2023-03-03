@@ -47,7 +47,8 @@ alter table student modify name varchar2(100);
 
 desc board;
 alter table board modify writer varchar2(200);
-select * from board;
+select * from member;
+delete from member where userid='da1599';
 
 commit;
 
