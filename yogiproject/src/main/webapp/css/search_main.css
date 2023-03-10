@@ -180,6 +180,12 @@ a {
 	margin-right: 1rem;
 }
 
+/* 추천페이지 여행지 이미지 */
+#recommand_img{
+	width: 24rem; 
+	margin-right: 1rem;
+}
+
 button, input{
 	font-size: 1.0rem;
 	font-weight: 600;

@@ -3,7 +3,6 @@ function idCheck(id) {
 		alert("아이디를 입력해주세요");
 		document.regForm.id.focus();
 	}else {
-		console.log("test");
 		url="member.do?cmd=idCheck&id="+id;
 		window.open(url, "post", "width=300, height=150");
 	}

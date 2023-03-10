@@ -41,12 +41,11 @@
 						onclick="document.getElementById('viewForm${vo.getDEST_NAME()}').submit()">
 						<div class="card-body">
 							<img src="${vo.getDEST_IMG()}" class="card-img-top float-start"
-								id="detail_img" alt="...">
+								id="recommand_img" alt="${vo.getDEST_COUNTRY()}">
 							<h5 class="card-title">
 								<span class="rgyBadge">${vo.getDEST_COUNTRY()}</span>&nbsp;&nbsp;<strong>${vo.getDEST_NAME()}</strong>
 							</h5>
-							<p class="card-text">With supporting text below as a natural
-								lead-in to additional content.</p>
+							<p class="card-text">${vo.getDEST_SUMMARY()}...</p>
 							<div>
 								<span class="position">비용</span>
 								<progress value="${vo.getDEST_MONEY() * 100}" max="100" id="pg"></progress>
