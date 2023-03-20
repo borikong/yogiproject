@@ -38,7 +38,7 @@
 					id="viewForm${vo.getDEST_NAME()}">
 					<input type="hidden" name="dest_name" value="${vo.getDEST_NAME()}">
 					<div class="card"
-						onclick="document.getElementById('viewForm${vo.getDEST_NAME()}').submit()">
+						onclick="document.getElementById('viewForm${vo.getDEST_NAME()}').submit()" style="cursor : pointer;">
 						<div class="card-body">
 							<img src="${vo.getDEST_IMG()}" class="card-img-top float-start"
 								id="recommand_img" alt="${vo.getDEST_COUNTRY()}">

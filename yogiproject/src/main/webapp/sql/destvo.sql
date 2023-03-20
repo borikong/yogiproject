@@ -58,3 +58,7 @@ update member set userlike='남산타워,도쿄타워,남이섬,마닐라 대성당,라스베이거스 
 
 insert into member values('da1599','');
 insert into member values('test2','남이섬');
+
+select * from destination;
+
+alter table destination modify dest_content clob;
