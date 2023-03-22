@@ -11,7 +11,7 @@ public class DestVO {
 	private float DEST_FUN;//여행지 재미 속성 점수
 	private String DEST_TAG; //여행지 태그, 공백으로 분리
 	private String DEST_IMG; //여행지 이미지 주소
-	private String DEST_MAP; //여행지 구글 지도 주소
+	private String DEST_MAP;
 	private float DEST_TOTAL; //가중치를 곱한 여행지 점수
 	private String DEST_SUMMARY;
 	

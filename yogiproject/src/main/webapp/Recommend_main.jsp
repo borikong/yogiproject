@@ -34,8 +34,7 @@
 
 		<c:if test="${mode eq 0}">
 			<c:forEach var="vo" items="${volist }">
-				<form action="GetDestDetailView.de" method="post"
-					id="viewForm${vo.getDEST_NAME()}">
+				<form action="GetDestDetailView.de" method="post" id="viewForm${vo.getDEST_NAME()}">
 					<input type="hidden" name="dest_name" value="${vo.getDEST_NAME()}">
 					<div class="card"
 						onclick="document.getElementById('viewForm${vo.getDEST_NAME()}').submit()" style="cursor : pointer;">
