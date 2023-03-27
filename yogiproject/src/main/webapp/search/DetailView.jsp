@@ -16,7 +16,7 @@
 	href="${pageContext.request.contextPath}/css/style2.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/animate.css">
-	
+
 
 <title>여행지 상세</title>
 </head>
@@ -30,10 +30,10 @@
 			<h3 class="view_lable">
 				<span class="rgyBadge" style="font-size: 1.1rem">${vo.getDEST_COUNTRY()}</span>
 				<span id="dest_name">${vo.getDEST_NAME()}</span>
-				
-				
+
+
 				<div id="likebtn">
-				
+
 					<!-- 				loop 돌다가 찜한 리스트에 해당 관광지가 있으면 flag를 true로 바꿈 -->
 					<!-- 				flag가 true인 동안은 loop를 돌더라도 아무 동작도 하지 않음(break 구현 대체) -->
 					<c:set var="loop_flag" value="false" />
@@ -47,15 +47,23 @@
 
 					<!-- 					해당 관광지가 찜 리스트에 있으면 하트찜 활성화 -->
 
-					<a href="javascript:;" data-a="${vo.getDEST_NAME()}" data-b="${loop_flag ? 'active':'nonactive' }"
+					<a href="javascript:;" data-a="${vo.getDEST_NAME()}"
+						data-b="${loop_flag ? 'active':'nonactive' }"
 						${loop_flag ? "class='icon2 heart2 active'" :"class='icon2 heart2'"  }>&nbsp;&nbsp;
 						<img
 						${loop_flag ? "src='https://cdn-icons-png.flaticon.com/512/803/803087.png'" :"src='https://cdn-icons-png.flaticon.com/512/812/812327.png'"  }
-						${loop_flag ? "alt='찜하기 완료'" :"alt='찜하기'"  }>&nbsp;&nbsp;&nbsp;
+						${loop_flag ? "alt='찜하기 완료'" :"alt='찜하기'"  }>&nbsp;&nbsp;
 					</a>
 					<!-- 					<a href="javascript:;" class="icon2 heart2"> <img -->
 					<!-- 						src="https://cdn-icons-png.flaticon.com/512/812/812327.png" -->
 					<!-- 						alt="찜하기"></a> -->
+
+				</div>
+				<div style="display: inline-block;">
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="button" class="listbtn" value="목록으로"
+						onclick="back()">
 				</div>
 			</h3>
 			<div align="center">
@@ -74,8 +82,7 @@
 								<%-- 			<jsp:include page="/search/pgbar.jsp"></jsp:include> --%>
 								<div>
 									<span class="position">비용</span>
-									<progress value="${vo.getDEST_MONEY() * 100}" max="100"
-										id="pg"></progress>
+									<progress value="${vo.getDEST_MONEY() * 100}" max="100" id="pg"></progress>
 								</div>
 								<div>
 									<span class="position">경치</span>
@@ -116,4 +123,5 @@
 
 </html>
 <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
-<script src="${pageContext.request.contextPath}/js/search.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/js/search.js"
+	type="text/javascript"></script>

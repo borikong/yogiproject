@@ -6,16 +6,33 @@ public class DestVO {
 	private String DEST_COUNTRY; //여행지 국가
 	private String DEST_NAME_ENG; //여행지 이름 영어
 	private String DEST_CONTENT;//여행지 소개글
+	private String DEST_REFERENCE;//여행지 소개 참조
 	private float DEST_MONEY;//여행지 비용 속성 점수
 	private float DEST_LANDSCAPE;//여행지 경치 속성 점수
 	private float DEST_FUN;//여행지 재미 속성 점수
 	private String DEST_TAG; //여행지 태그, 공백으로 분리
 	private String DEST_IMG; //여행지 이미지 주소
-	private String DEST_MAP;
+	private int DEST_CNT; //여행지 좋아요 개수
+	
+	
 	private float DEST_TOTAL; //가중치를 곱한 여행지 점수
-	private String DEST_SUMMARY;
+	private String DEST_SUMMARY; //DEST_CONTENT를 190자까지 잘라냄
 	
 	
+	
+	
+	public String getDEST_REFERENCE() {
+		return DEST_REFERENCE;
+	}
+	public void setDEST_REFERENCE(String dEST_REFERENCE) {
+		DEST_REFERENCE = dEST_REFERENCE;
+	}
+	public int getDEST_CNT() {
+		return DEST_CNT;
+	}
+	public void setDEST_CNT(int dEST_CNT) {
+		DEST_CNT = dEST_CNT;
+	}
 	public String getDEST_ID() {
 		return DEST_ID;
 	}
@@ -76,12 +93,7 @@ public class DestVO {
 	public void setDEST_IMG(String dEST_IMG) {
 		DEST_IMG = dEST_IMG;
 	}
-	public String getDEST_MAP() {
-		return DEST_MAP;
-	}
-	public void setDEST_MAP(String dEST_MAP) {
-		DEST_MAP = dEST_MAP;
-	}
+
 	public float getDEST_TOTAL() {
 		return DEST_TOTAL;
 	}

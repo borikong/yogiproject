@@ -53,12 +53,13 @@ public class DestDAO {
 					vo.setDEST_COUNTRY(rs.getString("dest_country"));
 					vo.setDEST_NAME_ENG(rs.getString("dest_name_eng"));
 					vo.setDEST_CONTENT(rs.getString("dest_content"));
+					vo.setDEST_REFERENCE(rs.getString("dest_reference"));
 					vo.setDEST_MONEY(rs.getFloat("dest_money"));
 					vo.setDEST_LANDSCAPE(rs.getFloat("dest_landscape"));
 					vo.setDEST_FUN(rs.getFloat("dest_fun"));
 					vo.setDEST_TAG(rs.getString("dest_tag"));
 					vo.setDEST_IMG(rs.getString("dest_img"));
-					vo.setDEST_MAP(rs.getString("dest_map"));
+					vo.setDEST_CNT(rs.getInt("dest_cnt"));
 					vo.setDEST_SUMMARY(vo.getDEST_SUMMARY());
 					
 					destList.add(vo);
@@ -97,12 +98,14 @@ public class DestDAO {
 					vo.setDEST_COUNTRY(rs.getString("dest_country"));
 					vo.setDEST_NAME_ENG(rs.getString("dest_name_eng"));
 					vo.setDEST_CONTENT(rs.getString("dest_content"));
+					vo.setDEST_REFERENCE(rs.getString("dest_reference"));
 					vo.setDEST_MONEY(rs.getFloat("dest_money"));
 					vo.setDEST_LANDSCAPE(rs.getFloat("dest_landscape"));
 					vo.setDEST_FUN(rs.getFloat("dest_fun"));
 					vo.setDEST_TAG(rs.getString("dest_tag"));
 					vo.setDEST_IMG(rs.getString("dest_img"));
-					vo.setDEST_MAP(rs.getString("dest_map"));
+					vo.setDEST_CNT(rs.getInt("dest_cnt"));
+					vo.setDEST_SUMMARY(vo.getDEST_SUMMARY());
 					
 					destList.add(vo);
 				}

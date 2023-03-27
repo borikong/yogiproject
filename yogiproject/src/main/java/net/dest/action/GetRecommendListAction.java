@@ -63,7 +63,7 @@ public class GetRecommendListAction implements Action {
 		// target의 찜한 여행지를 Map으로 불러오기(찜한 여행지는 무조건 1점)
 		for (MemberVO memberVO : list) {
 			
-			//target user라면
+			//target user라면 targetmap에 여행지와 여행지 점수를 담는다.(점수는 무조건 1점)
 			if (memberVO.getUSER_ID().equals(targetid)) {
 				String[] targetlikelist = memberVO.getUSER_LIKE().split(",");
 				for (int i = 0; i < targetlikelist.length; i++) {
@@ -96,6 +96,8 @@ public class GetRecommendListAction implements Action {
 		// sort(오름차순 정렬)
 		List<String> similarUsers = new ArrayList<>(simMatrix.keySet()); //key 기준으로 정렬
 		Collections.sort(similarUsers,Collections.reverseOrder());
+		
+		//여기에 상위 몇명의 similarUsers까지 사용할지 슬라이싱 하는 코드 작성
 		
 		
 		//많이 나온 여행지 개수 세기
