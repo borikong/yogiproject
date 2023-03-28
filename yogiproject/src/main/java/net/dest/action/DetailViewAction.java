@@ -7,10 +7,10 @@ import java.util.Vector;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import mem.model.MemberDAO;
 import net.dest.controller.*;
 import net.dest.db.DestDAO;
 import net.dest.db.DestVO;
-import net.member.db.MemberDAO;
 
 public class DetailViewAction implements Action{
 

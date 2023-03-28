@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="loginID" value='<%=(String)session.getAttribute("loginID")%>'/>
 
 <!DOCTYPE html>
 <html>
@@ -12,7 +13,6 @@
 <script type="text/javascript" src="script.js"></script>
 </head>
 <body>
-<jsp:include page="../search_main/navbar/navbar.jsp" />
 <form action="member.do?cmd=modifyProc" method="post" name="regForm">
 <c:choose>
 <c:when test="${loginID ne null}">
@@ -28,13 +28,13 @@
 			<div class="left-header">마이페이지</div>
 			<ul>
 				<li>
-					<a class="mp-a" href="mem.do?cmd=mypage">
+					<a class="mp-a" href="mypage.jsp">
 						찜리스트
 						<span class="mp_span">&gt;</span>
 					</a>
 				</li>
 				<li>
-					<a class="active mp-a" href="mem.do?cmd=modifyForm">
+					<a class="active mp-a" href="modifyForm.jsp">
 						정보수정
 						<span class="mp_span">&gt;</span>
 					</a>
@@ -51,9 +51,10 @@
 				<div class="left-bottom">			
 					<span>도움이 필요하신가요 ?</span>
 					<span class="left-s">문의하기</span>	
-				</div>		
+				</div>			
 			</a>
 		</div>
+
 
 		<div class="mp_right">
 		
@@ -203,6 +204,5 @@
 </c:when>
 </c:choose>
 </form>
-<jsp:include page="/search_main/navbar/footer.jsp"></jsp:include>
 </body>
 </html>

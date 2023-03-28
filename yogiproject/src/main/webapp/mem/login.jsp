@@ -1,135 +1,75 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="loginID" value='<%=(String)session.getAttribute("loginID")%>'/>
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>로그인</title>
-
-<style>
-    body {
-        min-width: 1050px;
-        margin-top: 150px;
-        margin-bottom: 30px;
-        background-color: #fff;       
-        font-weight: 800;
-        font-size: 20px;
-        line-height: 20px;
-        text-align: center; 
-    }
-   
-    div{   
-    	padding-bottom: 10px;	
-    }
-    
-    .loginDivForm{    	   	
-        width: 340px;
-        margin: 0 auto;
-        letter-spacing: -0.6px;
-    }
-    
-    form {			  	 
-    	font-size: 14px;
-    	height: 250px;           
-    }
-    
-    input {   
-    	height: 54px;       	
-        position: relative;
-        height: 48px;  
-    	width: 100%;
-        height: 46px;
-        padding: 0 11px 1px 15px;
-        border-radius: 4px;
-        border: 1px solid #ddd;
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 1.5;
-        color: #333;
-        outline: none;
-        box-sizing: border-box;
-    }
-    
-    .idpw{
-    	display: flex;
-    	font-size: 13px;
-    	justify-content: flex-end;
-    
-    }
-    
-    .spanBorder{
-    	width: 1px;
-        height: 10px;
-        margin: 0 6px 2px 4px;
-    }
-    
-    button{
-    	font-weight: 800;
-    	font-size: 16px;
-    	margin-bottom: 10px;
-    }
-    
-    .bt1{
-    	display: block;
-        padding: 0 10px;
-        text-align: center;
-        overflow: hidden;
-        width: 100%;
-        height: 54px;
-        border-radius: 3px;
-        color: #fff;
-        background-color: #2EA26B;
-        border: 0 none;
-	}
-	
-	.bt2{
-    	display: block;
-        padding: 0 10px;
-        text-align: center;
-        overflow: hidden;
-        width: 100%;
-        height: 54px;
-        border-radius: 3px;
-        color: #2EA26B;
-        background-color: #fff;
-        border: 1px solid #2EA26B;
-	}
-    </style>
+<title>Login</title>
+<link href="ect_style.css" rel="stylesheet" type="text/css">
 
 </head>
 <body>
 
+<c:choose>
+<c:when test="${loginID ne null}">
+	<div class="loginok">
+	<c:out value="${loginID}"/>님 환영합니다.<br><br>
+<%-- 	<jsp:forward page="/index"/>  추후 수정--%>
+
+		<a href="mem.do?cmd=logout" class="button">로그아웃</a>
+		<a href="mem.do?cmd=mypage" class="button">마이페이지</a>
+		<a href="../search_main/Index.de" class="button">여행지 조회</a>		
+	</div>
+</c:when>
+
+<c:otherwise>
+<c:if test="${requestScope.check eq 0}">
+	<script type="text/javascript">
+		alert('비밀번호가 틀렸습니다.');
+	</script>
+</c:if>
+
+<c:if test="${requestScope.check eq -1}">
+	<script type="text/javascript">
+		alert('아이디가 존재하지 않습니다.')
+	</script>
+</c:if>
+
+<form action="mem.do?cmd=loginProc" method="post">
 <div class="loginDiv">로그인</div>
 <div class="loginDivForm">
-	<form action="">
-		<div>
-			<input type="text" name="id" value="" placeholder="아이디를 입력해주세요">
-		</div>
-		
-		<div>
-			<input type="text" name="id" value="" placeholder="비밀번호를 입력해주세요">
-		</div>
-		
-		<div class="idpw">
-			<a>아이디 찾기</a>
-			<span class="spanBorder">|</span>
-			<a>비밀번호 찾기</a>
-		</div>
-		
-		<div>
-			<button class="bt1">
-				<span>로그인</span>
-			</button>
-			
-			<button class="bt2">
-				<span>회원가입</span>
-			</button>
-		</div>
-	</form>
 	
+	<div>
+		<input type="text" name="id" value="" placeholder="아이디를 입력해주세요">
+	</div>
+	
+	<div>
+		<input type="password" name="pass" value="" placeholder="비밀번호를 입력해주세요">
+	</div>
+	
+	<div class="idpw">
+		<a>아이디 찾기</a>
+		<span class="spanBorder">|</span>
+		<a>비밀번호 찾기</a>
+	</div>
+	
+	<div>
+		<input class="bt1" type="submit" value="로그인">
+	</div>
+	
+	<div>
+		<input class="bt2" type="button" value="회원가입" onclick="javascript:window.location='?cmd=regForm'">
+	</div>
+		
 </div>
+
+</form>
+</c:otherwise>
+</c:choose>
 
 </body>
 </html>

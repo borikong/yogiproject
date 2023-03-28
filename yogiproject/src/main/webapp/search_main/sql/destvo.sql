@@ -30,11 +30,7 @@ insert into destination values('vietnam_01','나트랑 해변','베트남','nha trang be
 			restyle it to your liking.',2.56,4.33,5.96,'태도 기분 뷔페 진주 판매 러시아인','https://youimg1.tripcdn.com/target/100j0700000028nf2D4B0_C_760_506.jpg');
 
 
-select * from member;
-
-insert into member values('userid5','');
-insert into member values('userid6','');
-insert into member values('userid7','');
+select * from destination;
 
 
 desc student;
@@ -57,20 +53,3 @@ insert into member values('test2','남이섬');
 select * from destination;
 
 show user;
-
-drop table member;
-
-CREATE TABLE MEMBER(
-ID VARCHAR2(12) PRIMARY KEY,
-PASS VARCHAR2(12) NOT NULL,
-NAME VARCHAR2(10) NOT NULL,
-PHONE VARCHAR2(15),
-EMAIL VARCHAR2(30) NOT NULL,
-ZIPCODE VARCHAR2(7) NOT NULL,
-ADDRESS1 VARCHAR2(120) NOT NULL,
-ADDRESS2 VARCHAR2(50),
-USERLIKE VARCHAR2(2000)
-);
-
-SELECT * FROM MEMBER;
-COMMIT;

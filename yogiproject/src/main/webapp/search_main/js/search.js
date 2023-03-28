@@ -6,7 +6,6 @@ function submit() {
 }
 
 function back() {
-	console.log("teste")
 	window.location.href="index.jsp";
 }
 

@@ -8,7 +8,7 @@
 
 
 <c:if test="${4>3}">
-	<c:forEach var="vo" items="${destlist }">
+	<c:forEach var="vo" items="${destlist}">
 		<div class="resume-wrap d-flex ftco-animate">
 			<div class="text pl-3">
 				<a name="${vo.getDEST_NAME()}"></a>
@@ -44,7 +44,6 @@
 					<progress value="${vo.getDEST_FUN() * 100}" max="100" id="pg"></progress>
 				</div>
 
-				<jsp:include page="pgbar.jsp"></jsp:include>
 				<p id="content_preview">${vo.getDEST_SUMMARY()}...</p>
 
 				<div>
@@ -65,7 +64,7 @@
 						${loop_flag ? "class='icon2 heart active'" :"class='icon2 heart'"  }>&nbsp;&nbsp;
 						<img
 						${loop_flag ? "src='https://cdn-icons-png.flaticon.com/512/803/803087.png'" :"src='https://cdn-icons-png.flaticon.com/512/812/812327.png'"  }
-						${loop_flag ? "alt='찜하기 완료'" :"alt='찜하기'"  }>&nbsp;&nbsp;&nbsp;
+						${loop_flag ? "alt='찜하기 완료'" :"alt='찜하기'"  }>&nbsp;&nbsp;
 					</a>
 
 				</div>
@@ -76,30 +75,30 @@
 
 </c:if>
 
-<script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/search_main/js/jquery.min.js"></script>
 <script
-	src="${pageContext.request.contextPath}/js/jquery-migrate-3.0.1.min.js"></script>
-<script src="${pageContext.request.contextPath}/js/jquery.easing.1.3.js"></script>
+	src="${pageContext.request.contextPath}/search_main/js/jquery-migrate-3.0.1.min.js"></script>
+<script src="${pageContext.request.contextPath}/search_main/js/jquery.easing.1.3.js"></script>
 <script
-	src="${pageContext.request.contextPath}/js/jquery.waypoints.min.js"></script>
+	src="${pageContext.request.contextPath}/search_main/js/jquery.waypoints.min.js"></script>
 <script
-	src="${pageContext.request.contextPath}/js/jquery.stellar.min.js"></script>
-<script src="${pageContext.request.contextPath}/js/owl.carousel.min.js"></script>
+	src="${pageContext.request.contextPath}/search_main/js/jquery.stellar.min.js"></script>
+<script src="${pageContext.request.contextPath}/search_main/js/owl.carousel.min.js"></script>
 <script
-	src="${pageContext.request.contextPath}/js/jquery.magnific-popup.min.js"></script>
-<script src="${pageContext.request.contextPath}/js/aos.js"></script>
+	src="${pageContext.request.contextPath}/search_main/js/jquery.magnific-popup.min.js"></script>
+<script src="${pageContext.request.contextPath}/search_main/js/aos.js"></script>
 <script
-	src="${pageContext.request.contextPath}/js/jquery.animateNumber.min.js"></script>
-<script src="${pageContext.request.contextPath}/js/scrollax.min.js"></script>
-<script src="${pageContext.request.contextPath}/js/main.js"></script>
+	src="${pageContext.request.contextPath}/search_main/js/jquery.animateNumber.min.js"></script>
+<script src="${pageContext.request.contextPath}/search_main/js/scrollax.min.js"></script>
+<script src="${pageContext.request.contextPath}/search_main/js/main.js"></script>
 
-<script src="${pageContext.request.contextPath}/js/search.js"
+<script src="${pageContext.request.contextPath}/search_main/js/search.js"
 	type="text/javascript"></script>
 
 <script>
 var thisdest="${thisdest}";
 	window.onload = function(){
 		var newlocation=location.href.substring(0,location.href.indexOf("#"));
-		setTimeout(() => location.href =  newlocation+"#${thisdest}", 100);
+		setTimeout(() => location.href =  newlocation+"#${thisdest}", 50);
     }
 </script>

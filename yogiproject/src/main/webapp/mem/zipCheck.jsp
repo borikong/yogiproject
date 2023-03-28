@@ -14,8 +14,8 @@
     text-align: center;
     overflow: hidden;
     width: 50px;
-    color: rgb(255, 255, 255);
-    background-color: #2EA26B;
+    color: #2EA26B;
+    background-color: rgb(255, 255, 255);
     border: 1px solid #2EA26B;
 }
 </style>
@@ -61,7 +61,7 @@
 		
 		<tr>
 			<td align="center">
-				<a href="javascript:this.close()">닫기</a>
+				<input class="bt1" type="button" value="닫기" onclick="javascript:window.close()">				
 			</td>
 		</tr>
 		

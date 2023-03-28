@@ -11,19 +11,19 @@
 	rel="stylesheet"
 	integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
 	crossorigin="anonymous">
-<link href="${pageContext.request.contextPath}/css/search_main.css"
+<link href="${pageContext.request.contextPath}/search_main/css/search_main.css"
 	rel="stylesheet">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/style2.css">
+	href="${pageContext.request.contextPath}/search_main/css/style2.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/animate.css">
+	href="${pageContext.request.contextPath}/search_main/css/animate.css">
 
 <title>여행지 조회</title>
 </head>
 
 <body data-spy="scroll" data-target=".site-navbar-target"
 	data-offset="300">
-	<jsp:include page="/navbar/navbar.jsp"></jsp:include>
+	<jsp:include page="/search_main/navbar/navbar.jsp"></jsp:include>
 	<br>
 	<br>
 
@@ -31,6 +31,12 @@
 		<span class="search_head">키워드로 검색</span>&nbsp;
 
 		<form action="GetDestinationList.de" method="post" class="search_form">
+			<select class="form-select"
+				name="condition" style="width: auto; display: inline;">
+				<option value="관광지" ${condition eq '관광지' ?"selected='selected'":'null'}>관광지</option>
+				<option value="나라" ${condition eq '나라' ?"selected='selected'":'null'}>나라</option>
+			</select>
+		
 			<input class="form-control" type="text" name="keyword"
 				placeholder="검색어 입력" aria-label="default input example"
 				style="width: 75%; display: inline;"> &nbsp; <input
@@ -55,7 +61,7 @@
 				<option ${land_pri eq 0 ?"selected='selected'":'null'}>-</option>
 				<option value="1" ${land_pri eq 1 ?"selected='selected'":'null'}>1순위</option>
 				<option value="2" ${land_pri eq 2 ?"selected='selected'":'null'}>2순위</option>
-				<option value="3" ${land_pri eq 0 ?"selected='selected'":'null'}>3순위</option>
+				<option value="3" ${land_pri eq 3 ?"selected='selected'":'null'}>3순위</option>
 			</select> <span class="search_sub">재미</span> <select class="form-select"
 				name="fun" style="width: auto; display: inline;">
 				<option ${fun_pri eq 0 ?"selected='selected'":'null'}>-</option>
@@ -72,13 +78,15 @@
 		<form action="RecommandList.de" method="get" class="search_form">
 			<button class="btn btn-outline-dark" type="submit">추천 리스트 보기</button>
 		</form>
+		
+		
 	</div>
 	<br>
 	<br>
 
 	<div class="container">
 		<h2 class="heading">Tourist Attractions</h2>
-		<jsp:include page="/search/SearchItem.jsp"></jsp:include>
+		<jsp:include page="/search_main/search/SearchItem.jsp"></jsp:include>
 	</div>
 
 	<!-- loader -->
@@ -91,7 +99,7 @@
 		</svg>
 	</div>
 
-	<jsp:include page="/navbar/footer.jsp"></jsp:include>
+	<jsp:include page="/search_main/navbar/footer.jsp"></jsp:include>
 
 
 </body>

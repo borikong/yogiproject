@@ -10,12 +10,12 @@
 	rel="stylesheet"
 	integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
 	crossorigin="anonymous">
-<link href="${pageContext.request.contextPath}/css/search_main.css"
+<link href="${pageContext.request.contextPath}/search_main/css/search_main.css"
 	rel="stylesheet">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/style2.css">
+	href="${pageContext.request.contextPath}/search_main/css/style2.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/animate.css">
+	href="${pageContext.request.contextPath}/search_main/css/animate.css">
 
 
 <title>여행지 상세</title>
@@ -23,7 +23,7 @@
 <body>
 
 	<div>
-		<jsp:include page="/navbar/navbar.jsp"></jsp:include>
+		<jsp:include page="/search_main/navbar/navbar.jsp"></jsp:include>
 		<hr class="deep_hr">
 		<div class="container">
 
@@ -111,17 +111,17 @@
 				</table>
 			</div>
 			<div class="content-container">
-				<p id="dest_content">${vo.getDEST_CONTENT()}</p>
+				<p class="dest_content">${vo.getDEST_CONTENT()}<br><br>출처 : ${vo.getDEST_REFERENCE() }</p>
 			</div>
 		</div>
 	</div>
 	<br>
 	<br>
-	<jsp:include page="/navbar/footer.jsp"></jsp:include>
+	<jsp:include page="/search_main/navbar/footer.jsp"></jsp:include>
 
 </body>
 
 </html>
-<script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
-<script src="${pageContext.request.contextPath}/js/search.js"
+<script src="${pageContext.request.contextPath}/search_main/js/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/search_main/js/search.js"
 	type="text/javascript"></script>

@@ -3,11 +3,11 @@ package net.dest.action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import mem.model.MemberDAO;
+import mem.model.MemberVO;
 import net.dest.controller.*;
 import net.dest.db.DestDAO;
 import net.dest.db.DestVO;
-import net.member.db.MemberDAO;
-import net.member.db.MemberVO;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -26,119 +26,110 @@ public class GetRecommendListAction implements Action {
 		
 		ActionForward forward = new ActionForward();
 		String loginID=(String)request.getSession().getAttribute("loginID");
+				
 		int mode=0; //0: 추천 리스트 있음, 1: 로그인 하지 않음, 2: 찜한 리스트 없음
 		
 		if(loginID==null) {
-			//로그인하고 찜해보세요 추가
+			//로그인하고 찜해보세요
 			mode=1;
 		}else if(MemberDAO.getInstance().getLikeList(loginID)==null){
-			//찜한 목록이 없습니다 추가
+			//찜한 목록이 없습니다
 			mode=2;
-		}
-		
-		if(mode!=0) {
-			request.setAttribute("username", "익명의 사용자");
-			Vector<DestVO> volist=new Vector<>();
-			request.setAttribute("volist", volist);
-			request.setAttribute("mode", mode);
-			//나중에 바꿔줘야 함
-			forward.setPath("Recommend_main.jsp");
-			forward.setRedirect(true);
-			return forward;
-		}
-		
-		
-		
-		MemberDAO dao = MemberDAO.getInstance();
+		}else {
+			MemberDAO dao = MemberDAO.getInstance();
 
-		Vector<MemberVO> list = dao.getLikeList();
+			Vector<MemberVO> list = dao.getLikeList();
 
-		// target id
-		String targetid = loginID;
-		// target rating Matrix
-		Map<String, Double> target = new HashMap<>(); //target userid, target ratingMatrix {"센소지"=1.0, "후지산=1.0...}
-		// 평가 행렬
-		Map<String, Map> ratingMatrix = new HashMap<>();// 비교 사용자id, 비교 사용자 ratingMatrix
+			// target id
+			String targetid = loginID;
+			// target rating Matrix
+			Map<String, Double> target = new HashMap<>(); //target userid, target ratingMatrix {"센소지"=1.0, "후지산=1.0...}
+			// 평가 행렬
+			Map<String, Map> ratingMatrix = new HashMap<>();// 비교 사용자id, 비교 사용자 ratingMatrix
 
-		// target의 찜한 여행지를 Map으로 불러오기(찜한 여행지는 무조건 1점)
-		for (MemberVO memberVO : list) {
-			
-			//target user라면 targetmap에 여행지와 여행지 점수를 담는다.(점수는 무조건 1점)
-			if (memberVO.getUSER_ID().equals(targetid)) {
-				String[] targetlikelist = memberVO.getUSER_LIKE().split(",");
-				for (int i = 0; i < targetlikelist.length; i++) {
-					target.put(targetlikelist[i], 1.0);
-				}
-			} else { //target user가 아니라면(유사한 사용자 후보)
-				Map<String, Double> candiuser = new HashMap<>(); //각 유저별로 찜한 목록과 점수 저장 {"센소지"=1.0, "후지산=1.0...}
-				if(memberVO.getUSER_LIKE()!=null) { //좋아요 한 리스트가 있는 유저라면
-					String[] targetlikelist = memberVO.getUSER_LIKE().split(","); //"센소지, 후지산..." ->["센소지", "후지산"...]
-					for (int i = 0; i < targetlikelist.length; i++) {
-						candiuser.put(targetlikelist[i], 1.0); //{"센소지"=1.0, "후지산=1.0...}
-					}
-					ratingMatrix.put(memberVO.getUSER_ID(), candiuser); //{"userid02"={"센소지"=1.0, "후지산=1.0...}, ...}
-				}
-
-			}
-
-		}
-
-		// user1에 대한 유사도 행렬
-		Map<String, Double> simMatrix = new HashMap<>();
-
-		// 1*n 행렬(target*comparison)
-		for (String userid : ratingMatrix.keySet()) {
-			double score = cosineSimilarity(target, ratingMatrix.get(userid));
-			// 점수 오름차순 정렬을 위해 점수+id로 저장
-			simMatrix.put(score + " " + userid, score); //{비교user= target과 비교user과의 cosine similarity}
-		}
-
-		// sort(오름차순 정렬)
-		List<String> similarUsers = new ArrayList<>(simMatrix.keySet()); //key 기준으로 정렬
-		Collections.sort(similarUsers,Collections.reverseOrder());
-		
-		//여기에 상위 몇명의 similarUsers까지 사용할지 슬라이싱 하는 코드 작성
-		
-		
-		//많이 나온 여행지 개수 세기
-		Map<String, Integer> destlist=new HashMap<>();
-		for (String string : similarUsers) {
-			String userid=string.split(" ")[1]; //정렬된 similarUser에서 userid맨 빼오기
-			for(Object key : ratingMatrix.get(userid).keySet()) {
-				try{
-					//키가 이미 destlist에 있을때
-					destlist.put((String)key, destlist.get(key)+1);
-				}catch(Exception e) {
-					//키가 destlist에 없을때 새로 넣어줌(count=1부터)
-					destlist.put((String)key, 1);
-				}
-			}
-			
-		}
-		
-		//destlist의 [frequency+여행지 이름] 문자열로 합쳐진 배열을 만들어줌(정렬을 위해서)
-		List<String> sortedList=new ArrayList<>();
-		
-		for (String string : destlist.keySet()) {
-			sortedList.add(destlist.get(string)+","+string); // ,로 구분
-		}
-		
-		//후보지 내림차순 정렬
-		Collections.sort(sortedList,Collections.reverseOrder());
-		
-		ArrayList<String> keywords=new ArrayList<>();
-
-		for (String string:sortedList) {
-			System.out.println(string.split(",")[1]+":"+string.split(",")[0]);
-			keywords.add(string.split(",")[1]);
-		}
-	
+			// target의 찜한 여행지를 Map으로 불러오기(찜한 여행지는 무조건 1점)
+			for (MemberVO memberVO : list) {
 				
-		//후보지 추천 Vector 가져오기
-		DestDAO ddao=DestDAO.getInstance();
-		Vector<DestVO> volist=ddao.getRecommandList(keywords);
+				//target user라면 targetmap에 여행지와 여행지 점수를 담는다.(점수는 무조건 1점)
+				if (memberVO.getId().equals(targetid)) {
+					String[] targetlikelist = memberVO.getUserlike().split(",");
+					for (int i = 0; i < targetlikelist.length; i++) {
+						target.put(targetlikelist[i], 1.0);
+					}
+				} else { //target user가 아니라면(유사한 사용자 후보)
+					Map<String, Double> candiuser = new HashMap<>(); //각 유저별로 찜한 목록과 점수 저장 {"센소지"=1.0, "후지산=1.0...}
+					if(memberVO.getUserlike()!=null) { //좋아요 한 리스트가 있는 유저라면
+						String[] targetlikelist = memberVO.getUserlike().split(","); //"센소지, 후지산..." ->["센소지", "후지산"...]
+						for (int i = 0; i < targetlikelist.length; i++) {
+							candiuser.put(targetlikelist[i], 1.0); //{"센소지"=1.0, "후지산=1.0...}
+						}
+						ratingMatrix.put(memberVO.getId(), candiuser); //{"userid02"={"센소지"=1.0, "후지산=1.0...}, ...}
+					}
+				}
+			}
+
+			// user1에 대한 유사도 행렬
+			Map<String, Double> simMatrix = new HashMap<>();
+
+			// 1*n 행렬(target*comparison)
+			for (String userid : ratingMatrix.keySet()) {
+				double score = cosineSimilarity(target, ratingMatrix.get(userid));
+				// 점수 오름차순 정렬을 위해 점수+id로 저장
+				simMatrix.put(score + " " + userid, score); //{비교user= target과 비교user과의 cosine similarity}
+			}
+
+			// sort(오름차순 정렬)
+			List<String> similarUsers = new ArrayList<>(simMatrix.keySet()); //key 기준으로 정렬
+			Collections.sort(similarUsers,Collections.reverseOrder()); //유사한 사용자를 내림차순으로 정렬
+			
+			//여기에 상위 몇명의 similarUsers까지 사용할지 슬라이싱 하는 코드 작성
+			if(similarUsers.size()>5) {
+				similarUsers=similarUsers.subList(0, 5);				
+			}
+
+			//많이 나온 여행지 개수 세기
+			Map<String, Integer> destlist=new HashMap<>();
+			for (String string : similarUsers) {
+				String userid=string.split(" ")[1]; //정렬된 similarUser에서 userid맨 빼오기
+				for(Object key : ratingMatrix.get(userid).keySet()) {
+					if(!key.equals("")) {
+						try{
+							//키가 이미 destlist에 있을때
+							destlist.put((String)key, destlist.get(key)+1);
+						}catch(Exception e) {
+							//키가 destlist에 없을때 새로 넣어줌(count=1부터)
+							destlist.put((String)key, 1);
+						}
+					}	
+				}
+				
+			}
+			
+			//destlist의 [frequency+여행지 이름] 문자열로 합쳐진 배열을 만들어줌(정렬을 위해서)
+			List<String> sortedList=new ArrayList<>();
+			
+			for (String string : destlist.keySet()) {
+				sortedList.add(destlist.get(string)+","+string); // ,로 구분
+			}
+			
+			//후보지 내림차순 정렬
+			Collections.sort(sortedList,Collections.reverseOrder());
+			
+			ArrayList<String> keywords=new ArrayList<>();
+
+			for (String string:sortedList) {
+				System.out.println(string.split(",")[1]+":"+string.split(",")[0]);
+				keywords.add(string.split(",")[1]);
+			}
 		
-		request.setAttribute("volist", volist);
+					
+			//후보지 추천 Vector 가져오기
+			DestDAO ddao=DestDAO.getInstance();
+			Vector<DestVO> volist=ddao.getRecommandList(keywords);
+			
+			request.setAttribute("volist", volist);
+		}
+		
 		request.setAttribute("mode", mode);
 
 		forward.setPath("Recommend_main.jsp");

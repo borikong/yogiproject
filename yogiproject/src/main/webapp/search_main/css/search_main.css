@@ -163,7 +163,7 @@ a {
 }
 
 /* 컨텐츠 미리보기 글자 회색 */
-#content_preview, #dest_content{
+#content_preview, .dest_content{
 	color: #999999;
 }
 

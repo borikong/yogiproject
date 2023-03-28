@@ -3,8 +3,8 @@ package net.dest.action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import mem.model.MemberDAO;
 import net.dest.controller.*;
-import net.member.db.MemberDAO;
 
 public class LikeAction implements Action{
 

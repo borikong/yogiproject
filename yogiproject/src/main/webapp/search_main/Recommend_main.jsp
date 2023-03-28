@@ -23,7 +23,7 @@
 
 <body data-spy="scroll" data-target=".site-navbar-target"
 	data-offset="300">
-	<jsp:include page="/navbar/navbar.jsp"></jsp:include>
+	<jsp:include page="/search_main/navbar/navbar.jsp"></jsp:include>
 
 	<div class="container">
 
@@ -70,16 +70,25 @@
 
 		<!-- 	로그인 필요 -->
 		<c:if test="${mode eq 1}">
+			<p>Login이 필요한 서비스입니다.?</p>
+			<a href="../mem/login.jsp">로그인 페이지로 이동</a>
+		</c:if>
+		
+		<!-- 	로그인 필요 -->
+		<c:if test="${mode eq null}">
 			<p>Login이 필요한 서비스입니다.</p>
-			<a href="#">로그인 페이지로 이동</a>
+			<a href="../mem/login.jsp">로그인 페이지로 이동</a>
 		</c:if>
 
 		<!-- 	찜한 리스트 없음 -->
 		<c:if test="${mode eq 2}">
-			<p>찜한 리스트가 없습니다. 최소 5개 이상의 찜 리스트를 만들어 주세요.</p>
+			<p>찜한 리스트가 없습니다. 최소 1개 이상의 찜 리스트를 만들어 주세요.</p>
+			<a href="index.jsp">☆찜 리스트 만들러 가기☆</a>
 		</c:if>
 	</div>
 
+	<br>
+<jsp:include page="/search_main/navbar/footer.jsp"></jsp:include>
 
 
 </body>

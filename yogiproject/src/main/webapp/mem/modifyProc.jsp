@@ -4,10 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title></title>
+<title>Update Process</title>
 </head>
 <body>
-성공적으로 로그아웃 되었습니다. <br><br>
+<div align="left">
+성공적으로 회원정보가 수정되었습니다. <br><br>
 <a href="mem.do?cmd=login">로그인 페이지로 이동</a>
+</div>
 </body>
 </html>
