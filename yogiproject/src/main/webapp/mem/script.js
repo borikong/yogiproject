@@ -1,3 +1,8 @@
+function checkclose(){
+	opener.location.href="mem.do?cmd=regForm&checkid="+"";
+	window.close();
+}
+
 function idCheck(id) {
 	if(id==""){
 		alert("아이디를 입력해주세요");

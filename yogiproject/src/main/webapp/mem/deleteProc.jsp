@@ -22,8 +22,16 @@
 	</script>
 </c:if>
 
-성공적으로 회원탈퇴 되었습니다. <br><br>
-<a href="mem.do?cmd=login">로그인 페이지로 이동</a>
+<c:if test="${result eq 1}">
+	<script type="text/javascript">
+		var link="mem.do?cmd=login";
+		alert("성공적으로 회원탈퇴 되었습니다.");
+		window.open(link);
+	</script>
+</c:if>
+
+<!-- 성공적으로 회원탈퇴 되었습니다. <br><br> -->
+<!-- <a href="mem.do?cmd=login">로그인 페이지로 이동</a> -->
 </div>
 	
 

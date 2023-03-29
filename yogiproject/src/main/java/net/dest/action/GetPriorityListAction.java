@@ -70,7 +70,7 @@ public class GetPriorityListAction implements Action {
 			request.setAttribute("land_pri", Integer.parseInt(landscape_pri));
 			request.setAttribute("fun_pri", Integer.parseInt(fun_pri));
 			forward.setPath("Search_main.jsp");
-			forward.setRedirect(true);
+			forward.setRedirect(false);
 		} else {
 			response.setCharacterEncoding("UTF-8");
 			response.setContentType("text/html; chatset=UTF-8");

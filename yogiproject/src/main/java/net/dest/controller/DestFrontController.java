@@ -40,7 +40,10 @@ public class DestFrontController extends HttpServlet {
 		
 		forward=execute(request, response, action);
 		if(forward!=null) {
+			//redirect
 			if(forward.isRedirect()) {
+				response.sendRedirect(forward.getPath());
+			}else { //forward
 				RequestDispatcher dispatcher = request.getRequestDispatcher(forward.getPath());
 		        dispatcher.forward(request,response);
 			}

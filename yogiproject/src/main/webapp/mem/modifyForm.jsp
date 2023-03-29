@@ -18,8 +18,7 @@
 <c:when test="${loginID ne null}">
 
 	<div class="mp-in">
-		<c:out value="${loginID}"/>님 환영합니다.
-		<a href="mem.do?cmd=logout" class="button">로그아웃</a>
+		<h2>♥ ${loginID}님 환영합니다. ♥</h2>
 	</div>
 	
 	<div class="mypage">

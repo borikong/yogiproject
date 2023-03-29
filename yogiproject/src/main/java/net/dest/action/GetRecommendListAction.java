@@ -133,7 +133,7 @@ public class GetRecommendListAction implements Action {
 		request.setAttribute("mode", mode);
 
 		forward.setPath("Recommend_main.jsp");
-		forward.setRedirect(true);
+		forward.setRedirect(false);
 		return forward;
 	}
 

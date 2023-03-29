@@ -31,7 +31,7 @@ public class IndexAction implements Action {
 
 		ActionForward forward = new ActionForward();
 		forward.setPath("index.jsp");
-		forward.setRedirect(true);
+		forward.setRedirect(false);
 		return forward;
 	}
 

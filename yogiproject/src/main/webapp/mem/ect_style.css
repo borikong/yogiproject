@@ -67,6 +67,7 @@ input {
    	font-size: 16px;
    	margin-bottom: 10px;
    	text-decoration: none;
+   	cursor: pointer;
 }
    
 .bt1{
@@ -80,6 +81,7 @@ input {
     color: #fff;
     background-color: #2EA26B;
     border: 0 none;
+    cursor: pointer;
 }
 
 .bt2{
@@ -93,6 +95,7 @@ input {
 	color: #2EA26B;
 	background-color: #fff;
 	border: 1px solid #2EA26B;
+	cursor: pointer;
 }
 
 .bt3{
@@ -105,4 +108,5 @@ input {
 	color: #2EA26B;
 	background-color: #fff;
 	border: 1px solid #2EA26B;
+	cursor: pointer;
 }

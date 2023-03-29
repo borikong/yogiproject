@@ -74,3 +74,5 @@ USERLIKE VARCHAR2(2000)
 
 SELECT * FROM MEMBER;
 COMMIT;
+
+insert into member values('sss','1234','테스트','010','test@naver.com','111-111','서울시 도봉구 쌍문동',null,null);

@@ -17,6 +17,7 @@
     color: #2EA26B;
     background-color: rgb(255, 255, 255);
     border: 1px solid #2EA26B;
+    cursor: pointer;
 }
 </style>
 <script type="text/javascript" src="script.js"></script>

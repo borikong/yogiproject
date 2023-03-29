@@ -25,6 +25,47 @@ public class DestDAO {
 		}
 		return instance;
 	}
+	
+	public DestVO getDest(String keyword) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "";
+		DestVO vo=null;
+		try {
+
+			sql = "select * from destination where dest_name like '%" + keyword + "%'";
+
+			con = ConnUtil.getConnection();
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			vo = new DestVO();
+
+			if (rs.next()) {
+				vo.setDEST_ID(rs.getString("dest_id"));
+				vo.setDEST_NAME(rs.getString("dest_name"));
+				vo.setDEST_COUNTRY(rs.getString("dest_country"));
+				vo.setDEST_NAME_ENG(rs.getString("dest_name_eng"));
+				vo.setDEST_CONTENT(rs.getString("dest_content"));
+				vo.setDEST_REFERENCE(rs.getString("dest_reference"));
+				vo.setDEST_MONEY(rs.getFloat("dest_money"));
+				vo.setDEST_LANDSCAPE(rs.getFloat("dest_landscape"));
+				vo.setDEST_FUN(rs.getFloat("dest_fun"));
+				vo.setDEST_TAG(rs.getString("dest_tag"));
+				vo.setDEST_IMG(rs.getString("dest_img"));
+				vo.setDEST_CNT(rs.getInt("dest_cnt"));
+				vo.setDEST_SUMMARY(vo.getDEST_SUMMARY());
+				
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeAll(rs, pstmt, con);
+		}
+
+		return vo;
+	}
 
 	public Vector<DestVO> getDestList(String keyword) {
 		Connection con = null;

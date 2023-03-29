@@ -32,7 +32,7 @@
 						</div>
 						<div class="center">
 							<input class="c_input" placeholder="아이디를 입력해주세요" type="text"
-								name="id" id="input_id">
+								name="id" id="input_id" value="${checkid}">
 						</div>
 						<div class="right">
 							<input type="button" value="중복확인"

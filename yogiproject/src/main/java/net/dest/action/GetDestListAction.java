@@ -75,7 +75,7 @@ public class GetDestListAction implements Action {
 		}
 
 		forward.setPath("Search_main.jsp");
-		forward.setRedirect(true);
+		forward.setRedirect(false);
 
 		return forward;
 	}

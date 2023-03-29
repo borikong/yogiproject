@@ -137,9 +137,9 @@ ul {
 	justify-content: space-between;
 }
 
-h2{
-	margin: 20px;
-}
+/* h2{ */
+/* 	margin: 20px; */
+/* } */
 
 .mp-box {
     position: relative;
@@ -166,13 +166,15 @@ h2{
     display: flex;
     flex-direction: row;
     -webkit-box-align: center;
-    align-items: center;
+/*     align-items: center; */
 }
 
 .li-img {
-    width: 20rem;
+    width: 12rem;
     margin-right: 20px;
     background-color: rgb(245, 245, 245);
+    border-radius: 0.25rem;
+    margin: 1rem;
 }
 
 .li-content {
@@ -213,6 +215,7 @@ dd {
     align-items: center;
 }
 
+
 .wish-btn {
     display: block;
     padding: 0px 10px;
@@ -223,5 +226,82 @@ dd {
     border-radius: 3px;
     color: #2EA26B;
     background-color: rgb(255, 255, 255);
-    border: 1px solid #2EA26B;
+    border: 2px solid #2EA26B;
+    cursor: pointer;
+  	font-weight: 1000;
+}
+
+
+
+.wish-btn:hover {
+	background-color: rgb(255, 0, 0);
+    color: #ffffff;
+    border: 1px solid #ff0000;
+}
+
+/* DY */
+
+/* 여행지 이름에 마우스 over */
+#dest_select:hover{
+	color:#3e64ff;
+	cursor: pointer;
+}
+
+#dest_select{
+	font-size: 1.0rem;
+}
+
+a {
+  text-decoration:none; color:inherit; cursor: pointer;
+}
+
+.title_content{
+	margin: 20px;
+}
+
+
+
+/* 여행지 국가 배지 */
+.rgyBadge{
+	display: inline-block;
+	padding: 2px 5px;
+	border-radius: 13px;
+	color: #000;
+	vertical-align: middle;
+	font-weight: bold;
+	font-size: 0.8rem; /* 배지 폰트 크기 */
+	background-color: #F2CB61; /* 배지 색상 */
+}
+
+
+/* 프로그래스 바  */
+progress {
+	-webkit-appearance: none;
+}
+
+::-webkit-progress-bar {
+	border-radius: 9px;
+	background-color: #BDDAC9;
+}
+
+::-webkit-progress-value {
+	border-radius: 9px;
+	background-color: #2EA26B;
+}
+
+/* 비용 경치 재미 글자 */
+.position{
+	font-size: 0.7rem;
+    font-weight: 700;
+    color: #000000;
+}
+
+hr{
+	background-color: #BDBDBD;
+	height : 1px;
+	border:0;
+}
+
+.msg{
+	color: #8C8C8C;
 }

@@ -38,15 +38,20 @@ public class LikeAction implements Action{
 		request.setAttribute("thisdest", request.getParameter("dest"));
 		
 		String page=request.getParameter("page");
+		
+		forward.setRedirect(false);
 		if(page.equals("search")) {
 			forward.setPath("Index.de");			
-		}else {
+		}else if(page.equals("detail")) {
 			forward.setPath("GetDestDetailView.de?dest_name="+request.getParameter("dest"));
+		}else if(page.equals("mypage")) {
+			System.out.println("페이지 : "+page);
+			String url=request.getContextPath()+"/mem/mem.do?cmd=mypage";
+			System.out.println(url);
+			forward.setRedirect(true);
+			forward.setPath(url);
 		}
-			
 		
-		
-		forward.setRedirect(true);
 		return forward;
 	}
 

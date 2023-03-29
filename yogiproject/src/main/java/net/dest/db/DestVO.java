@@ -111,6 +111,14 @@ public class DestVO {
 		}else return getDEST_CONTENT();
 	}
 
-	
+	public String getDEST_TAG_STR() {
+		String[] taglist=getDEST_TAG().split(",");
+		String str="";
+		for(int i=0;i<taglist.length;i++) {
+			str+="#"+taglist[i].replace(" ","")+" ";
+		}
+		
+		return str;
+	}
 	
 }

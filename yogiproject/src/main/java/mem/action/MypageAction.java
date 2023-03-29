@@ -1,6 +1,8 @@
 package mem.action;
 
 import java.io.IOException;
+import java.util.LinkedList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,6 +12,8 @@ import mem.control.Action;
 import mem.control.ActionForward;
 import mem.model.MemberDAO;
 import mem.model.MemberVO;
+import net.dest.db.DestDAO;
+import net.dest.db.DestVO;
 
 public class MypageAction implements Action {
 
@@ -24,18 +28,26 @@ public class MypageAction implements Action {
 		if(loginID==null) {
 			return new ActionForward("/mem/login.jsp", false);
 		}else {
-			MemberDAO dao = MemberDAO.getInstance();
-			MemberVO vo = new MemberVO(
-				loginID, 
-				request.getParameter("pass"), 
-				request.getParameter("name"), 
-				request.getParameter("email"), 
-				request.getParameter("phone"), 
-				request.getParameter("zipcode"), 
-				request.getParameter("address1"),
-				request.getParameter("address2"),
-				request.getParameter("userlike")
-			);
+			//찜한 여행지 리스트 불러오기
+			MemberDAO dao=MemberDAO.getInstance();
+			
+			String[] likes=dao.getLikeList(loginID); // 좋아요 표시한 여행지명 리스트
+			
+			
+			if(likes!=null) {
+				DestDAO ddao=DestDAO.getInstance();
+				List<DestVO> likelist=new LinkedList<>();
+				for (String string : likes) {
+					if(!string.equals("")) {
+						likelist.add(ddao.getDest(string));						
+					}
+				}
+				request.setAttribute("likelist", likelist);				
+				request.setAttribute("likecheck", 1);
+			}else {
+				request.setAttribute("likecheck", 0);
+			}
+			
 			
 			return new ActionForward("/mem/mypage.jsp", false);
 		}

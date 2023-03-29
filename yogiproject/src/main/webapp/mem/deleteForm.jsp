@@ -23,6 +23,7 @@ function checkIt(){
 	}
 }
 </script>
+
 </head>
 <body onload="begin()">
 <jsp:include page="../search_main/navbar/navbar.jsp" />
@@ -31,8 +32,7 @@ function checkIt(){
 <c:when test="${loginID ne null}">
 
 	<div class="mp-in">
-		<c:out value="${loginID}"/>님 환영합니다.
-		<a href="mem.do?cmd=logout">로그아웃</a>
+		<h2>♥ ${loginID}님 환영합니다. ♥</h2>
 	</div>
 
 <div class="mypage">

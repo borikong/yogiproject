@@ -28,7 +28,7 @@ public class DetailViewAction implements Action{
 		
 		if(dest_name==null||dest_name.equals("")) {
 			forward.setPath("index.jsp");
-			forward.setRedirect(true);
+			forward.setRedirect(false);
 		}else { //받아온 dest_name이 있으면
 			DestDAO dao=DestDAO.getInstance();
 			Vector<DestVO> list=dao.getDestList(dest_name);
@@ -55,7 +55,7 @@ public class DetailViewAction implements Action{
 			
 			request.setAttribute("vo", vo);
 			forward.setPath("./search/DetailView.jsp");
-			forward.setRedirect(true);
+			forward.setRedirect(false);
 		}
 		
 		return forward;

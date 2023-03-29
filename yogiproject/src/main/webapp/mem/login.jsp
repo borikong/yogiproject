@@ -17,12 +17,12 @@
 <c:choose>
 <c:when test="${loginID ne null}">
 	<div class="loginok">
-	<c:out value="${loginID}"/>님 환영합니다.<br><br>
+	<h2>♥ ${loginID}님 환영합니다. ♥</h2><br><br>
 <%-- 	<jsp:forward page="/index"/>  추후 수정--%>
 
 		<a href="mem.do?cmd=logout" class="button">로그아웃</a>
 		<a href="mem.do?cmd=mypage" class="button">마이페이지</a>
-		<a href="../search_main/Index.de" class="button">여행지 조회</a>		
+		<a href="${pageContext.request.contextPath}/search_main/Index.de" class="button">여행지 조회</a>		
 	</div>
 </c:when>
 
