@@ -23,6 +23,7 @@
 
 <body data-spy="scroll" data-target=".site-navbar-target"
 	data-offset="300">
+	<a name="header"></a>
 	<jsp:include page="/search_main/navbar/navbar.jsp"></jsp:include>
 
 	<div class="container">
@@ -71,21 +72,13 @@
 		</c:if>
 
 		<div align="center">
-			<br>
-			<br>
-			<br>
-			<!-- 	로그인 필요 -->
-			<c:if test="${mode eq 1}">
-
-				<p class="msg">Login이 필요한 서비스입니다.</p>
-				<a href="../mem/login.jsp">로그인 페이지로 이동</a>
-
-			</c:if>
+			<br><br><br><br>
 
 			<!-- 	로그인 필요 -->
-			<c:if test="${mode eq null}">
+			<c:if test="${mode eq 1 or mode eq null}">
 				<p class="msg">Login이 필요한 서비스입니다.</p>
-				<a href="../mem/login.jsp">로그인 페이지로 이동</a>
+				<input type="button" value="로그인 페이지로 이동" onclick="location.href='../mem/login.jsp'" class="msgbtn">
+				<input type="button" value="뒤로가기" onclick="window.location.href='index.jsp';" class="msgbtn">
 			</c:if>
 
 			<!-- 	찜한 리스트 없음 -->
@@ -93,14 +86,18 @@
 				<p class="msg">찜한 리스트가 없습니다. 최소 1개 이상의 찜 리스트를 만들어 주세요.</p>
 				<input type="button" value="찜 리스트 만들러 가기" onclick="location.href='index.jsp'" class="msgbtn">
 			</c:if>
-			<br><br><br>
+			<br><br><br><br>
+			<br>
+			<br>
 		</div>
 
 	</div>
 
 	<br>
 	<jsp:include page="/search_main/navbar/footer.jsp"></jsp:include>
-
+	<div style="position:fixed; bottom:50px; right:100px;">
+		<a href="#header"><img src="top.png" width="64px"></a>
+	</div>
 
 </body>
 </html>

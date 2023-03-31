@@ -48,22 +48,19 @@
 					<!-- 					해당 관광지가 찜 리스트에 있으면 하트찜 활성화 -->
 
 					<a href="javascript:;" data-a="${vo.getDEST_NAME()}"
-						data-b="${loop_flag ? 'active':'nonactive' }"
+						data-b="${loop_flag ? 'active':'nonactive' }" data-c="${loginID}"
 						${loop_flag ? "class='icon2 heart2 active'" :"class='icon2 heart2'"  }>&nbsp;&nbsp;
 						<img
 						${loop_flag ? "src='https://cdn-icons-png.flaticon.com/512/803/803087.png'" :"src='https://cdn-icons-png.flaticon.com/512/812/812327.png'"  }
 						${loop_flag ? "alt='찜하기 완료'" :"alt='찜하기'"  }>&nbsp;&nbsp;
 					</a>
-					<!-- 					<a href="javascript:;" class="icon2 heart2"> <img -->
-					<!-- 						src="https://cdn-icons-png.flaticon.com/512/812/812327.png" -->
-					<!-- 						alt="찜하기"></a> -->
 
 				</div>
 				<div style="display: inline-block;">
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<input type="button" class="listbtn" value="목록으로"
-						onclick="back()">
+						onclick="window.location.href='index.jsp';">
 				</div>
 			</h3>
 			<div align="center">
@@ -76,7 +73,7 @@
 							<div class="content-container">
 								<h2 class="detail-label">
 									여행지 평점&nbsp;<span class="tooltip_custom">?<span
-										class="tooltip-content_custom">사용자 리뷰를 분석하여 예측한 평점입니다.
+										class="tooltip-content_custom" style="width: 310px;">사용자 리뷰를 분석하여 예측한 평점입니다.
 									</span></span>
 								</h2>
 								<%-- 			<jsp:include page="/search/pgbar.jsp"></jsp:include> --%>
@@ -96,7 +93,7 @@
 								<br>
 								<h2 class="detail-label">
 									여행지 태그&nbsp;<span class="tooltip_custom">?<span
-										class="tooltip-content_custom">사용자 리뷰에서 자동으로 추출한 태그입니다.
+										class="tooltip-content_custom" style="width: 320px;">사용자 리뷰에서 자동으로 추출한 태그입니다.
 									</span></span>
 								</h2>
 								<p>${vo.getDEST_TAG()}</p>

@@ -23,10 +23,10 @@
 
 <body data-spy="scroll" data-target=".site-navbar-target"
 	data-offset="300">
+	<a name="header"></a>
 	<jsp:include page="/search_main/navbar/navbar.jsp"></jsp:include>
 	<br>
 	<br>
-
 	<div class="container">
 		<span class="search_head">키워드로 검색</span>&nbsp;
 
@@ -73,8 +73,8 @@
 		</form>
 
 		<br> <span class="search_head">나만의 추천 여행지 리스트!&nbsp;<span
-			class="tooltip_custom">?<span class="tooltip-content_custom">각
-					속성의 우선순위에 따라 가중치를 반영하여 검색합니다. </span></span></span> <br>
+			class="tooltip_custom">?<span class="tooltip-content_custom">
+					비슷한 사용자 데이터를 토대로 여행지를 추천해드립니다. </span></span></span> <br>
 		<form action="RecommandList.de" method="get" class="search_form">
 			<button class="btn btn-outline-dark" type="submit">추천 리스트 보기</button>
 		</form>
@@ -98,10 +98,12 @@
 				stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /> 
 		</svg>
 	</div>
-
+	
 	<jsp:include page="/search_main/navbar/footer.jsp"></jsp:include>
 
-
+	<div style="position:fixed; bottom:50px; right:100px;">
+		<a href="#header"><img src="top.png" width="64px"></a>
+	</div>
 </body>
 </html>
 

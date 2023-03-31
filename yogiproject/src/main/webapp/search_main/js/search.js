@@ -5,9 +5,9 @@ function submit() {
 	document.submitForm.submit(); // Submits the form without the button
 }
 
-function back() {
-	window.location.href="index.jsp";
-}
+//function back() {
+//	window.location.href="index.jsp";
+//}
 
 
 
@@ -19,10 +19,11 @@ $(function() {
 		.click(function() {
 			var data = $(this).data(); //click 메서드 안에 있어야 가져올 수 있다
 
-			//console.log('calltest' + data.a);
+			console.log('c 데이터' + data.c);
 
-			//좋아요 버튼이 활성화된 상태라면
-			if (data.b == 'active') {
+			if(data.c==""){ //로그인 상태가 아니라면
+				alert("로그인이 필요한 서비스입니다!")
+			}else if(data.b == 'active') { //좋아요 버튼이 활성화된 상태라면
 				$likeBtn
 				//활성화 해제하고
 				$(this).data("b", "nonactive");
@@ -57,10 +58,9 @@ $(function() {
 		.click(function() {
 			var data = $(this).data(); //click 메서드 안에 있어야 가져올 수 있다
 
-			console.log('calltest' + data.a);
-
-			//좋아요 버튼이 활성화된 상태라면
-			if (data.b == 'active') {
+			if(data.c==""){ //로그인 상태가 아니라면
+				alert("로그인이 필요한 서비스입니다!")
+			}else if (data.b == 'active') { //좋아요 버튼이 활성화된 상태라면
 				$likeBtn
 				//활성화 해제하고
 				$(this).data("b", "nonactive");

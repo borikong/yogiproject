@@ -13,20 +13,12 @@
 		<div class="text pl-3">
 
 			<!-- 				여행지 이미지 클릭시 여행지 상세페이지 -->
-			<img src="${vo.DEST_IMG}" class="rounded float-start"
-				alt="destimg" id="dest_img" width="400px"> 
-				
-				
-				
-				<a
-				href="${pageContext.request.contextPath}/search_main/GetDestDetailView.de?dest_name=${vo.getDEST_NAME()}" name="${vo.DEST_NAME }">
-
-				<span class="rgyBadge">${vo.DEST_COUNTRY}</span>&nbsp; <span
-				id="dest_select">${vo.DEST_NAME}</span>
-
-
+			<img src="${vo.DEST_IMG}" class="rounded float-start" alt="destimg"
+				id="dest_img" width="400px"> <a
+				href="${pageContext.request.contextPath}/search_main/GetDestDetailView.de?dest_name=${vo.getDEST_NAME()}"
+				name="${vo.DEST_NAME }"> <span class="rgyBadge">${vo.DEST_COUNTRY}</span>&nbsp;
+				<span id="dest_select">${vo.DEST_NAME}</span>
 			</a>
-
 
 
 			<div>
@@ -59,7 +51,7 @@
 				<!-- 					해당 관광지가 찜 리스트에 있으면 하트찜 활성화 -->
 
 				<a href="javascript:;" data-a="${vo.DEST_NAME}"
-					data-b="${loop_flag ? 'active':'nonactive' }"
+					data-b="${loop_flag ? 'active':'nonactive' }" data-c="${loginID}"
 					${loop_flag ? "class='icon2 heart active'" :"class='icon2 heart'"  }>&nbsp;&nbsp;
 					<img
 					${loop_flag ? "src='https://cdn-icons-png.flaticon.com/512/803/803087.png'" :"src='https://cdn-icons-png.flaticon.com/512/812/812327.png'"  }

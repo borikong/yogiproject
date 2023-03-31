@@ -17,7 +17,7 @@ public class LogoutAction implements Action {
 		HttpSession session = request.getSession();
 		session.invalidate();
 		
-		return new ActionForward("/mem/logout.jsp", false);
+		return new ActionForward("/mem/login.jsp", false);
 	}
 
 }
