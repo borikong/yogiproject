@@ -28,13 +28,21 @@ body {
 	justify-content: space-between;	/* 왼쪽 오른쪽 정렬 */
 	align-items: center;			/* 수직축 방향 정렬 */
 	background-color: white;		/* 배경색 */
-	padding: 8px 17%;				/* 위 8px 옆 250px 공백 */
+	padding: 8px 17%;				/* 위 8px 옆 17% 공백 */
+	position: relative; 
+	z-index: 2;
 }
 
 .navbar_logo { /* 바 로고라인 */
 	font-size: 40px;				/* 로고 사이즈 */
 	color: green;					/* 로고 색상 */
 	padding-left: 73px;
+}
+
+.navbar_logo { /* 바 요기조기 */
+	font-family: 'HSSummer', sans-serif;	/* 요기조기 글 스타일 변경 */
+	font-size: 35px;						/* 요기조기 글 사이즈 */
+	color: green;							/* 요기조기 글 색상 */
 }
 
 .navbar_logo a { /* 바 요기조기 */
@@ -68,7 +76,7 @@ body {
 }
 
 @media screen and (max-width: 1150px){ 	/* 바 반응형 레이아웃으로 설정 */
-	.navbar_yogi {							/* 바 형식 변환 */
+	.navbar {							/* 바 형식 변환 */
 		flex-direction: column;			/* max-width 설정 값보다 낮아지면 column 형식으로 변환 */
 		align-items: flex-start;		/* 수평에서 가운데가 아닌 왼쪽으로 놓기 위해 설정 */
 		padding: 8px 24px;				/* 이걸 설정하지 않으면 hover가 너무 꽉 채우기 때문에 여유공간할당 */
@@ -95,6 +103,10 @@ body {
 	}
 	
 	.nav_menu {
+		display: none;
+	}
+	
+	.drop_menu3 {
 		display: none;
 	}
 }
@@ -128,7 +140,7 @@ body {
 
 .search_box:hover > .search_txt {	/* search_box에 마우스를 올렸을 때 search_txt 값 변경 */
 	padding:  0 6px;
-	width: 450px;
+	width: 400px;
 }
 
 
@@ -147,7 +159,7 @@ body {
 	font-size: 12px;
 	position: absolute;
 	list-style-type: none;
-	right:17%;
+	right:17.1%;
 	
 }
 
@@ -162,9 +174,40 @@ body {
 	border-left: none;
 }
 
+.navbar_menu .drop_menu3 {
+	list-style: none; 
+	text-align: center;
+	line-height: 20px;
+	top: 65px;
+	padding: 0;
+	margin: 0;
+	position: absolute;
+	right: 16.1%;
+	opacity: 0;
+	visibility: hidden;
+	background: white;
+	border-radius: 15px;
+}
+
+.navbar_menu li:hover .drop_menu3{
+	top: 65px;
+	opacity: 1;
+	visibility: visible;
+	transition: all 0.5s ease;
+}
+
+.navbar_menu .drop_menu3 li:hover {
+	background-color: white;
+}
+
+
 @media screen and (max-width: 1550px){
 	.search_box {
 		display: none;
 	}
 }
 
+a{
+	text-decoration: none;
+	color: black;
+}

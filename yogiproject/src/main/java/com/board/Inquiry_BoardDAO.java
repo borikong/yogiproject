@@ -3,11 +3,7 @@ package com.board;
 import java.sql.*;
 import java.util.*;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.sql.DataSource;
-
-import net.dest.db.DestDAO;
+import net.db.*;
 
 public class Inquiry_BoardDAO {
 
@@ -16,32 +12,17 @@ public class Inquiry_BoardDAO {
 	
 	private static Inquiry_BoardDAO instance = null;
 	
-	private Inquiry_BoardDAO() {}
+	private Inquiry_BoardDAO() {};
 	
 	public static Inquiry_BoardDAO getInstance() {
-		if (instance == null) {
-			synchronized (DestDAO.class) {
+		
+		if(instance==null) {
+			synchronized (Inquiry_BoardDAO.class) {
 				instance = new Inquiry_BoardDAO();
 			}
 		}
+		
 		return instance;
-	}
-
-	private Connection getConnection() {
-		Connection conn = null;
-
-		try {
-
-			Context initContext = new InitialContext();
-			Context envContext = (Context) initContext.lookup("java:/comp/env");
-			DataSource ds = (DataSource) envContext.lookup("jdbc/myoracle");
-			conn = ds.getConnection();
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("Connection 객체 생성 실패");
-		}
-
-		return conn;
 	}
 	
 	
@@ -61,7 +42,7 @@ public class Inquiry_BoardDAO {
 		String sql = "";
 		
 		try {
-			conn = getConnection();
+			conn = ConnUtil.getConnection();
 			
 			pstmt = conn.prepareStatement("select max(no) from proprac");	// 데이터베이스 proprac 테이블에서 (번호)의 가장 큰 값
 			rs  = pstmt.executeQuery();
@@ -94,7 +75,7 @@ public class Inquiry_BoardDAO {
 			pstmt.setInt(5, ref);
 			pstmt.setInt(6, step);
 			pstmt.setInt(7, depth);
-			pstmt.setTimestamp(8, inquiry.getRegdate());
+			pstmt.setTimestamp(8, new Timestamp(System.currentTimeMillis()));
 			pstmt.executeUpdate();
 			
 		}catch(Exception e) {
@@ -183,7 +164,7 @@ public class Inquiry_BoardDAO {
 	
 	// 데이터 목록 가져오는 메소드
 	
-	public List<Inquiry_BoardVO> getInquiry_Boards(){
+	public List<Inquiry_BoardVO> getInquiry_Boards(int start, int end){
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -193,13 +174,17 @@ public class Inquiry_BoardDAO {
 		try {
 			
 			conn = ConnUtil.getConnection();
-			String sql = "select * from proprac order by no desc";
+		//	String sql = "select * from proprac order by no desc";
+			String sql = "select * from (select rownum rnum, no, title, writer, pass, content, readcount, ref, step, depth, regdate "
+					+ "from (select * from proprac order by ref desc, step asc)) where rnum>=? and rnum<=?";
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, start);
+			pstmt.setInt(2, end);
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
 				
-				inquiry_List = new ArrayList<Inquiry_BoardVO>();
+				inquiry_List = new ArrayList<Inquiry_BoardVO>(end-start+1);
 				
 				do {
 					Inquiry_BoardVO inquiry_board = new Inquiry_BoardVO();
@@ -404,28 +389,21 @@ public class Inquiry_BoardDAO {
 		int result = -1;
 		
 		try {
-			System.out.println("1");
-			System.out.println("no"+inquiry_board.getNo());
 			
-			conn = getConnection();
+			conn = ConnUtil.getConnection();
 			sql = "select pass from proprac where no=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, inquiry_board.getNo());
 			rs = pstmt.executeQuery();
-			System.out.println("2");
 			
 			if(rs.next()) {
-				System.out.println("3");
 				inquiry_dbpasswd = rs.getString("pass");
-				System.out.println("디비 비번:"+inquiry_dbpasswd);
-				System.out.println("불러오는 비번 :"+inquiry_board.getPass());
 				if(inquiry_dbpasswd.equals(inquiry_board.getPass())){
-					sql = "update proprac set title=?, writer=?, pass=? where no=?";
+					sql = "update proprac set title=?, content=? where no=?";
 					pstmt = conn.prepareStatement(sql);
 					pstmt.setString(1, inquiry_board.getTitle());
-					pstmt.setString(2, inquiry_board.getWriter());
-					pstmt.setString(3, inquiry_board.getPass());
-					pstmt.setInt(4, inquiry_board.getNo());
+					pstmt.setString(2, inquiry_board.getContent());
+					pstmt.setInt(3, inquiry_board.getNo());
 					pstmt.executeUpdate();
 					result=1;	// 글 수정 성공
 				}else {
@@ -463,4 +441,194 @@ public class Inquiry_BoardDAO {
 		}
 		return result;
 	} // end inquiry_updateBoard
+	
+	
+	/*
+	 * 	글 삭제
+	 * 
+	 * 		글 삭제 처리를 하려면 입력받은 비밀번호와 데이터베이스에 저장된 비밀번호를 비교하여
+	 * 		같으면 삭제처리한다.
+	 * 		글 삭제 성공 : 1
+	 *		비밀번호 : 0
+	 *		삭제 글이 존재하지 않을 경우 : -1
+	 */
+	public int delete_Inquiry_Board(int no, String pass) {
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String inquiry_dbpasswd = "";
+		String sql = "";
+		int result = -1;
+		
+		try {
+			conn = ConnUtil.getConnection();
+			sql = "select pass from proprac where no=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, no);
+			rs = pstmt.executeQuery();
+		
+			if(rs.next()) {
+				
+				inquiry_dbpasswd = rs.getString("pass");
+				if(inquiry_dbpasswd.equals(pass)) {
+					
+					sql = "delete from proprac where no=?";
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setInt(1, no);
+					pstmt.executeUpdate();
+					result=1;
+				}else {
+					result=0;
+				}
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(conn!=null) {
+				try {
+					conn.close();
+				}catch(SQLException se) {
+					se.printStackTrace();
+				}
+			}
+			
+			if(pstmt!=null) {
+				try {
+					pstmt.close();
+				}catch(SQLException se) {
+					se.printStackTrace();
+				}
+			}
+			
+			if(rs!=null) {
+				try {
+					rs.close();
+				}catch(SQLException se) {
+					se.printStackTrace();
+				}
+			}
+		}
+		return result;
+	}// end delete_Inquiry_Board
+	
+	
+	// 검색한 내용이 몇개인지를 반환하는 함수(what: 검색조건, content: 검색내용)
+	public int getInquiryCount(String what, String content) {
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		int x = 0;
+		
+		try {
+			
+			conn = ConnUtil.getConnection();
+			String sql = "select count(*) from proprac where "+ what + " like '%"+ content+"%'";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				x = rs.getInt(1);
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(conn!=null) {
+				try {
+					conn.close();
+				}catch(SQLException se) {
+					se.printStackTrace();
+				}
+			}
+			
+			if(pstmt!=null) {
+				try {
+					pstmt.close();
+				}catch(SQLException se) {
+					se.printStackTrace();
+				}
+			}
+			
+			if(rs!=null) {
+				try {
+					rs.close();
+				}catch(SQLException se) {
+					se.printStackTrace();
+				}
+			}
+		}
+		return x;
+	} // end getInquiryCount
+	
+	// 검색한 내용을 리스트로 받아서 반환하는 함수(what: 검색조건, content: 검색내용, start, end)
+	public List<Inquiry_BoardVO> getInquiry_Boards(String what, String content, int start, int end){
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Inquiry_BoardVO> inquiry_List = null;
+		
+		try {
+			
+			conn = ConnUtil.getConnection();
+			String sql = "select * from (select rownum rnum, no, title, writer, pass, content, readcount, ref, step, depth, regdate "
+					+ "from (select * from proprac where "+ what +" like '%" + content +"%' order by ref desc, step asc)) where rnum>=? and rnum<=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, start);
+			pstmt.setInt(2, end);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				
+				inquiry_List = new ArrayList<Inquiry_BoardVO>(end-start+1);
+				
+				do {
+					Inquiry_BoardVO inquiry_board = new Inquiry_BoardVO();
+					inquiry_board.setNo(rs.getInt("no"));
+					inquiry_board.setTitle(rs.getString("title"));
+					inquiry_board.setWriter(rs.getString("writer"));
+					inquiry_board.setPass(rs.getString("pass"));
+					inquiry_board.setContent(rs.getString("content"));
+					inquiry_board.setReadcount(rs.getInt("readcount"));
+					inquiry_board.setRef(rs.getInt("ref"));
+					inquiry_board.setStep(rs.getInt("step"));
+					inquiry_board.setDepth(rs.getInt("depth"));
+					inquiry_board.setRegdate(rs.getTimestamp("regdate"));
+					
+					inquiry_List.add(inquiry_board);
+					
+				}while(rs.next());
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(conn!=null) {
+				try {
+					conn.close();
+				}catch(SQLException se) {
+					se.printStackTrace();
+				}
+			}
+			
+			if(pstmt!=null) {
+				try {
+					pstmt.close();
+				}catch(SQLException se) {
+					se.printStackTrace();
+				}
+			}
+			
+			if(rs!=null) {
+				try {
+					rs.close();
+				}catch(SQLException se) {
+					se.printStackTrace();
+				}
+			}
+		}
+		return inquiry_List;
+	} // end getInquiry_Boards
 }

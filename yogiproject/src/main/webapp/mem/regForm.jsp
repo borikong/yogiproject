@@ -9,11 +9,11 @@
 <script type="text/javascript" src="script.js"></script>
 </head>
 <body>
-	<jsp:include page="../search_main/navbar/navbar.jsp" />
+	<jsp:include page="/common/navbar.jsp" />
 	<br><br><br>
-	<form action="member.do?cmd=regProc" method="post" name="regForm">
+	<form action="member.me?cmd=regProc" method="post" name="regForm">
 
-		<div>
+		<div class="maindiv">
 			<div class="join">
 				<b>회원가입</b>
 			</div>
@@ -24,7 +24,7 @@
 					<span class="red_span">*</span>필수입력사항
 				</div>
 
-				<div>
+				<div class="maindiv">
 
 					<div class="div1">
 						<div class="left">
@@ -157,7 +157,7 @@
 
 	</form>
 	<br><br><br>
-	<jsp:include page="/search_main/navbar/footer.jsp"></jsp:include>
+	<jsp:include page="/common/footer.jsp"></jsp:include>
 </body>
 </html>
 

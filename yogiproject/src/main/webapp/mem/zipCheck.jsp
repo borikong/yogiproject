@@ -25,7 +25,7 @@
 <body>
 <div align="center">
 <b>우편번호 찾기</b><br><br>
-<form action="mem.do?cmd=zipCheck" method="post" name="zipForm">
+<form action="mem.me?cmd=zipCheck" method="post" name="zipForm">
 
 	<table>
 		<tr>

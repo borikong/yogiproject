@@ -26,7 +26,7 @@ function checkIt(){
 
 </head>
 <body onload="begin()">
-<jsp:include page="../search_main/navbar/navbar.jsp" />
+<jsp:include page="/common/navbar.jsp" />
 
 <c:choose>
 <c:when test="${loginID ne null}">
@@ -41,11 +41,11 @@ function checkIt(){
 			<div class="left-header">마이페이지</div>
 			<ul>
 				<li>
-					<a class="mp-a" href="mem.do?cmd=mypage">찜리스트<span class="mp_span">&gt;</span></a>
+					<a class="mp-a" href="mem.me?cmd=mypage">찜리스트<span class="mp_span">&gt;</span></a>
 				</li>
 
 				<li>
-					<a class="mp-a" href="mem.do?cmd=modifyForm">정보수정<span class="mp_span">&gt;</span></a>
+					<a class="mp-a" href="mem.me?cmd=modifyForm">정보수정<span class="mp_span">&gt;</span></a>
 				</li>
 
 				<li>
@@ -53,7 +53,7 @@ function checkIt(){
 				</li>
 			</ul>
 
-			<a class="left-a" href="#">
+			<a class="left-a" href="${pageContext.request.contextPath}/Sim/Customer_Service_Center/문의게시판/Inquiry_Board_List.jsp">
 				<div class="left-bottom">
 					<span>도움이 필요하신가요 ?</span>
 					<span class="left-s">문의하기</span>
@@ -69,7 +69,7 @@ function checkIt(){
 			<div class="r-border"></div>
 			<br><br><br>
 			<!-- 탈퇴 -->
-			<form action="member.do?cmd=deleteProc" name="myForm" method="post"
+			<form action="member.me?cmd=deleteProc" name="myForm" method="post"
 				onsubmit="return checkIt()">
 
 
@@ -83,7 +83,7 @@ function checkIt(){
 					<div>
 						<input class="bt3" type="submit" value="회원탈퇴"> <input
 							class="bt3" type="button" value="취소"
-							onclick="javascript:window.location.href='member.do?cmd=login'">
+							onclick="javascript:window.location.href='member.me?cmd=login'">
 					</div>
 
 				</div>

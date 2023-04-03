@@ -24,7 +24,7 @@
 <body data-spy="scroll" data-target=".site-navbar-target"
 	data-offset="300">
 	<a name="header"></a>
-	<jsp:include page="/search_main/navbar/navbar.jsp"></jsp:include>
+	<jsp:include page="/common/navbar.jsp"></jsp:include>
 	<br>
 	<br>
 	<div class="container">
@@ -99,7 +99,7 @@
 		</svg>
 	</div>
 	
-	<jsp:include page="/search_main/navbar/footer.jsp"></jsp:include>
+	<jsp:include page="/common/footer.jsp"></jsp:include>
 
 	<div style="position:fixed; bottom:50px; right:100px;">
 		<a href="#header"><img src="top.png" width="64px"></a>

@@ -1,24 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="817bbae4-de02-44dc-a1d5-7039b13e92b6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/yogiproject/src/main/java/net/dest/action/ActionFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yogiproject/src/main/java/net/member/db/MemberDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yogiproject/src/main/java/net/member/db/MemberVO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yogiproject/src/main/webapp/WEB-INF/lib/Command.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yogiproject/src/main/webapp/WEB-INF/lib/taglibs-standard-compat-1.2.5.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yogiproject/src/main/webapp/WEB-INF/lib/taglibs-standard-impl-1.2.5.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yogiproject/src/main/webapp/WEB-INF/lib/taglibs-standard-jstlel-1.2.5.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yogiproject/src/main/webapp/WEB-INF/lib/taglibs-standard-spec-1.2.5.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yogiproject/src/main/java/net/dest/action/ActionForward.java" beforeDir="false" afterPath="$PROJECT_DIR$/yogiproject/src/main/java/net/dest/action/ActionForward.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yogiproject/src/main/java/net/dest/action/DetailViewAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/yogiproject/src/main/java/net/dest/action/DetailViewAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yogiproject/src/main/java/net/dest/action/GetDestListAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/yogiproject/src/main/java/net/dest/action/GetDestListAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yogiproject/src/main/java/net/dest/action/GetPriorityListAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/yogiproject/src/main/java/net/dest/action/GetPriorityListAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yogiproject/src/main/java/net/dest/action/GetRecommendListAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/yogiproject/src/main/java/net/dest/action/GetRecommendListAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yogiproject/src/main/java/net/dest/db/DestDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/yogiproject/src/main/java/net/dest/db/DestDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yogiproject/src/main/webapp/Recommend_main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/yogiproject/src/main/webapp/Recommend_main.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yogiproject/src/main/webapp/search/SearchItem.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/yogiproject/src/main/webapp/search/SearchItem.jsp" afterDir="false" />
-    </list>
+    <list default="true" id="817bbae4-de02-44dc-a1d5-7039b13e92b6" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

@@ -23,7 +23,7 @@
 <body>
 
 	<div>
-		<jsp:include page="/search_main/navbar/navbar.jsp"></jsp:include>
+		<jsp:include page="/common/navbar.jsp"></jsp:include>
 		<hr class="deep_hr">
 		<div class="container">
 
@@ -114,7 +114,7 @@
 	</div>
 	<br>
 	<br>
-	<jsp:include page="/search_main/navbar/footer.jsp"></jsp:include>
+	<jsp:include page="/common/footer.jsp"></jsp:include>
 
 </body>
 

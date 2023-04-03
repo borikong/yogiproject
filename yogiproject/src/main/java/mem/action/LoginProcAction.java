@@ -1,6 +1,7 @@
 package mem.action;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,12 +27,20 @@ public class LoginProcAction implements Action {
 			
 			HttpSession session = request.getSession();
 			session.setAttribute("loginID", id); // 키, 값
-			return new ActionForward("mem.do?cmd=login", false);
+			return new ActionForward("/Sim/All/YOGIZOGI.jsp", false);
 			
 		}else if(id != null && pass !=null) {
 			request.setAttribute("check", check);
+			response.setContentType("text/html; charset=utf-8");
+			PrintWriter out = response.getWriter();
+			
+			out.println("<script>");
+
+			out.println("alert('로그인에 실패했습니다!');");
+
+			out.println("</script>");
 		}
-		return new ActionForward("mem.do?cmd=login", false);
+		return new ActionForward("/mem/login.jsp", false);
 		
 	}
 

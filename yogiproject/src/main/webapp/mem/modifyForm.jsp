@@ -12,8 +12,8 @@
 <script type="text/javascript" src="script.js"></script>
 </head>
 <body>
-<jsp:include page="../search_main/navbar/navbar.jsp" />
-<form action="member.do?cmd=modifyProc" method="post" name="regForm">
+<jsp:include page="/common/navbar.jsp" />
+<form action="member.me?cmd=modifyProc" method="post" name="regForm">
 <c:choose>
 <c:when test="${loginID ne null}">
 
@@ -27,13 +27,13 @@
 			<div class="left-header">마이페이지</div>
 			<ul>
 				<li>
-					<a class="mp-a" href="mem.do?cmd=mypage">
+					<a class="mp-a" href="mem.me?cmd=mypage">
 						찜리스트
 						<span class="mp_span">&gt;</span>
 					</a>
 				</li>
 				<li>
-					<a class="active mp-a" href="mem.do?cmd=modifyForm">
+					<a class="active mp-a" href="mem.me?cmd=modifyForm">
 						정보수정
 						<span class="mp_span">&gt;</span>
 					</a>
@@ -46,7 +46,7 @@
 				</li>
 			</ul>
 
-			<a class="left-a" href="#">	
+			<a class="left-a" href="${pageContext.request.contextPath}/Sim/Customer_Service_Center/문의게시판/Inquiry_Board_List.jsp">	
 				<div class="left-bottom">			
 					<span>도움이 필요하신가요 ?</span>
 					<span class="left-s">문의하기</span>	
@@ -202,6 +202,6 @@
 </c:when>
 </c:choose>
 </form>
-<jsp:include page="/search_main/navbar/footer.jsp"></jsp:include>
+<jsp:include page="/common/footer.jsp"></jsp:include>
 </body>
 </html>

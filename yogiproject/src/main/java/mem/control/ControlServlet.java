@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("*.do") // 확장자 패턴
+@WebServlet("*.me") // 확장자 패턴
 public class ControlServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

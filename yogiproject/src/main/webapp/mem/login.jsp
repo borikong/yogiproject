@@ -20,8 +20,8 @@
 	<h2>♥ ${loginID}님 환영합니다. ♥</h2><br><br>
 <%-- 	<jsp:forward page="/index"/>  추후 수정--%>
 
-		<a href="mem.do?cmd=logout" class="button">로그아웃</a>
-		<a href="mem.do?cmd=mypage" class="button">마이페이지</a>
+		<a href="mem.me?cmd=logout" class="button">로그아웃</a>
+		<a href="mem.me?cmd=mypage" class="button">마이페이지</a>
 		<a href="${pageContext.request.contextPath}/search_main/Index.de" class="button">여행지 조회</a>		
 	</div>
 </c:when>
@@ -39,7 +39,7 @@
 	</script>
 </c:if>
 
-<form action="mem.do?cmd=loginProc" method="post">
+<form action="mem.me?cmd=loginProc" method="post">
 <div class="loginDiv">로그인</div>
 <div class="loginDivForm">
 	
@@ -51,18 +51,18 @@
 		<input type="password" name="pass" value="" placeholder="비밀번호를 입력해주세요">
 	</div>
 	
-	<div class="idpw">
-		<a>아이디 찾기</a>
-		<span class="spanBorder">|</span>
-		<a>비밀번호 찾기</a>
-	</div>
+<div class="idpw">
+      <a class="searchdeco" href="searchid.jsp">아이디 찾기</a>
+      <span class="spanBorder">|</span>
+      <a class="searchdeco" href="searchpass.jsp">비밀번호 찾기</a>
+   </div>
 	
 	<div>
 		<input class="bt1" type="submit" value="로그인">
 	</div>
 	
 	<div>
-		<input class="bt2" type="button" value="회원가입" onclick="javascript:window.location='?cmd=regForm'">
+		<input class="bt2" type="button" value="회원가입" onclick="javascript:window.location='member.me?cmd=regForm'">
 	</div>
 		
 </div>

@@ -46,7 +46,7 @@ public class LikeAction implements Action{
 			forward.setPath("GetDestDetailView.de?dest_name="+request.getParameter("dest"));
 		}else if(page.equals("mypage")) {
 			System.out.println("페이지 : "+page);
-			String url=request.getContextPath()+"/mem/mem.do?cmd=mypage";
+			String url=request.getContextPath()+"/mem/mem.me?cmd=mypage";
 			System.out.println(url);
 			forward.setRedirect(true);
 			forward.setPath(url);

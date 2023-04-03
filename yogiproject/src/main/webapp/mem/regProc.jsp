@@ -29,6 +29,9 @@
     background-color: #2EA26B;
     border: 1px solid #2EA26B;
 }
+a:hover {
+	cursor: pointer;
+}
 </style>
 </head>
 <body>
@@ -37,25 +40,25 @@
 
 <br>
 <div align="center">
-<jsp:include page="../search_main/navbar/navbar.jsp" />
+<jsp:include page="/common/navbar.jsp" />
 <br><br><br><br><br><br>
 <c:choose>
 	<c:when test="${flag}">
 		<b>회원가입을 진심으로 축하 드립니다.</b><br><br>
-		<a href='member.do?cmd=login'>
+		<a href='member.me?cmd=login'>
 			<input class="join_bt1" value="로그인">
 		</a>
 	</c:when>
 	
 	<c:otherwise>
 		<b>다시 입력하여 주십시요.</b><br><br>
-		<a href='member.do?cmd=regForm'>
+		<a href='member.me?cmd=regForm'>
 			<input class="join_bt2" value="다시 입력" style="cursor: pointer;">
 		</a>
 	</c:otherwise>
 </c:choose>
 </div>
 <br><br><br><br><br><br>
-<jsp:include page="/search_main/navbar/footer.jsp"></jsp:include>
+<jsp:include page="/common/footer.jsp"></jsp:include>
 </body>
 </html>

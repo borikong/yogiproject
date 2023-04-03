@@ -13,13 +13,13 @@
 <script type="text/javascript" src="script.js"></script>
 </head>
 <body>
-<form action="member.do?cmd=modifyProc" method="post" name="regForm">
+<form action="member.me?cmd=modifyProc" method="post" name="regForm">
 <c:choose>
 <c:when test="${loginID ne null}">
 
 	<div class="mp-in">
 		<c:out value="${loginID}"/>님 환영합니다.
-		<a href="mem.do?cmd=logout" class="button">로그아웃</a>
+		<a href="mem.me?cmd=logout" class="button">로그아웃</a>
 	</div>
 	
 	<div class="mypage">

@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/search_main/css/footercss.css">
+	href="${pageContext.request.contextPath}/common/footercss.css">
 </head>
 <body>
 	<footer class="ftco-footer ftco-section">

@@ -110,3 +110,7 @@ input {
 	border: 1px solid #2EA26B;
 	cursor: pointer;
 }
+
+.searchdeco{
+	text-decoration: none;
+}

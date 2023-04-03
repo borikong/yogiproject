@@ -14,7 +14,7 @@
 
 </head>
 <body>
-	<jsp:include page="../search_main/navbar/navbar.jsp" />
+	<jsp:include page="/common/navbar.jsp" />
 	<c:choose>
 		<c:when test="${loginID ne null}">
 
@@ -27,11 +27,11 @@
 				<div class="mp_left">
 					<div class="left-header">마이페이지</div>
 					<ul>
-						<li><a class="active mp-a" href="mem.do?cmd=mypage"> 찜리스트
+						<li><a class="active mp-a" href="mem.me?cmd=mypage"> 찜리스트
 								<span class="mp_span">&gt;</span>
 						</a></li>
 
-						<li><a class="mp-a" href="mem.do?cmd=modifyForm"> 정보수정 <span
+						<li><a class="mp-a" href="mem.me?cmd=modifyForm"> 정보수정 <span
 								class="mp_span">&gt;</span>
 						</a></li>
 
@@ -40,7 +40,7 @@
 						</a></li>
 					</ul>
 
-					<a class="left-a" href="#">
+					<a class="left-a" href="${pageContext.request.contextPath}/Sim/Customer_Service_Center/문의게시판/Inquiry_Board_List.jsp">
 						<div class="left-bottom">
 							<span>도움이 필요하신가요 ?</span> <span class="left-s">문의하기</span>
 						</div>
@@ -136,7 +136,7 @@
 
 		</c:when>
 	</c:choose>
-	<jsp:include page="/search_main/navbar/footer.jsp"></jsp:include>
+	<jsp:include page="/common/footer.jsp"></jsp:include>
 </body>
 
 </html>

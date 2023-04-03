@@ -1,5 +1,5 @@
 function checkclose(){
-	opener.location.href="mem.do?cmd=regForm&checkid="+"";
+	opener.location.href="mem.me?cmd=regForm&checkid="+"";
 	window.close();
 }
 
@@ -8,14 +8,14 @@ function idCheck(id) {
 		alert("아이디를 입력해주세요");
 		document.regForm.id.focus();
 	}else {
-		url="member.do?cmd=idCheck&id="+id;
+		url="member.me?cmd=idCheck&id="+id;
 		console.log(url)
 		window.open(url, "post", "width=300, height=150");
 	}
 }
 
 function zipCheck(){
-	url="member.do?cmd=zipCheck&check=y";
+	url="member.me?cmd=zipCheck&check=y";
 	window.open(url,"post","toolbar=no, width=500, height=300, directories=no, status=yes, scrollbars=yes, menubar=no");
 }
 

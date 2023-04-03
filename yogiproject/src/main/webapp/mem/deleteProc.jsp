@@ -24,7 +24,7 @@
 
 <c:if test="${result eq 1}">
 	<script type="text/javascript">
-		var link="mem.do?cmd=login";
+		var link="mem.me?cmd=login";
 		alert("성공적으로 회원탈퇴 되었습니다.");
 		window.open(link);
 	</script>
