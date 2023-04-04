@@ -35,21 +35,22 @@ public class ControlServlet extends HttpServlet {
 				rd.forward(request, response);
 			}
 			
-		} else {
-			
-			response.setContentType("text/html; charset=utf-8");
-			PrintWriter out = response.getWriter();
-			
-			out.println("<html>");
-			out.println("<head><title>Error</title></head>");
-			out.println("<body>");
-			
-			out.println("<h4>올바른 요청 방식이 아닙니다.</h4>");
-			out.println("<h4>http://localhost:9090/mem/member.do?cmd=요청키워드</h4>");
-			
-			out.println("</body>");
-			out.println("</html>");
-		}
+		} 
+//		else {
+//			
+//			response.setContentType("text/html; charset=utf-8");
+//			PrintWriter out = response.getWriter();
+//			
+//			out.println("<html>");
+//			out.println("<head><title>Error</title></head>");
+//			out.println("<body>");
+//			
+//			out.println("<h4>올바른 요청 방식이 아닙니다.</h4>");
+//			out.println("<h4>http://localhost:9090/mem/member.do?cmd=요청키워드</h4>");
+//			
+//			out.println("</body>");
+//			out.println("</html>");
+//		}
 	}
 
 }

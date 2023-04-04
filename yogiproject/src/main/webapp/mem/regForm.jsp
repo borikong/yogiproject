@@ -10,7 +10,9 @@
 </head>
 <body>
 	<jsp:include page="/common/navbar.jsp" />
-	<br><br><br>
+	<br>
+	<br>
+	<br>
 	<form action="member.me?cmd=regProc" method="post" name="regForm">
 
 		<div class="maindiv">
@@ -32,11 +34,12 @@
 						</div>
 						<div class="center">
 							<input class="c_input" placeholder="아이디를 입력해주세요" type="text"
-								name="id" id="input_id" value="${checkid}">
+								name="id" id="input_id" value="${param.checkid}">
+								<br>&nbsp;<span style="font-size : 0.7rem;">${param.check eq 1 and param.checkid ne ''?'<span style="color :green; font-weight:700;">사용 가능한 아이디입니다.</span>':'<span style="color :red; font-weight:700;">사용 불가능한 아이디입니다.</span>'}</span>
 						</div>
 						<div class="right">
 							<input type="button" value="중복확인"
-								onclick="idCheck(this.form.id.value)" class="b_right">
+								onclick="idCheck(this.form.id.value,this.form.email.value)" class="b_right">
 						</div>
 					</div>
 
@@ -85,10 +88,12 @@
 						</div>
 						<div class="center">
 							<input class="c_input" placeholder="이메일을 입력해주세요" type="text"
-								name="email">
+								name="email" value="${param.checkemail}">
+								<br>&nbsp;<span style="font-size : 0.7rem;">${param.check2 eq 1 and param.checkemail ne ''?'<span style="color :green; font-weight:700;">사용 가능한 이메일입니다.</span>':'<span style="color :red; font-weight:700;">사용 불가능한 이메일입니다.</span>'}</span>
 						</div>
 						<div class="right">
-							<input type="hidden" class="w_right">
+							<input type="button" value="중복확인"
+								onclick="emailCheck(this.form.id.value,this.form.email.value)" class="b_right">
 						</div>
 					</div>
 
@@ -156,7 +161,9 @@
 		</div>
 
 	</form>
-	<br><br><br>
+	<br>
+	<br>
+	<br>
 	<jsp:include page="/common/footer.jsp"></jsp:include>
 </body>
 </html>

@@ -9,23 +9,26 @@ import mem.control.Action;
 import mem.control.ActionForward;
 import mem.model.MemberDAO;
 
-public class IdCheckAction implements Action {
+public class SearchPass implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-		// db연결
+		request.setCharacterEncoding("utf-8");
 		MemberDAO dao = MemberDAO.getInstance();
-		String id = request.getParameter("id");
-		String email=request.getParameter("email");
-		String check2=request.getParameter("check2");
-		boolean check = dao.idCheck(id);
-		request.setAttribute("id", id);
-		request.setAttribute("email", email);
-		request.setAttribute("check", check);
-		request.setAttribute("check2", check2);
 		
-		return new ActionForward("/mem/idCheck.jsp", false);
+		String name = request.getParameter("name");
+		String email = request.getParameter("email");
+		String id = request.getParameter("id");
+		
+		String pass = dao.searchPass(name, email, id);
+		request.setAttribute("pass", pass);
+		
+		if(id == null) {
+			return new ActionForward("mem.do?cmd=searchpass", false);
+		}
+			
+		return new ActionForward("searchpassProc.jsp", false);
 	}
 
 }

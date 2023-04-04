@@ -31,31 +31,31 @@
 <body>
 
 	<div align="center">
-		<br> <b>${id}</b>
-		<c:if test="${check eq true}">
-		는 이미 존재하는 ID입니다.
+		<br> <b>${email}</b>
+		<c:if test="${check2 eq true}">
+		는 이미 존재하는 EMAIL입니다.
 	</c:if>
 
-		<c:if test="${check ne true}">
+		<c:if test="${check2 ne true}">
 		는 사용가능합니다.
 	</c:if>
 		<br> <br>
 
-		<c:if test="${check eq true}">
-			<a href="#" onclick="checkclose_id();">
+		<c:if test="${check2 eq true}">
+			<a href="#" onclick="checkclose_email();">
 				<button class="bt1">확인</button>
 			</a>
 		</c:if>
 
-		<c:if test="${check ne true}">
-			<a href="#" onclick="close_id();">
-				<button class="bt1">확인2</button>
+		<c:if test="${check2 ne true}">
+			<a href="#" onclick="close_email();">
+				<button class="bt1">확인</button>
 			</a>
 		</c:if>
 
 	</div>
 <input type="hidden" id="idinput" value="${id }">
-<input type="hidden" id="emailinput" value="${email }"><input type="hidden" id="checkinput" value="${check }">
+<input type="hidden" id="emailinput" value="${email }">
 <input type="hidden" id="checkinput" value="${check }">
 <input type="hidden" id="check2input" value="${check2 }">
 </body>

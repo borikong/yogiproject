@@ -9,23 +9,23 @@ import mem.control.Action;
 import mem.control.ActionForward;
 import mem.model.MemberDAO;
 
-public class IdCheckAction implements Action {
+public class EmailCheckAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
 		// db연결
 		MemberDAO dao = MemberDAO.getInstance();
-		String id = request.getParameter("id");
-		String email=request.getParameter("email");
-		String check2=request.getParameter("check2");
-		boolean check = dao.idCheck(id);
+		String email = request.getParameter("email");
+		String id=request.getParameter("id");
+		String check=request.getParameter("check");
+		boolean check2 = dao.emailCheck(email);
 		request.setAttribute("id", id);
 		request.setAttribute("email", email);
-		request.setAttribute("check", check);
 		request.setAttribute("check2", check2);
+		request.setAttribute("check", check);
 		
-		return new ActionForward("/mem/idCheck.jsp", false);
+		return new ActionForward("/mem/emailCheck.jsp", false);
 	}
 
 }

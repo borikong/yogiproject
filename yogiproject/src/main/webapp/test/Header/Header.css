@@ -18,31 +18,23 @@ body {
 	margin: 0; /* 바 사이드 공백 제거 */
 }
 
-.nav_a { /* 바 내에 있는 글자구성 */
+a { /* 바 내에 있는 글자구성 */
 	text-decoration: none; 			/* 텍스트 밑줄 제거 */
 	color: black;					/* 글자색 */
 }
 
-.navbar_yogi { /* 바 전체구성 */
+.navbar { /* 바 전체구성 */
 	display: flex;					/* 플렉스로 보이게하기 */
 	justify-content: space-between;	/* 왼쪽 오른쪽 정렬 */
 	align-items: center;			/* 수직축 방향 정렬 */
 	background-color: white;		/* 배경색 */
 	padding: 8px 17%;				/* 위 8px 옆 17% 공백 */
-	position: relative; 
-	z-index: 2;
 }
 
 .navbar_logo { /* 바 로고라인 */
 	font-size: 40px;				/* 로고 사이즈 */
 	color: green;					/* 로고 색상 */
 	padding-left: 73px;
-}
-
-.navbar_logo { /* 바 요기조기 */
-	font-family: 'HSSummer', sans-serif;	/* 요기조기 글 스타일 변경 */
-	font-size: 35px;						/* 요기조기 글 사이즈 */
-	color: green;							/* 요기조기 글 색상 */
 }
 
 .navbar_logo a { /* 바 요기조기 */
@@ -190,10 +182,10 @@ body {
 }
 
 .navbar_menu li:hover .drop_menu3{
-	top: 60px;
+	top: 65px;
 	opacity: 1;
 	visibility: visible;
-	transition: all 0.5s ease;
+	transition: all 0.3s ease;
 }
 
 .navbar_menu .drop_menu3 li:hover {
@@ -201,13 +193,10 @@ body {
 }
 
 
+
+
 @media screen and (max-width: 1550px){
 	.search_box {
 		display: none;
 	}
-}
-
-a{
-	text-decoration: none;
-	color: black;
 }

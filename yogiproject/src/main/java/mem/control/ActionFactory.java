@@ -32,6 +32,9 @@ public class ActionFactory {
 			action = new IdCheckAction();
 			break;	
 			
+		case "emailCheck":
+			action = new EmailCheckAction();
+			break;	
 		case "regProc":
 			action = new RegProcAction();
 			break;
@@ -72,6 +75,14 @@ public class ActionFactory {
 		case "mypage":
 			action = new MypageAction();
 			break;	
+			
+		case "searchid":
+			action = new SearchId();
+			break;
+		
+		case "searchpass":
+			action = new SearchPass();
+			break;
 			
 		default:
 			action = new LoginFormAction();

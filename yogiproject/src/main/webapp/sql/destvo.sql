@@ -65,7 +65,7 @@ ID VARCHAR2(12) PRIMARY KEY,
 PASS VARCHAR2(12) NOT NULL,
 NAME VARCHAR2(10) NOT NULL,
 PHONE VARCHAR2(15),
-EMAIL VARCHAR2(30) NOT NULL,
+EMAIL VARCHAR2(30) NOT NULL unique,
 ZIPCODE VARCHAR2(7) NOT NULL,
 ADDRESS1 VARCHAR2(120) NOT NULL,
 ADDRESS2 VARCHAR2(50),
@@ -76,3 +76,9 @@ SELECT * FROM MEMBER;
 COMMIT;
 
 insert into member values('sss','1234','테스트','010','test@naver.com','111-111','서울시 도봉구 쌍문동',null,null);
+
+desc member;
+
+drop table member;
+
+commit;

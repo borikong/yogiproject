@@ -12,7 +12,6 @@ public class RegFormAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		
 		return new ActionForward("/mem/regForm.jsp", false);
 	}
 

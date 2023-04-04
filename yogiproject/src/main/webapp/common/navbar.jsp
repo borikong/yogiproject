@@ -3,19 +3,15 @@
 
 <!-- 헤더라인 -->
 
+
+
 <script src="${pageContext.request.contextPath}/common/Header.js" defer></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/common/Header.css" />
 
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-<link
-	href="https://fonts.googleapis.com/css2?family=Jua&family=Kiwi+Maru&display=swap"
-	rel="stylesheet">
-<link
-	href="https://fonts.googleapis.com/css2?family=Kiwi+Maru&display=swap"
-	rel="stylesheet">
-<script src="https://kit.fontawesome.com/3e7bdacc74.js"
-	crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+<link href="https://fonts.googleapis.com/css2?family=Jua&family=Kiwi+Maru&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/3e7bdacc74.js" crossorigin="anonymous"></script>
 
 <!-- 헤더 -->
 <% 

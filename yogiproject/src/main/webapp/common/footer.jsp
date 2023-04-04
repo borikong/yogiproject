@@ -5,14 +5,23 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/common/footercss.css">
+
+<style type="text/css">
+
+.footer-a{
+	text-decoration: none;
+	color: white;
+}
+
+</style>
+
 </head>
 <body>
-	<footer class="ftco-footer ftco-section">
-		<div>
-			<div class="row">
-				<div align="center">
+	<footer>
+		<div style="background-color: gray; height: 300px;">
+			<div>
+				<div align="center" style="color: white;">
+				<br><br><br>
 					<p>
 						<script>
 							document.write(new Date().getFullYear());
@@ -23,8 +32,8 @@
 					</p>
 					<p>
 					
-					<i class="icon-heart color-danger" aria-hidden="true"></i> by <a
-							href="https://colorlib.com" target="_blank">Colorlib</a>, <a href="https://getbootstrap.com/">Bootstrap</a>
+					by <a
+							class="footer-a" href="https://colorlib.com" target="_blank">Colorlib</a>, <a class="footer-a"  href="https://getbootstrap.com/">Bootstrap</a>
 					<br>icon made by Pixel perfect from www.flaticon.com
 					</p>
 				</div>
