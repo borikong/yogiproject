@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8" http-equiv="Refresh" content="0;url=/Sim/Free_Board/Free_Board.do?free=content&no=${no }&pageNo=${pageNo }">
+<meta charset="UTF-8" http-equiv="Refresh" content="0;url=${pageContext.request.contextPath}/Sim/Free_Board/Free_Board.do?free=content&no=${no }&pageNo=${pageNo }">
 </c:if>
 <c:if test="${check==0 }">
 <script type="text/javascript">

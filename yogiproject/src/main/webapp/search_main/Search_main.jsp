@@ -49,7 +49,7 @@
 			class="tooltip_custom">?<span class="tooltip-content_custom">각
 					속성의 우선순위에 따라 가중치를 반영하여 검색합니다. </span></span></span> <br>
 
-		<form action="GetPriorityList.de" method="get" class="search_form">
+		<form action="GetPriorityList.de" method="get" class="search_form" name="priorityform">
 			<span class="search_sub">비용</span> <select class="form-select"
 				name="money" style="width: auto; display: inline;">
 				<option ${money_pri eq 0 ?"selected='selected'":'null'}>-</option>
@@ -102,7 +102,7 @@
 	<jsp:include page="/common/footer.jsp"></jsp:include>
 
 	<div style="position:fixed; bottom:50px; right:100px;">
-		<a href="#header"><img src="top.png" width="64px"></a>
+		<a href="#header"><img src="pic/top.png" width="64px"></a>
 	</div>
 </body>
 </html>

@@ -20,7 +20,7 @@
     cursor: pointer;
 }
 </style>
-<script type="text/javascript" src="script.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
 </head>
 <body>
 <div align="center">

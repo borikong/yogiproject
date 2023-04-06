@@ -815,10 +815,10 @@ public class Free_BoardDAO {
 			
 			while(rs.next()) {
 				Free_BoardVO free = new Free_BoardVO();
-				free.setCid(rs.getString(1));
-				free.setCcontent(rs.getString(2));
-				free.setRegdate(rs.getTimestamp(3));
-				free.setParentno(rs.getInt(4));
+				free.setCid(rs.getString("cid"));
+				free.setCcontent(rs.getString("ccontent"));
+				free.setRegdate(rs.getTimestamp("ctime"));
+				free.setParentno(rs.getInt("parentno"));
 				list.add(free);
 			}
 			

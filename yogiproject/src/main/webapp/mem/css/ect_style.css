@@ -28,10 +28,17 @@ div{
     margin: 0 auto;
     letter-spacing: -0.6px;
 }
+
+.searchDivForm{
+	width: 340px;
+    letter-spacing: -0.6px;
+}
    
 form {			  	 
        
 }
+
+
    
 input {   
    	height: 54px;       	
@@ -111,6 +118,28 @@ input {
 	cursor: pointer;
 }
 
+.bt4{
+   display: block;
+    padding: 0 10px;
+    text-align: center;
+    overflow: hidden;
+    height: 35px;
+    width: 100%;
+    border-radius: 3px;
+    color: #fff;
+    background-color: #2EA26B;
+    border: 0 none;
+    cursor: pointer;
+}
+
 .searchdeco{
 	text-decoration: none;
+}
+
+.search-header{
+	margin-left:100px;
+}
+
+.idproc-size{
+	margin-left:10px;
 }

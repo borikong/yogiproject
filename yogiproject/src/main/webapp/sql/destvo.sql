@@ -54,11 +54,13 @@ update member set userlike='남산타워,도쿄타워,남이섬,마닐라 대성당,라스베이거스 
 insert into member values('da1599','');
 insert into member values('test2','남이섬');
 
-select * from destination;
+
 
 show user;
 
 drop table member;
+
+update destination set dest_cnt=0;
 
 CREATE TABLE MEMBER(
 ID VARCHAR2(12) PRIMARY KEY,
@@ -73,12 +75,15 @@ USERLIKE VARCHAR2(2000)
 );
 
 SELECT * FROM MEMBER;
+select * from destination;
 COMMIT;
 
 insert into member values('sss','1234','테스트','010','test@naver.com','111-111','서울시 도봉구 쌍문동',null,null);
 
 desc member;
 
-drop table member;
 
 commit;
+
+select * from destination;
+

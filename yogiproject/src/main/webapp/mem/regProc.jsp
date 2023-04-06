@@ -36,8 +36,6 @@ a:hover {
 </head>
 <body>
 
-<c:set var="flag" value="${flag}"/>
-
 <br>
 <div align="center">
 <jsp:include page="/common/navbar.jsp" />

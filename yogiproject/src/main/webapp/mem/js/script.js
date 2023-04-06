@@ -1,3 +1,9 @@
+function searchIdPrompt() {
+	url = "searchid.jsp";
+	window.open(url, "post", "width=450, height=500,left=550, top=350");
+}
+
+
 function searchId() {	//아이디 찾기
 	if (document.idproc.name.value == "") {
 		alert("이름을 입력해주세요.");
@@ -37,39 +43,50 @@ function searchPass() {	//비밀번호 찾기
 }
 
 
-
-
-
 function checkclose_id() { //아이디 중복확인 창 사용 가능한 아이디가 아니면
 	var id = document.getElementById("idinput").value;
 	var email = document.getElementById("emailinput").value
-	var check= document.getElementById("checkinput").value
-	var check2= document.getElementById("check2input").value
-	opener.location.href = "mem.me?cmd=regForm&checkid=" + "&checkemail=" + email + "&check=0"+"&check2="+check2;
+	var check = document.getElementById("checkinput").value
+	var check2 = document.getElementById("check2input").value
+	opener.location.href = "mem.me?cmd=regForm&checkid=" + "&checkemail=" + email + "&check=0" + "&check2=" + check2;
 	window.close();
 }
 
 function close_id() { //아이디 사용 가능함
 	var id = document.getElementById("idinput").value;
 	var email = document.getElementById("emailinput").value
-	var check2= document.getElementById("check2input").value
-	opener.location.href = "mem.me?cmd=regForm&checkid=" + id + "&checkemail=" + email + "&check=1"+"&check2="+check2;
-	window.close();
-}
-
-function checkclose_email() { //이메일 중복확인 창 닫기, 이메일 사용 불가
-	var id = document.getElementById("idinput").value;
-	var email = document.getElementById("emailinput").value
-	var check= document.getElementById("checkinput").value
-	opener.location.href = "mem.me?cmd=regForm&checkid=" + id + "&checkemail=" + "" + "&check2=0"+"&check="+check;
+	var check2 = document.getElementById("check2input").value
+	opener.location.href = "mem.me?cmd=regForm&checkid=" + id + "&checkemail=" + email + "&check=1" + "&check2=" + check2;
 	window.close();
 }
 
 function close_email() { //이메일 사용 가능함
 	var id = document.getElementById("idinput").value;
 	var email = document.getElementById("emailinput").value
-	var check= document.getElementById("checkinput").value
-	opener.location.href = "mem.me?cmd=regForm&checkid=" + id + "&checkemail=" + email + "&check2=1"+"&check="+check;
+	var check = document.getElementById("checkinput").value
+	opener.location.href = "mem.me?cmd=regForm&checkid=" + id + "&checkemail=" + email + "&check2=1" + "&check=" + check;
+	window.close();
+}
+
+function checkclose_email() { //이메일 중복확인 창 닫기, 이메일 사용 불가
+	var id = document.getElementById("idinput").value;
+	var email = document.getElementById("emailinput").value
+	var check = document.getElementById("checkinput").value
+	opener.location.href = "mem.me?cmd=regForm&checkid=" + id + "&checkemail=" + "" + "&check2=0" + "&check=" + check;
+	window.close();
+}
+
+
+
+function close_email_modify() { //이메일 사용 가능함
+	var email = document.getElementById("emailinput").value
+	opener.location.href = "mem.me?cmd=modifyForm&checkemail=" + email + "&check2=1";
+	window.close();
+}
+
+function checkclose_email_modify() { //이메일 중복확인 창 닫기, 이메일 사용 불가
+	var email = document.getElementById("emailinput").value
+	opener.location.href = "mem.me?cmd=modifyForm&checkemail=" + "" + "&check2=0";
 	window.close();
 }
 
@@ -77,27 +94,36 @@ function close_email() { //이메일 사용 가능함
 
 
 
-
-
 //id 중복확인
-function idCheck(id,email) {
+function idCheck(id, email) {
 	if (id == "") {
 		alert("아이디를 입력해주세요");
 		document.regForm.id.focus();
 	} else {
-		url = "member.me?cmd=idCheck&id=" + id+"&email="+email+"&check2=1";
+		url = "member.me?cmd=idCheck&id=" + id + "&email=" + email + "&check2=1";
 		window.open(url, "post", "width=500, height=300,left=550, top=350");
 	}
 }
 
 
 //email 중복확인
-function emailCheck(id,email) {
+function emailCheck(id, email) {
 	if (email == "") {
 		alert("이메일을 입력해주세요");
 		document.regForm.email.focus();
 	} else {
-		url = "member.me?cmd=emailCheck&id=" + id+"&email="+email+"&check=1";
+		url = "member.me?cmd=emailCheck&id=" + id + "&email=" + email + "&check=1";
+		window.open(url, "post", "width=500, height=300,left=550, top=350");
+	}
+}
+
+//modifyForm에서 email 중복 확인
+function emailCheck_modify(email) {
+	if (email == "") {
+		alert("이메일을 입력해주세요");
+		document.regForm.email.focus();
+	} else {
+		url = "member.me?cmd=emailCheck&modify=1" + "&email=" + email;
 		window.open(url, "post", "width=500, height=300,left=550, top=350");
 	}
 }

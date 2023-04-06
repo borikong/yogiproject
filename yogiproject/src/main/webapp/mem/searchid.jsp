@@ -5,17 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <title>아이디 찾기</title>
-<link href="ect_style.css" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="script.js"></script>
+<link href="css/ect_style.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="js/script.js"></script>
 
-<style type="text/css">
-.search-header {
-	text-align: center;
-}
-</style>
 
 </head>
-<body>
+
+<div style="margin-left: 30px;">
 
 	<form action="mem.me?cmd=searchid" name="idproc" method="post">
 		<div class="search-header">
@@ -24,7 +20,7 @@
 
 		<div class="r-border"></div>
 
-		<div class="loginDivForm">
+		<div class="searchDivForm">
 
 			<div>
 				<input type="text" name="name" value="" placeholder="이름을 입력해주세요">
@@ -44,6 +40,6 @@
 		</div>
 
 	</form>
-
+</div>
 </body>
 </html>

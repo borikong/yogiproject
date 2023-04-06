@@ -26,7 +26,7 @@
 	cursor: pointer;
 }
 </style>
-<script type="text/javascript" src="script.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
 </head>
 <body>
 
@@ -49,7 +49,7 @@
 
 		<c:if test="${check ne true}">
 			<a href="#" onclick="close_id();">
-				<button class="bt1">확인2</button>
+				<button class="bt1">확인</button>
 			</a>
 		</c:if>
 

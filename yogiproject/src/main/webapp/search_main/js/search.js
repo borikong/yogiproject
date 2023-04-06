@@ -20,6 +20,10 @@ $(function() {
 			var data = $(this).data(); //click 메서드 안에 있어야 가져올 수 있다
 
 			console.log('c 데이터' + data.c);
+			console.log(document.priorityform.money.value)
+			var money=document.priorityform.money.value;
+			var landscape=document.priorityform.landscape.value;
+			var fun=document.priorityform.fun.value;
 
 			if(data.c==""){ //로그인 상태가 아니라면
 				alert("로그인이 필요한 서비스입니다!")
@@ -30,7 +34,7 @@ $(function() {
 				//console.log("remove data");
 
 				//좋아요 데이터 삭제
-				var url = 'Like.de?cmd=dislike&dest=' + data.a + "&page=search";
+				var url = 'Like.de?cmd=dislike&dest=' + data.a + "&page=search&money="+money+"&landscape="+landscape+"&fun="+fun;
 				$(location).attr('href', url);
 
 			} else { //좋아요 버튼이 비활성화된 상태라면
@@ -39,7 +43,7 @@ $(function() {
 				//console.log("active data");		
 
 				//좋아요 데이터 추가
-				var url = 'Like.de?cmd=like&dest=' + data.a + "&page=search";
+				var url = 'Like.de?cmd=like&dest=' + data.a + "&page=search&money="+money+"&landscape="+landscape+"&fun="+fun;
 				$(location).attr('href', url);
 			}
 

@@ -1,11 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <link
 	href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900"
 	rel="stylesheet">
 
 
+<c:if test="${fn:length(destlist)==0}">
+	<div id="noresults">
+		<p align="center">검색된 결과가 없습니다.</p>
+	</div>
+</c:if>
 
 
 <c:forEach var="vo" items="${destlist}">

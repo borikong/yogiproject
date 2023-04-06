@@ -25,11 +25,7 @@ public class SearchId implements Action {
 		
 		String id = dao.searchId(name, email);
 		request.setAttribute("id", id);
-		
-		if(id == null) {
-			return new ActionForward("mem.do?cmd=searchid", false);
-		}
-			
+
 		return new ActionForward("searchidProc.jsp", false);
 	}
 

@@ -1,6 +1,7 @@
 package com.free.action;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -25,9 +26,13 @@ public class ContentAction implements Action {
 		
 		request.setAttribute("no", new Integer(no));
 		request.setAttribute("pageNo", new Integer(pageNo));
-		request.setAttribute("free", free);
+		request.setAttribute("freevo", free);
 		
-		return new ActionForward("/Sim/Free_Board/Free_Board_Content.jsp");
+		//다영
+		List<Free_BoardVO> replylist=freePro.replyList(no);
+		request.setAttribute("replylist", replylist);
+		
+		return new ActionForward("Free_Board_Content.jsp");
 	}
 
 }

@@ -17,7 +17,7 @@ public class LogoutAction implements Action {
 		HttpSession session = request.getSession();
 		session.invalidate();
 		
-		return new ActionForward("/Sim/All/YOGIZOGI.jsp", false);
+		return new ActionForward("/Index.de", false);
 	}
 
 }

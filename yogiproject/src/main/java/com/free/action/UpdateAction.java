@@ -22,9 +22,9 @@ public class UpdateAction implements Action {
 		Free_BoardVO free = freePro.getFree(no);
 		
 		request.setAttribute("pageNo", new Integer(pageNo));
-		request.setAttribute("free", free);
+		request.setAttribute("freevo", free);
 		
-		return new ActionForward("/Sim/Free_Board/Free_Board_Update.jsp");
+		return new ActionForward("Free_Board_Update.jsp");
 	}
 
 }

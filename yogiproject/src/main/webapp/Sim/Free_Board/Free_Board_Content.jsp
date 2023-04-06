@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.util.*" %>
-<%@ page import="java.text.SimpleDateFormat" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
@@ -27,37 +25,48 @@
 		<div class="board_view_wrap">	<!-- 타이틀 아래 영역(리스트, 페이지, 버튼) -->
 			<div class="board_view">	<!-- 공지글 전체 영역 -->
 				<div class="title">		<!-- 글 타이틀 -->
-					${free.title }
+					${freevo.title }
 				</div>
 				<div class="info">		<!-- 글 정보 -->
 					<dl>
 						<dt>번호</dt>
-						<dd>${free.no }</dd>
+						<dd>${freevo.no }</dd>
 					</dl>
-					<input type="hidden" name="no" value="${free.no }">
+					<input type="hidden" name="no" value="${freevo.no }">
 					<dl>
 						<dt>작성자</dt>
-						<dd>${free.writer }</dd>
+						<dd>${freevo.writer }</dd>
 					</dl>
 					<dl>
 						<dt>작성일</dt>
-						<dd>${free.regdate }</dd>
+						<dd>${freevo.regdate }</dd>
 					</dl>
 					<dl>
 						<dt>조회</dt>
-						<dd>${free.readcount }</dd>
+						<dd>${freevo.readcount }</dd>
 					</dl>
 					<dl>
 						<dd><input type="image" src="trash_pic/쓰레기통.png" width="15" alt="쓰레기통" align="right" onclick="document.location.href='Free_Board.do?free=delete&no=${no}&pageNo=${pageNo }'"></dd>
 					</dl>
 				</div>
 				<div class="cont">		<!-- 글 내용 -->
-					<pre>${free.content }</pre>
+					<pre>${freevo.content }</pre>
 				</div> 
 				<table>
 					<tr>
 						<th colspan="2">댓글 목록</th>
 					</tr>
+					
+					<c:forEach var="vo" items="${replylist}">
+								<tr>
+									<td><font size="3.5"><b>${vo.getCid()}</b>
+									${ctime }
+									</font>
+									 <br>${vo.getCcontent()}
+									</td>
+								</tr>
+							</c:forEach>
+					
 					<c:choose>
 						<c:when test="${message!=null }">
 							<tr>
@@ -65,31 +74,23 @@
 							</tr>
 						</c:when>
 						<c:otherwise>
-							<c:forEach var="free" items="replyList">
-								<tr>
-									<td><font size="3.5"><b>${loginID }</b>
-									${ctime }
-									</font>
-									 <br>${free}
-									</td>
-								</tr>
-							</c:forEach>
+							
 						</c:otherwise>
 					</c:choose>
 				</table>
-				<form action="Free_Board/Free_Board.do?free=reply" method="post">
+				<form action="Free_Board.do?free=reply" method="post">
 				<c:if test="${loginID==null }">
 					<div class="comment">
-						<p class="comment_cmt">[${free.writer }님의 글에 댓글달기]</p>
+						<p class="comment_cmt">[${freevo.writer }님의 글에 댓글달기]</p>
 							<textarea placeholder="로그인 후 댓글을 작성할 수 있습니다." rows="5" cols="135" name="c_content" readonly></textarea>
 					</div>
 				</c:if>
 				<c:if test="${loginID!=null }">
 					<input type="hidden" name="id" value="${loginID }">
-					<input type="hidden" name="fno" value="${free.no }">
+					<input type="hidden" name="fno" value="${freevo.no }">
 					<input type="hidden" name="pno" value="${param.no }">
 					<div class="comment">
-						<p class="comment_cmt">[${free.writer }님의 글에 댓글달기]</p>
+						<p class="comment_cmt">[${freevo.writer }님의 글에 댓글달기]</p>
 							<textarea placeholder="댓글을 입력해주세요." rows="5" cols="135" name="c_content"></textarea>
 							<input type="submit" value="댓글달기">
 							<p></p>

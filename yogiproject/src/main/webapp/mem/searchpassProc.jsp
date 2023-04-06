@@ -9,8 +9,8 @@
 <head>
 <meta charset="UTF-8">
 <title>비밀번호 확인</title>
-<link href="ect_style.css" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="script.js"></script>
+<link href="css/ect_style.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="js/script.js"></script>
 
 </head>
 <body>

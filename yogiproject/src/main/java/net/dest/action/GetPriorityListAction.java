@@ -6,6 +6,7 @@ import java.util.Vector;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import mem.model.MemberDAO;
 import net.dest.controller.*;
 import net.dest.db.DestDAO;
 import net.dest.db.DestVO;
@@ -16,10 +17,10 @@ public class GetPriorityListAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		String loginID=(String)request.getSession().getAttribute("loginID");
-		if(loginID==null) {
-			loginID="익명의 사용자";
-		}
-		
+//		if(loginID==null) {
+//			loginID="익명의 사용자";
+//		}
+//		
 		request.setCharacterEncoding("utf-8");
 		System.out.println("GetPriorityListAction");
 		ActionForward forward = new ActionForward();
@@ -35,11 +36,6 @@ public class GetPriorityListAction implements Action {
 			float money_weight = calWeight(Integer.parseInt(money_pri), attribute_num);
 			float land_weight = calWeight(Integer.parseInt(landscape_pri), attribute_num);
 			float fun_weight = calWeight(Integer.parseInt(fun_pri), attribute_num);
-
-//		System.out.println("money weight:"+money_weight);
-//		System.out.println("land weight:"+land_weight);
-//		System.out.println("fun weight:"+fun_weight);
-//		
 
 			DestDAO dao = DestDAO.getInstance();
 			Vector<DestVO> destlist = dao.getDestList(""); // 모든 리스트를 가져옴
@@ -64,6 +60,16 @@ public class GetPriorityListAction implements Action {
 					}
 				}
 			}
+			
+			
+			// 찜한 여행지 가져오기
+			String[] likeList = { "" };
+			if (loginID != null) {
+				MemberDAO mdao = MemberDAO.getInstance();
+				likeList = mdao.getLikeList(loginID);
+			}
+
+			request.setAttribute("likeList", likeList);
 
 			request.setAttribute("destlist", destlist);
 			request.setAttribute("money_pri", Integer.parseInt(money_pri));

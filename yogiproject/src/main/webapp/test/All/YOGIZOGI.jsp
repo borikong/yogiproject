@@ -19,6 +19,8 @@
 <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 </head>
 <body>
+
+<jsp:include page="/common/navbar.jsp"></jsp:include>
 <!-- 헤더 -->
 <% 
 	String id = null; 

@@ -39,7 +39,7 @@
 					<dl>
 						<dt>제목</dt>
 						<dd>
-							<input type="text" placeholder="제목 입력" name="title">
+							<input type="text" placeholder="제목 입력" name="title" value="<%=inquiry_board.getTitle() %>">
 						</dd>
 					</dl>
 				</div>
@@ -54,7 +54,7 @@
 					</dl>
 				</div>
 				<div class="cont">
-					<textarea placeholder="내용 입력" name="content"></textarea>
+					<textarea placeholder="내용 입력" name="content"><%=inquiry_board.getContent()%></textarea>
 				</div>
 			</div>
 			<div class="bt_wrap">		<!-- 버튼 영역 -->

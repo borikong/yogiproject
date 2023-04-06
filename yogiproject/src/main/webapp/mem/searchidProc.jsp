@@ -9,13 +9,14 @@
 <head>
 <meta charset="UTF-8">
 <title>아이디 확인</title>
-<link href="ect_style.css" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="script.js"></script>
+<link href="css/ect_style.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="js/script.js"></script>
 
 </head>
 <body>
 
 <div class="idproc-size">
+${id }
 <c:choose>
   <c:when test="${empty id}">
     가입 정보를 찾을 수 없습니다.
@@ -37,7 +38,7 @@
 <table>
 <tr>
 	<td>
-		<input class="bt4" type="button" value="확인" onclick="javascript:window.location.href='member.do?cmd=login'">				
+		<input class="bt4" type="button" value="확인" onclick="javascript:window.close();">				
 	</td>
 </tr>
 </table>

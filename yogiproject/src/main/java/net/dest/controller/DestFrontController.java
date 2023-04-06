@@ -22,6 +22,7 @@ public class DestFrontController extends HttpServlet {
 		ActionForward forward=null;
 		Action action=null;
 		
+		
 		if(command.equals("/search_main/GetDestinationList.de")) { //Search_main 키워드로 조회
 			action=new GetDestListAction();
 		}else if(command.equals("/search_main/GetPriorityList.de")) {//Search_main 우선순위로 조회
@@ -36,6 +37,8 @@ public class DestFrontController extends HttpServlet {
 			action=new LikeAction();
 		}else if(command.equals("/search_main/Index.de")) { //좋아요, 좋아요 취소 누르기
 			action=new IndexAction();
+		}else if(command.equals("/Index.de")) { //요기조기 메인페이지
+			action=new Index();
 		}
 		
 		forward=execute(request, response, action);

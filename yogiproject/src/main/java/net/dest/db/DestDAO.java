@@ -8,6 +8,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.*;
 
+import mem.model.MemberDAO;
 import net.db.ConnUtil;
 
 public class DestDAO {
@@ -26,6 +27,7 @@ public class DestDAO {
 		return instance;
 	}
 	
+	//여행지 이름으로 여행지 정보 가져오기
 	public DestVO getDest(String keyword) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -67,6 +69,7 @@ public class DestDAO {
 		return vo;
 	}
 
+	//키워드로 여행지 리스트
 	public Vector<DestVO> getDestList(String keyword) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -115,6 +118,7 @@ public class DestDAO {
 		return destList;
 	}// end getDestList
 	
+	//국가로 여행지 리스트 검색
 	public Vector<DestVO> getDestListByCountry(String keyword) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -163,7 +167,7 @@ public class DestDAO {
 		return destList;
 	}// end getDestList
 	
-	
+	//추천 리스트의 관광지 상세정보 검색
 	public Vector<DestVO> getRecommandList(List<String> keywords) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -209,6 +213,63 @@ public class DestDAO {
 
 		return destList;
 	}// end getDestList
+	
+	
+	
+	
+	public void updateCnt(String mode,String dest, String id) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "";
+		int cnt=0;
+
+		try {
+			con = ConnUtil.getConnection();
+			sql = "select dest_cnt from destination where dest_name like '%" + dest + "%'";
+			pstmt = con.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				cnt=rs.getInt("dest_cnt");
+			}
+			
+			//이미 찜하거나 취소한 여행지인지 확인
+			MemberDAO mdao=MemberDAO.getInstance();
+			String[] userlike=mdao.getLikeList(id);
+			boolean iscontain=false;
+			
+			if(userlike!=null) {
+				for (String string : userlike) {
+					if(string.contains(dest)) {
+						iscontain=true;
+						break;
+					}
+				}
+				
+			}
+			
+			if(iscontain&&mode.equals("dislike") && cnt>0) { //좋아요 되어 있고, dislike 모드이고 cnt>0인 경우만
+				cnt--;
+			}else if(!iscontain&&mode.equals("like")) { //좋아요 되어있지 않고, like 모드인 경우
+				cnt++;
+			}
+			
+
+			sql = "update destination set dest_cnt="+cnt+" where dest_name like '%" + dest + "%'";
+			pstmt = con.prepareStatement(sql);
+			pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeAll(rs, pstmt, con);
+		}
+
+	}
+	
+	
+	
+	
 	
 	private void closeAll(ResultSet rs, PreparedStatement pstmt, Connection con) {
 		if (rs != null) {

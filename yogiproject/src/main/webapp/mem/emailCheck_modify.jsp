@@ -42,21 +42,19 @@
 		<br> <br>
 
 		<c:if test="${check2 eq true}">
-			<a href="#" onclick="checkclose_email();">
+			<a href="#" onclick="checkclose_email_modify();">
 				<button class="bt1">확인</button>
 			</a>
 		</c:if>
 
 		<c:if test="${check2 ne true}">
-			<a href="#" onclick="close_email();">
+			<a href="#" onclick="close_email_modify();">
 				<button class="bt1">확인</button>
 			</a>
 		</c:if>
 
 	</div>
-<input type="hidden" id="idinput" value="${id }">
 <input type="hidden" id="emailinput" value="${email }">
-<input type="hidden" id="checkinput" value="${check }">
 <input type="hidden" id="check2input" value="${check2 }">
 </body>
 </html>

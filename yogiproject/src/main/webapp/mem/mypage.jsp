@@ -1,16 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<c:set var="loginID"
-	value='<%=(String) session.getAttribute("loginID")%>' />
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>찜리스트</title>
-<link href="mypage.css" rel="stylesheet" type="text/css">
+<link href="css/mypage.css" rel="stylesheet" type="text/css">
 
 </head>
 <body>
@@ -23,12 +20,10 @@
 			</div>
 
 			<div class="mypage">
-
 				<div class="mp_left">
 					<div class="left-header">마이페이지</div>
-					<ul>
-						<li><a class="active mp-a" href="mem.me?cmd=mypage"> 찜리스트
-								<span class="mp_span">&gt;</span>
+					<ul class="mypageul">
+						<li><a class="active mp-a" href="mem.me?cmd=mypage"> 찜리스트 <span class="mp_span">&gt;</span>
 						</a></li>
 
 						<li><a class="mp-a" href="mem.me?cmd=modifyForm"> 정보수정 <span
@@ -107,8 +102,7 @@
 									<!-- 찜삭제 -->
 									<div class="box-wish">
 										<button class="wish-btn" type="button" height="36" radius="3">
-											<a
-												href="${pageContext.request.contextPath}/search_main/Like.de?cmd=dislike&dest=${vo.DEST_NAME}&page=mypage">찜
+											<a href="${pageContext.request.contextPath}/search_main/Like.de?cmd=dislike&dest=${vo.DEST_NAME}&page=mypage">찜
 												삭제</a>
 										</button>
 									</div>

@@ -1,6 +1,7 @@
 package mem.model;
 
 import java.sql.*;
+import java.util.List;
 import java.util.Vector;
 import javax.naming.*;
 import javax.sql.*;
@@ -512,8 +513,6 @@ public class MemberDAO {
 		String originLike = "";
 		int result = 0;
 
-		System.out.println("id : " + userid);
-
 		try {
 			con = getConnection();
 
@@ -526,10 +525,17 @@ public class MemberDAO {
 				if (rs.getString("userlike") != null)
 					originLike = rs.getString("userlike");
 			}
+			
+			String[] originList=originLike.split(",");
+			
+			if(!originLike.contains(likeDest)) { //이미 찜한 여행지가 아닌 경우에만
+				System.out.println(originLike);
+				sql = "update member set userlike='" + originLike + "," + likeDest + "' where id='" + userid + "'";
+				pstmt = con.prepareStatement(sql);
+				result = pstmt.executeUpdate();
+			}
 
-			sql = "update member set userlike='" + originLike + "," + likeDest + "' where id='" + userid + "'";
-			pstmt = con.prepareStatement(sql);
-			result = pstmt.executeUpdate();
+			
 
 		} catch (SQLException e) {
 			e.printStackTrace();

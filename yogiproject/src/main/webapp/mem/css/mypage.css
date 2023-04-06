@@ -41,7 +41,7 @@ body {
 	letter-spacing: -1px;
 }
 
-ul {
+.mypageul {
 	list-style-type: none;
 	padding-inline-start: 0px;
 	border: 1px solid rgb(242, 242, 242);

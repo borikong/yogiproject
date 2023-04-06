@@ -31,8 +31,9 @@
 		<h2>
 			<Strong>♥ ${loginID}님을 위한 여행지 추천 리스트! ♥</Strong>
 		</h2>
-		<p class="fs-5">▶ ${loginID}님과 비슷한 사용자 데이터를 토대로 추천해 드려요</p>
-
+		<p class="fs-5">&nbsp;&nbsp;▶ ${loginID}님이 <input type="button" class="listbtn" value="찜"
+				onclick="window.location.href='index.jsp';">&nbsp;한 데이터를 기반으로, 
+				<br><span style="padding-left : 30px;">유사한 취향을 가진 5명의 사용자 데이터를 분석하여 추천해드립니다.</span><br></p>
 		<c:if test="${mode eq 0}">
 			<c:forEach var="vo" items="${volist }">
 				<form action="GetDestDetailView.de" method="post"
@@ -72,31 +73,38 @@
 		</c:if>
 
 		<div align="center">
-			<br><br><br><br>
+			<br>
+			<br>
+			<br>
+			<br>
 
 			<!-- 	로그인 필요 -->
 			<c:if test="${mode eq 1 or mode eq null}">
 				<p class="msg">Login이 필요한 서비스입니다.</p>
-				<input type="button" value="로그인 페이지로 이동" onclick="location.href='../mem/login.jsp'" class="msgbtn">
-				<input type="button" value="뒤로가기" onclick="window.location.href='index.jsp';" class="msgbtn">
+				<input type="button" value="로그인 페이지로 이동"
+					onclick="location.href='../mem/login.jsp'" class="msgbtn">
+				<input type="button" value="뒤로가기"
+					onclick="window.location.href='index.jsp';" class="msgbtn">
 			</c:if>
 
 			<!-- 	찜한 리스트 없음 -->
 			<c:if test="${mode eq 2}">
 				<p class="msg">찜한 리스트가 없습니다. 최소 1개 이상의 찜 리스트를 만들어 주세요.</p>
-				<input type="button" value="찜 리스트 만들러 가기" onclick="location.href='index.jsp'" class="msgbtn">
+				<input type="button" value="찜 리스트 만들러 가기"
+					onclick="location.href='index.jsp'" class="msgbtn">
 			</c:if>
-			<br><br><br><br>
 			<br>
 			<br>
+			<br>
+			<br> <br> <br>
 		</div>
 
 	</div>
 
 	<br>
 	<jsp:include page="/common/footer.jsp"></jsp:include>
-	<div style="position:fixed; bottom:50px; right:100px;">
-		<a href="#header"><img src="top.png" width="64px"></a>
+	<div style="position: fixed; bottom: 50px; right: 100px;">
+		<a href="#header"><img src="pic/top.png" width="64px"></a>
 	</div>
 
 </body>

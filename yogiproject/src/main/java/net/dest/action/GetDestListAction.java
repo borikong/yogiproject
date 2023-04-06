@@ -47,6 +47,7 @@ public class GetDestListAction implements Action {
 			destlist = dao.getDestList(keyword);
 			request.setAttribute("destlist", destlist);
 		}
+		
 
 		// 우선순위 설정(설정된 우선순위가 있다면 그대로 다시 입력해 주기 위해)
 		if (request.getAttribute("money_pri") != null && request.getAttribute("land_pri") != null

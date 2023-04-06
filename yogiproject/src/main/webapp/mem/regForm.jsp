@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>회원가입</title>
-<link href="regform.css" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="script.js"></script>
+<link href="css/regform.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="js/script.js"></script>
 </head>
 <body>
 	<jsp:include page="/common/navbar.jsp" />
@@ -40,6 +40,21 @@
 						<div class="right">
 							<input type="button" value="중복확인"
 								onclick="idCheck(this.form.id.value,this.form.email.value)" class="b_right">
+						</div>
+					</div>
+					
+					<div class="div1">
+						<div class="left">
+							<label class="l_label">이메일<span class="red_span">*</span></label>
+						</div>
+						<div class="center">
+							<input class="c_input" placeholder="이메일을 입력해주세요" type="text"
+								name="email" value="${param.checkemail}">
+								<br>&nbsp;<span style="font-size : 0.7rem;">${param.check2 eq 1 and param.checkemail ne ''?'<span style="color :green; font-weight:700;">사용 가능한 이메일입니다.</span>':'<span style="color :red; font-weight:700;">사용 불가능한 이메일입니다.</span>'}</span>
+						</div>
+						<div class="right">
+							<input type="button" value="중복확인"
+								onclick="emailCheck(this.form.id.value,this.form.email.value)" class="b_right">
 						</div>
 					</div>
 
@@ -82,20 +97,7 @@
 						</div>
 					</div>
 
-					<div class="div1">
-						<div class="left">
-							<label class="l_label">이메일<span class="red_span">*</span></label>
-						</div>
-						<div class="center">
-							<input class="c_input" placeholder="이메일을 입력해주세요" type="text"
-								name="email" value="${param.checkemail}">
-								<br>&nbsp;<span style="font-size : 0.7rem;">${param.check2 eq 1 and param.checkemail ne ''?'<span style="color :green; font-weight:700;">사용 가능한 이메일입니다.</span>':'<span style="color :red; font-weight:700;">사용 불가능한 이메일입니다.</span>'}</span>
-						</div>
-						<div class="right">
-							<input type="button" value="중복확인"
-								onclick="emailCheck(this.form.id.value,this.form.email.value)" class="b_right">
-						</div>
-					</div>
+					
 
 					<div class="div1">
 						<div class="left">
