@@ -70,7 +70,7 @@
 			<div class="bt_wrap">		<!-- 버튼 영역 -->
 				<input type="button" class="on" value="목록" onclick="document.location.href='Inquiry_Board_List.jsp?pageNo=<%=pageNo %>'">
 				<input type="button" value="수정" onclick="document.location.href='Inquiry_Board_Update.jsp?no=<%=inquiry_board.getNo() %>&pageNo=<%=pageNo %>'">
-				<input type="button" value="답변" onclick="document.location.href='Inquiry_Board_Write.jsp?no=<%=inquiry_board.getNo() %>&ref=<%=ref %>&step=<%=step %>&depth=<%=depth %>'">
+				<input type="button" value="답변" onclick="document.location.href='Inquiry_Board_Write.jsp?no=<%=inquiry_board.getNo() %>&ref=<%=ref %>&step=<%=step %>&depth=<%=depth %>&titlep=<%=inquiry_board.getTitle()%>'">
 			</div>
 		</div>
 		<%}catch(Exception e) {} %>

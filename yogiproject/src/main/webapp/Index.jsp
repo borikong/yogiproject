@@ -8,7 +8,6 @@
 <title>여행은 요기조기-메인페이지</title>
 <!-- 헤더라인 -->
 
-
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 <link
@@ -45,19 +44,21 @@
 		<div class="carousel-cell"
 			style="background-image: url(${pageContext.request.contextPath}/Sim/Banner/Banner_pic/00003.png)"></div>
 	</div>
-
-
-<br><br><br><br><br>
-
-<div align="center">
-<div>
-	
-	<jsp:include page="/common/popular_sub.jsp" />
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<div align="center">
+		<div>
+			<jsp:include page="/common/popular_sub.jsp" />
+		</div>
 	</div>
-</div>
-<br><br><br><br><br>
-<jsp:include page="/common/footer.jsp"></jsp:include>
-
-
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<jsp:include page="/common/footer.jsp"></jsp:include>
 </body>
 </html>

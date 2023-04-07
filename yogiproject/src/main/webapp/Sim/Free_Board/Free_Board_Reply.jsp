@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<meta charset="UTF-8" http-equiv="Refresh" content="0;url=${pageContext.request.contextPath}/Sim/Free_Board/Free_Board_List.do?free=list">
+<meta charset="UTF-8" http-equiv="Refresh"
+	content="0;
+url=${pageContext.request.contextPath}/Sim/Free_Board/Free_Board_Content.do?free=content&no=${no}&pageNo=${pageNo }">

@@ -22,6 +22,7 @@
 					by <a class="footer-a" href="https://colorlib.com" target="_blank">Colorlib</a>,
 					<a class="footer-a" href="https://getbootstrap.com/">Bootstrap</a>
 					<br>icon made by Pixel perfect from www.flaticon.com
+					<br>image reference from trip.com
 				</p>
 			</div>
 		</div>

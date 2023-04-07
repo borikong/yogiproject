@@ -67,7 +67,8 @@
 				<input type="button" class="on" value="목록" onclick="document.location.href='Notice_Board_List.jsp?pageNo=<%=pageNo %>'">
 			</div>
 		</div>
-		<%}catch(Exception e) {} %>
+		<%}catch(Exception e) {} %>	
 	</div>
+	<jsp:include page="/common/footer.jsp"></jsp:include>
 </body>
 </html>

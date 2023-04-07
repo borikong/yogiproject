@@ -24,7 +24,7 @@ public class ContentAction implements Action {
 		Free_BoardDAO freePro = Free_BoardDAO.getInstance();
 		Free_BoardVO free = freePro.getFree(no);
 		
-		request.setAttribute("no", new Integer(no));
+		request.setAttribute("no", no);
 		request.setAttribute("pageNo", new Integer(pageNo));
 		request.setAttribute("freevo", free);
 		

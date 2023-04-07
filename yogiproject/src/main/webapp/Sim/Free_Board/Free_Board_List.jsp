@@ -14,7 +14,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Jua&family=Kiwi+Maru&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru&display=swap" rel="stylesheet">
 <script src="https://kit.fontawesome.com/3e7bdacc74.js" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="/Proprac/Sim/Free_Board/Board.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/Sim/Free_Board/Board.css">
 </head>
 <body>
 <jsp:include page="/common/navbar.jsp"></jsp:include>
@@ -95,5 +95,7 @@
 			</div>
 		</div>
 	</div>
+	
+	<jsp:include page="/common/footer.jsp"></jsp:include>
 </body>
 </html>

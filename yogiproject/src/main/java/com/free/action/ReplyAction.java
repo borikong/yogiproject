@@ -26,17 +26,14 @@ public class ReplyAction implements Action {
 		free.setCid(request.getParameter("id"));
 		free.setCcontent(request.getParameter("c_content"));
 		free.setCtime(new Timestamp(System.currentTimeMillis()));
-		free.setParentno(Integer.parseInt(request.getParameter("pno")));
+//		free.setParentno(Integer.parseInt(request.getParameter("pno")));
 		Free_BoardDAO freePro = Free_BoardDAO.getInstance();
 		freePro.commentWrite(free);
-	   
-	   
-	
-	   
+		
+		request.setAttribute("no", request.getParameter("no"));
+		request.setAttribute("pageNo", request.getParameter("pageNo"));
 	   
 
-		
-		
 		
 		return new ActionForward("Free_Board_Reply.jsp");
 	}

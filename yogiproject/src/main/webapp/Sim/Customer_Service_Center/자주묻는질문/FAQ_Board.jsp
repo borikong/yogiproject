@@ -32,5 +32,6 @@
 				<div class="board_write1">	<!-- 리스트 영역 --> </div>
 		</div>
 	</div>
+	<jsp:include page="/common/footer.jsp"></jsp:include>
 </body>
 </html>

@@ -42,6 +42,10 @@
 				style="width: 75%; display: inline;"> &nbsp; <input
 				class="btn btn-outline-dark" type="submit" id="button-addon2"
 				value="검색">
+				<input
+				class="btn btn-outline-dark" type="submit" id="button-addon2"
+				value="전체">
+				
 		</form>
 
 
@@ -75,6 +79,8 @@
 		<br> <span class="search_head">나만의 추천 여행지 리스트!&nbsp;<span
 			class="tooltip_custom">?<span class="tooltip-content_custom">
 					비슷한 사용자 데이터를 토대로 여행지를 추천해드립니다. </span></span></span> <br>
+					
+		
 		<form action="RecommandList.de" method="get" class="search_form">
 			<button class="btn btn-outline-dark" type="submit">추천 리스트 보기</button>
 		</form>

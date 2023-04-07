@@ -2,35 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="817bbae4-de02-44dc-a1d5-7039b13e92b6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/yogiproject/src/main/java/mem/action/EmailCheckAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yogiproject/src/main/java/mem/action/SearchId.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yogiproject/src/main/java/mem/action/SearchPass.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yogiproject/src/main/webapp/mem/emailCheck.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yogiproject/src/main/webapp/mem/script2.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yogiproject/src/main/webapp/mem/searchid.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yogiproject/src/main/webapp/mem/searchidProc.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yogiproject/src/main/webapp/mem/searchpass.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yogiproject/src/main/webapp/mem/searchpassProc.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yogiproject/src/main/webapp/test/All/Signup.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yogiproject/src/main/webapp/test/All/YOGIZOGI.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yogiproject/src/main/webapp/test/All/joinAction.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yogiproject/src/main/webapp/test/All/logoutAction.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yogiproject/src/main/webapp/test/Header/Header.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yogiproject/src/main/webapp/test/Header/Header.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yogiproject/src/main/webapp/test/Header/Header.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yogiproject/src/main/java/mem/action/IdCheckAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/yogiproject/src/main/java/mem/action/IdCheckAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yogiproject/src/main/java/mem/action/RegFormAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/yogiproject/src/main/java/mem/action/RegFormAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yogiproject/src/main/java/mem/control/ActionFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/yogiproject/src/main/java/mem/control/ActionFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yogiproject/src/main/java/mem/control/ControlServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/yogiproject/src/main/java/mem/control/ControlServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yogiproject/src/main/java/mem/model/MemberDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/yogiproject/src/main/java/mem/model/MemberDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yogiproject/src/main/webapp/Sim/All/YOGIZOGI.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/yogiproject/src/main/webapp/Sim/All/YOGIZOGI.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yogiproject/src/main/webapp/common/Header.css" beforeDir="false" afterPath="$PROJECT_DIR$/yogiproject/src/main/webapp/common/Header.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yogiproject/src/main/webapp/common/footer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/yogiproject/src/main/webapp/common/footer.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yogiproject/src/main/webapp/common/navbar.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/yogiproject/src/main/webapp/common/navbar.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yogiproject/src/main/webapp/mem/idCheck.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/yogiproject/src/main/webapp/mem/idCheck.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yogiproject/src/main/webapp/mem/regForm.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/yogiproject/src/main/webapp/mem/regForm.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yogiproject/src/main/webapp/mem/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/yogiproject/src/main/webapp/mem/script.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yogiproject/src/main/webapp/sql/destvo.sql" beforeDir="false" afterPath="$PROJECT_DIR$/yogiproject/src/main/webapp/sql/destvo.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yogiproject/src/main/java/net/dest/action/GetDestListAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/yogiproject/src/main/java/net/dest/action/GetDestListAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yogiproject/src/main/java/net/dest/action/GetPriorityListAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/yogiproject/src/main/java/net/dest/action/GetPriorityListAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yogiproject/src/main/java/net/dest/action/LikeAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/yogiproject/src/main/java/net/dest/action/LikeAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yogiproject/src/main/webapp/Index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/yogiproject/src/main/webapp/Index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yogiproject/src/main/webapp/Sim/Customer_Service_Center/공지사항/Notice_Board_Content.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/yogiproject/src/main/webapp/Sim/Customer_Service_Center/공지사항/Notice_Board_Content.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yogiproject/src/main/webapp/Sim/Customer_Service_Center/공지사항/Notice_Board_List.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/yogiproject/src/main/webapp/Sim/Customer_Service_Center/공지사항/Notice_Board_List.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yogiproject/src/main/webapp/Sim/Customer_Service_Center/자주묻는질문/FAQ_Board.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/yogiproject/src/main/webapp/Sim/Customer_Service_Center/자주묻는질문/FAQ_Board.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yogiproject/src/main/webapp/Sim/Free_Board/Free_Board_Content.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/yogiproject/src/main/webapp/Sim/Free_Board/Free_Board_Content.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yogiproject/src/main/webapp/Sim/Free_Board/Free_Board_Delete.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/yogiproject/src/main/webapp/Sim/Free_Board/Free_Board_Delete.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yogiproject/src/main/webapp/Sim/Free_Board/Free_Board_List.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/yogiproject/src/main/webapp/Sim/Free_Board/Free_Board_List.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yogiproject/src/main/webapp/Sim/Free_Board/Free_Board_Update.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/yogiproject/src/main/webapp/Sim/Free_Board/Free_Board_Update.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yogiproject/src/main/webapp/Sim/Free_Board/Free_Board_Write.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/yogiproject/src/main/webapp/Sim/Free_Board/Free_Board_Write.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,12 +29,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/python_project",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

@@ -25,7 +25,6 @@ public class GetDestListAction implements Action {
 			keyword = "";
 		}
 		
-
 		String condition = request.getParameter("condition");
 
 		// 여행지 리스트 불러오기

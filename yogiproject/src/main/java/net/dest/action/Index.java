@@ -23,6 +23,7 @@ public class Index implements Action{
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("utf-8");
 		String loginID=(String)request.getSession().getAttribute("loginID");
+//		request.getSession().setAttribute("loginID", "test");
 		ActionForward forward=new ActionForward();
 		//인기 여행지 불러오기
 		DestDAO dao=DestDAO.getInstance();

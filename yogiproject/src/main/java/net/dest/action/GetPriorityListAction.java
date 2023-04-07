@@ -15,8 +15,8 @@ public class GetPriorityListAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
-		String loginID=(String)request.getSession().getAttribute("loginID");
+
+		String loginID = (String) request.getSession().getAttribute("loginID");
 //		if(loginID==null) {
 //			loginID="익명의 사용자";
 //		}
@@ -24,12 +24,13 @@ public class GetPriorityListAction implements Action {
 		request.setCharacterEncoding("utf-8");
 		System.out.println("GetPriorityListAction");
 		ActionForward forward = new ActionForward();
-		String money_pri=request.getParameter("money");
-		String landscape_pri=request.getParameter("landscape");
-		String fun_pri=request.getParameter("fun");
-		
+		String money_pri = request.getParameter("money");
+		String landscape_pri = request.getParameter("landscape");
+		String fun_pri = request.getParameter("fun");
+
 		// 우선순위 3가지 전부 설정해 주었을 때
-		if (money_pri!=null && !money_pri.equals("-")&&landscape_pri!=null&&!landscape_pri.equals("-")&&fun_pri!=null&&!fun_pri.equals("-")) {
+		if (money_pri != null && !money_pri.equals("-") && landscape_pri != null && !landscape_pri.equals("-")
+				&& fun_pri != null && !fun_pri.equals("-")) {
 			int attribute_num = 3; // 속성 개수
 
 			// 가중치 계산
@@ -42,8 +43,8 @@ public class GetPriorityListAction implements Action {
 
 			// 가중치 점수 곱한 벡터 만들어주기
 			for (int i = 0; i < destlist.size(); i++) {
-				//money 속성의 경우 점수가 낮을수록 좋기 때문에 숫자를 역으로 바꿔줌
-				float origin_money = 1-destlist.get(i).getDEST_MONEY();
+				// money 속성의 경우 점수가 낮을수록 좋기 때문에 숫자를 역으로 바꿔줌
+				float origin_money = 1 - destlist.get(i).getDEST_MONEY();
 				float origin_land = destlist.get(i).getDEST_LANDSCAPE();
 				float origin_fun = destlist.get(i).getDEST_FUN();
 				float total = origin_money * money_weight + origin_land * land_weight + origin_fun * fun_weight;
@@ -60,16 +61,11 @@ public class GetPriorityListAction implements Action {
 					}
 				}
 			}
-			
-			
-			// 찜한 여행지 가져오기
-			String[] likeList = { "" };
-			if (loginID != null) {
-				MemberDAO mdao = MemberDAO.getInstance();
-				likeList = mdao.getLikeList(loginID);
-			}
 
-			request.setAttribute("likeList", likeList);
+			// 좋아요 표시한 리스트 설정
+			request.setAttribute("likeList", getLikeList(loginID));
+			//thisdest 위치로 스크롤 자동 이동
+			request.setAttribute("thisdest", destlist.get(0).getDEST_NAME());
 
 			request.setAttribute("destlist", destlist);
 			request.setAttribute("money_pri", Integer.parseInt(money_pri));
@@ -83,19 +79,17 @@ public class GetPriorityListAction implements Action {
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
 			out.println("alert('우선순위를 전부 선택해 주세요!');");
-			out.println("location.href='index.jsp';"); 
+			out.println("location.href='index.jsp';");
 			out.println("</script>");
 			out.close();
 			forward.setRedirect(false);
 		}
 
-		
-
 		return forward;
 	}
 
 	// 우선순위 가중치 계산(Rank Order Cedtroid)
-	private float calWeight(int priority, int attnum) { 
+	private float calWeight(int priority, int attnum) {
 		float weight = 0;
 		for (int k = priority; k <= attnum; k++) {
 			weight += 1 / (float) k;
@@ -103,4 +97,14 @@ public class GetPriorityListAction implements Action {
 		return weight * (1 / (float) attnum);
 	}
 
+	private String[] getLikeList(String loginID) {
+		// 찜한 여행지 가져오기
+		String[] likeList = { "" };
+		if (loginID != null) {
+			MemberDAO mdao = MemberDAO.getInstance();
+			likeList = mdao.getLikeList(loginID);
+		}
+
+		return likeList;
+	}
 }

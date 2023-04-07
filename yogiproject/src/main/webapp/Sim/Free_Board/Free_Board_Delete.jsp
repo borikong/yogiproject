@@ -11,6 +11,7 @@
 <script type="text/javascript" src="Free_script.js"></script>
 </head>
 <body>
+<jsp:include page="/common/navbar.jsp"></jsp:include>
 <div class="board_wrap" style="position: relative; z-index: 1;">			<!-- 전체를 감싸고 있는 div 생성 -->
 		<div class="board_title">		<!-- 보드의 타이틀(ex. 문의게시판) -->
 			<strong>게시물 삭제</strong>
@@ -37,6 +38,7 @@
 		</div>
 		</form>
 </div>
+<jsp:include page="/common/footer.jsp"></jsp:include>
 	
 </body>
 </html>

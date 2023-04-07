@@ -48,7 +48,7 @@
 						<% if(request.getParameter("no")==null) {%>
 							<input type="text" placeholder="제목 입력" name="title" >
 						<%}else{ %>
-							<input type="text" placeholder="제목 입력" name="title" value="[답변] " >
+							<input type="text" placeholder="제목 입력" name="title" value="[<%=request.getParameter("titlep")%>의 글에 대한 답변]  " >
 						<%} %>
 						</dd>
 					</dl>
@@ -56,7 +56,7 @@
 				<div class="info">
 					<dl>
 						<dt>작성자</dt>
-						<dd><input type="text" placeholder="작성자 입력" name="writer" ></dd>
+						<dd><input type="text" placeholder="작성자 입력" name="writer"  value="${loginID eq null?'':loginID }"></dd>
 					</dl>
 					<dl>
 						<dt>비밀번호</dt>
