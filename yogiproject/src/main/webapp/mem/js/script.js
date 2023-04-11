@@ -3,6 +3,11 @@ function searchIdPrompt() {
 	window.open(url, "post", "width=450, height=500,left=550, top=350");
 }
 
+function searchPwPrompt() {
+	url = "searchpass.jsp";
+	window.open(url, "post", "width=450, height=500,left=550, top=350");
+}
+
 
 function searchId() {	//아이디 찾기
 	if (document.idproc.name.value == "") {

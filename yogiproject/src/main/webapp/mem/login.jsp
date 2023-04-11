@@ -53,7 +53,7 @@
 					<div class="idpw">
 						<a class="searchdeco" href="" onclick="searchIdPrompt();">아이디
 							찾기</a> <span class="spanBorder">|</span> <a class="searchdeco"
-							href="searchpass.jsp">비밀번호 찾기</a>
+							href="" onclick="searchPwPrompt();">비밀번호 찾기</a>
 					</div>
 
 					<div>

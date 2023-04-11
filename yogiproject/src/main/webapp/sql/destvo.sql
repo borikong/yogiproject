@@ -58,7 +58,7 @@ insert into member values('test2','≥≤¿Ãº∂');
 
 show user;
 
-drop table member;
+select * from member;
 
 update destination set dest_cnt=0;
 

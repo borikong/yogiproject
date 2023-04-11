@@ -108,7 +108,7 @@ public class LikeAction implements Action {
 				forward.setRedirect(false);
 				forward.setPath("Search_main.jsp");		
 			} else { // 우선순위 설정 안되어있는경우 리다이렉트
-				forward.setRedirect(true);
+				forward.setRedirect(false);
 				forward.setPath("Index.de");
 			}
 			

@@ -79,16 +79,16 @@
 								<%-- 			<jsp:include page="/search/pgbar.jsp"></jsp:include> --%>
 								<div>
 									<span class="position">비용</span>
-									<progress value="${vo.DEST_MONEY * 100}" max="100" id="pg"></progress>
+									<progress value="${vo.DEST_MONEY * 99+1}" max="100" id="pg"></progress>
 								</div>
 								<div>
 									<span class="position">경치</span>
-									<progress value="${vo.DEST_LANDSCAPE * 100}" max="100"
+									<progress value="${vo.DEST_LANDSCAPE * 99+1}" max="100"
 										id="pg"></progress>
 								</div>
 								<div>
 									<span class="position">재미</span>
-									<progress value="${vo.DEST_FUN * 100}" max="100" id="pg"></progress>
+									<progress value="${vo.DEST_FUN * 99+1}" max="100" id="pg"></progress>
 								</div>
 								<br>
 								<h2 class="detail-label">

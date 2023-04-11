@@ -37,7 +37,7 @@
 <table>
 <tr>
 	<td>
-		<input class="bt4" type="button" value="확인" onclick="javascript:window.location.href='member.do?cmd=login'">				
+		<input class="bt4" type="button" value="확인" onclick="javascript:window.close();">				
 	</td>
 </tr>
 </table>

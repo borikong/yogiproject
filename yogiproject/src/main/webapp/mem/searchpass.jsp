@@ -9,7 +9,7 @@
 <script type="text/javascript" src="js/script.js"></script>
 </head>
 <body>
-
+<div style="margin-left: 30px;">
 <form action="mem.me?cmd=searchpass" name="passproc" method="post">
 	<div class="search-header">
 		<h2>비밀번호 찾기</h2>
@@ -17,7 +17,7 @@
 
 	<div class="r-border"></div>
 
-	<div class="loginDivForm">
+	<div class="searchDivForm">
 
 		<div>
 			<input type="text" name="name" value="" placeholder="이름을 입력해주세요">
@@ -40,6 +40,6 @@
 	</div>
 
 </form>
-
+</div>
 </body>
 </html>
