@@ -10,7 +10,7 @@
 	<script type="text/javascript">
 		var link = "mem.me?cmd=modifyForm";
 		alert("성공적으로 회원정보가 수정되었습니다.");
-		window.open(link);
+		location.replace(link);
 	</script>
 
 </body>
